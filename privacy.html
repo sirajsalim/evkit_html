@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy - EVKit</title>
-    <meta name="description" content="EVKit's privacy policy. 100% on-device calculations, no tracking, complete data ownership.">
+    <meta name="description" content="EVKit's privacy policy. 100% on-device calculations, anonymized analytics, complete data ownership.">
     <link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
@@ -35,7 +35,7 @@
                         <h2>The Short Version</h2>
                         <ul class="privacy-list">
                             <li><strong>All calculations happen on your device.</strong> We never send your vehicle data, journeys, or charging costs to our servers.</li>
-                            <li><strong>No tracking.</strong> We don't use analytics, advertising SDKs, or third-party trackers.</li>
+                            <li><strong>Anonymized analytics only.</strong> We collect anonymized app usage patterns to improve EVKit—no personal information, no location data, no identifiable tracking.</li>
                             <li><strong>No account required.</strong> EVKit works entirely offline without any login or registration.</li>
                             <li><strong>iCloud sync is optional and private.</strong> If you enable sync, your data stays in your private iCloud account—we can't access it.</li>
                             <li><strong>We can't see your data. Ever.</strong> Not your vehicles, not your journeys, not your charging rates. Nothing.</li>
@@ -66,12 +66,11 @@
 
                         <h3>Information We Don't Collect</h3>
                         <ul class="privacy-list">
-                            <li>❌ No location data (we don't track where you drive)</li>
-                            <li>❌ No analytics or usage tracking</li>
-                            <li>❌ No advertising identifiers</li>
-                            <li>❌ No personal information (name, email, phone number)</li>
+                            <li>❌ No personal information (name, email, phone number, Apple ID)</li>
+                            <li>❌ No location data (we don't track where you drive or your GPS coordinates)</li>
+                            <li>❌ No identifiable tracking (no device IDs, advertising IDs, or IP addresses)</li>
+                            <li>❌ No vehicle or journey data (your EV details, costs, and trips stay on your device)</li>
                             <li>❌ No payment information (handled by Apple via App Store)</li>
-                            <li>❌ No crash reports unless you explicitly opt in via iOS Settings</li>
                         </ul>
                     </div>
 
@@ -88,14 +87,61 @@
                     </div>
 
                     <div class="privacy-section">
+                        <h2>Anonymized Analytics</h2>
+                        <p>To improve EVKit and understand how features are used, we collect <strong>anonymized, aggregated usage data</strong> using TelemetryDeck, a privacy-focused analytics platform designed for Apple developers.</p>
+
+                        <h3>What We Collect (Anonymously)</h3>
+                        <ul class="privacy-list">
+                            <li><strong>Feature usage:</strong> Which screens you visit, which calculators you use, which widgets you add.</li>
+                            <li><strong>App interactions:</strong> Button taps, gesture patterns, navigation flows.</li>
+                            <li><strong>Technical data:</strong> App version, iOS version, device type (e.g., "iPhone 15 Pro").</li>
+                            <li><strong>Performance metrics:</strong> App launch time, screen load times, responsiveness.</li>
+                            <li><strong>Crash reports:</strong> Stack traces and error logs to identify and fix bugs.</li>
+                        </ul>
+
+                        <h3>What We DON'T Collect</h3>
+                        <ul class="privacy-list">
+                            <li>❌ No personal information (name, email, Apple ID)</li>
+                            <li>❌ No location data (GPS, region, country)</li>
+                            <li>❌ No vehicle data (makes, models, efficiency, battery capacity)</li>
+                            <li>❌ No journey data (distances, costs, charging rates)</li>
+                            <li>❌ No user-created content (vehicle names, custom rates, notes)</li>
+                            <li>❌ No identifiable data (device IDs, advertising IDs, IP addresses)</li>
+                        </ul>
+
+                        <h3>How Anonymization Works</h3>
+                        <p>TelemetryDeck uses <strong>salted hashing</strong> to anonymize all data before it leaves your device:</p>
+                        <ul class="privacy-list">
+                            <li>Your device generates a random identifier that changes periodically.</li>
+                            <li>This identifier is salted and hashed, making it impossible to link back to you.</li>
+                            <li>We receive only aggregated, anonymized statistics (e.g., "42% of users use the journey calculator weekly").</li>
+                            <li>Even TelemetryDeck cannot identify individual users or link sessions together.</li>
+                        </ul>
+
+                        <h3>Why We Use Analytics</h3>
+                        <p>Anonymized analytics help us:</p>
+                        <ul class="privacy-list">
+                            <li><strong>Improve features:</strong> Identify which calculators are most valuable and which need refinement.</li>
+                            <li><strong>Fix bugs:</strong> Detect crashes and performance issues affecting users.</li>
+                            <li><strong>Prioritize development:</strong> Focus on features that matter most to EV shoppers and owners.</li>
+                            <li><strong>Optimize performance:</strong> Identify slow screens and improve responsiveness.</li>
+                        </ul>
+
+                        <h3>Opt-Out</h3>
+                        <p>We're exploring options to let you disable analytics entirely while still using EVKit. Check back for updates in future releases.</p>
+                        <p>TelemetryDeck's approach ensures that even if you don't opt out, we cannot identify you or access your personal data.</p>
+                    </div>
+
+                    <div class="privacy-section">
                         <h2>Data Sharing</h2>
-                        <p><strong>We do not share, sell, rent, or trade your data with anyone.</strong></p>
-                        <p>The only "sharing" that occurs:</p>
+                        <p><strong>We do not share, sell, rent, or trade your personal data with anyone.</strong></p>
+                        <p>The only data sharing that occurs:</p>
                         <ul class="privacy-list">
                             <li><strong>Apple App Store:</strong> When you purchase EVKit, Apple processes the transaction. We receive anonymized sales data (e.g., "3 purchases in the UK") but no personal information.</li>
                             <li><strong>CloudKit (optional):</strong> If you enable iCloud sync, your data syncs to your private iCloud account. Apple encrypts this data end-to-end.</li>
+                            <li><strong>TelemetryDeck (analytics):</strong> Anonymized, aggregated usage data (screen views, feature usage, crashes) is sent to TelemetryDeck. No personal or identifiable information is included.</li>
                         </ul>
-                        <p>We have no third-party SDKs, no analytics platforms, no advertising networks. EVKit is a self-contained app with zero external dependencies.</p>
+                        <p><strong>We never share:</strong> Your vehicle profiles, journey data, charging rates, or any information that identifies you. We have no advertising networks or social media trackers.</p>
                     </div>
 
                     <div class="privacy-section">
@@ -151,11 +197,12 @@
 
                     <div class="privacy-section">
                         <h2>Third-Party Services</h2>
-                        <p>EVKit uses only one third-party service:</p>
+                        <p>EVKit integrates with two privacy-focused third-party services:</p>
                         <ul class="privacy-list">
                             <li><strong>Apple CloudKit</strong> (optional, if you enable iCloud sync): Governed by <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener noreferrer">Apple's Privacy Policy</a>. Your data is stored in your private CloudKit container, encrypted with your Apple ID.</li>
+                            <li><strong>TelemetryDeck</strong> (analytics): Governed by <a href="https://telemetrydeck.com/privacy/" target="_blank" rel="noopener noreferrer">TelemetryDeck's Privacy Policy</a>. A privacy-first analytics platform built for Apple developers. Uses salted hashing to anonymize all data before transmission.</li>
                         </ul>
-                        <p><strong>No analytics. No crash reporting (unless you opt in via iOS). No advertising SDKs. No social media integrations.</strong></p>
+                        <p><strong>No advertising SDKs. No social media trackers. No data brokers.</strong></p>
                     </div>
 
                     <div class="privacy-section">
