@@ -93,6 +93,11 @@ button:focus-visible {
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
     }
+
+    .feature-card {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+    }
 }
 
 .container {
@@ -207,9 +212,23 @@ header {
     min-height: 44px;
     padding: 12px 16px;
     animation: float 4s ease-in-out infinite;
-    background: rgba(98, 210, 162, 0.03);
+    background: rgba(26, 26, 26, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-radius: 12px;
-    border: 1px solid rgba(98, 210, 162, 0.08);
+    border: 1px solid rgba(98, 210, 162, 0.15);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2),
+                0 0 20px rgba(98, 210, 162, 0.05);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: default;
+}
+
+.trust-item:hover {
+    transform: translateY(-4px) scale(1.05);
+    background: rgba(26, 26, 26, 0.8);
+    border-color: rgba(98, 210, 162, 0.25);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3),
+                0 0 30px rgba(98, 210, 162, 0.12);
 }
 
 .trust-item:nth-child(1) { animation-delay: 0s; }
@@ -233,11 +252,30 @@ header {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    padding: 40px 20px;
+    padding: 60px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 50%,
+                rgba(98, 210, 162, 0.08) 0%,
+                transparent 50%);
+    pointer-events: none;
+    animation: gradientShift 15s ease-in-out infinite;
+    z-index: 0;
 }
 
 .hero .container {
     width: 100%;
+    position: relative;
+    z-index: 1;
 }
 
 .hero-layout {
@@ -263,14 +301,15 @@ header {
 }
 
 .hero-badge {
-    background: rgba(98, 210, 162, 0.05);
-    border: none;
-    color: #86D4B4;
-    padding: 6px 12px;
-    border-radius: 8px;
-    font-size: 0.85rem;
-    font-weight: 500;
-    letter-spacing: 0.2px;
+    background: rgba(98, 210, 162, 0.12);
+    border: 1.5px solid rgba(98, 210, 162, 0.3);
+    color: #62D2A2;
+    padding: 9px 16px;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    box-shadow: 0 0 12px rgba(98, 210, 162, 0.08);
 }
 
 .hero-badge-separator {
@@ -283,9 +322,9 @@ header {
     font-size: 3.5rem;
     font-weight: 700;
     color: #e5e5e7;
-    margin-bottom: 24px;
+    margin-bottom: 32px;
     line-height: 1.15;
-    letter-spacing: -0.8px;
+    letter-spacing: -1.2px;
 }
 
 .hero-headline .highlight {
@@ -339,13 +378,14 @@ header {
                 0 8px 16px rgba(98, 210, 162, 0.2),
                 inset 0 1px 0 rgba(255, 255, 255, 0.1);
     transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    animation: pulseGlow 3s ease-in-out infinite;
 }
 
 .cta-button:hover {
     background: #76E5B4;
     transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3),
-                0 12px 24px rgba(98, 210, 162, 0.3),
+    box-shadow: 0 4px 12px rgba(98, 210, 162, 0.3),
+                0 12px 24px rgba(98, 210, 162, 0.25),
                 0 0 20px rgba(98, 210, 162, 0.15),
                 inset 0 1px 0 rgba(255, 255, 255, 0.15);
     letter-spacing: 0.5px;
@@ -510,12 +550,14 @@ header {
     object-fit: contain;
     border-radius: 29px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-    transition: box-shadow 0.3s;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.3s;
 }
 
 .screenshot-image:hover {
-    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4),
-                0 0 30px rgba(98, 210, 162, 0.2);
+    transform: perspective(1000px) rotateY(-2deg) rotateX(2deg);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5),
+                0 0 40px rgba(98, 210, 162, 0.25);
 }
 
 /* Screenshot Watermark */
@@ -545,7 +587,7 @@ header {
 
 .features {
     background: var(--elevated-dark);
-    padding: 120px 20px;
+    padding: 140px 20px;
 }
 
 .section-heading {
@@ -561,7 +603,7 @@ header {
 .features-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 40px;
+    gap: 48px;
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -595,12 +637,32 @@ header {
     overflow: hidden;
 }
 
+.feature-card::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(135deg,
+                rgba(98, 210, 162, 0.3),
+                rgba(118, 229, 180, 0.1),
+                rgba(98, 210, 162, 0.3));
+    border-radius: 16px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+    background-size: 200% 200%;
+    animation: gradientRotate 4s ease infinite;
+}
+
+.feature-card:hover::after {
+    opacity: 1;
+}
+
 .feature-card:hover {
     border-color: #62D2A2;
-    transform: translateY(-6px) scale(1.02);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2),
-                0 8px 24px rgba(98, 210, 162, 0.15),
-                0 0 20px rgba(98, 210, 162, 0.1);
+    transform: translateY(-4px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15),
+                0 12px 32px rgba(98, 210, 162, 0.2),
+                0 0 24px rgba(98, 210, 162, 0.12);
 }
 
 .feature-icon {
@@ -1075,24 +1137,44 @@ footer {
     }
 }
 
-/* Shimmer effect for feature cards */
-.feature-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg,
-                transparent,
-                rgba(98, 210, 162, 0.08),
-                transparent);
-    transition: left 0.6s;
+/* Gradient shift animation for hero background */
+@keyframes gradientShift {
+    0%, 100% {
+        opacity: 0.3;
+        transform: translate(0, 0) scale(1);
+    }
+    50% {
+        opacity: 0.6;
+        transform: translate(10%, -5%) scale(1.1);
+    }
 }
 
-.feature-card:hover::before {
-    left: 100%;
+/* Pulsing glow animation for CTA button */
+@keyframes pulseGlow {
+    0%, 100% {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2),
+                    0 8px 16px rgba(98, 210, 162, 0.2),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+    50% {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2),
+                    0 8px 24px rgba(98, 210, 162, 0.35),
+                    0 0 30px rgba(98, 210, 162, 0.2),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
 }
+
+/* Gradient rotation animation for feature card borders */
+@keyframes gradientRotate {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Shimmer effect removed for cleaner animation */
 
 /* ===================================
    RESPONSIVE DESIGN
