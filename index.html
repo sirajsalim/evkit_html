@@ -3,62 +3,354 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EVKit - EV Journey Cost Calculator</title>
-    <meta name="description" content="Calculate real-world EV costs before you buy. Compare vehicles, predict battery degradation, and plan your electric journey.">
+    <title>EVKit - Know Your EV Costs Before You Buy</title>
+    <meta name="description" content="Calculate real-world EV costs, compare vehicles, predict battery degradation. Coming March 2026. Just £2.99, no subscriptions.">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Navigation Header -->
     <header>
-        <div class="container">
-            <h1>EVKit</h1>
-            <p class="tagline">Know Your EV Costs Before You Buy</p>
-        </div>
+        <nav class="nav-container">
+            <div class="nav-logo">EVKit</div>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#download" class="nav-cta">Download</a>
+            </div>
+        </nav>
     </header>
 
     <main>
-        <section class="hero">
+        <!-- Hero Section -->
+        <section class="hero" id="download">
             <div class="container">
-                <h2>Calculate Real-World EV Journey Costs</h2>
-                <p>Planning to buy an electric vehicle? EVKit helps you understand the true cost of ownership with accurate journey calculations, battery degradation forecasts, and multi-car comparisons.</p>
-                <a href="https://apps.apple.com/app/evkit" class="cta-button">Download on the App Store</a>
-                <p class="coming-soon">Coming February 2026</p>
+                <div class="hero-layout">
+                    <!-- Left Column: Text Content -->
+                    <div class="hero-content">
+                        <h1 class="hero-headline">The EV Cost Calculator Built for Everyone</h1>
+                        <p class="hero-subheadline">
+                            Shopping for an EV? Compare real-world costs across 5 vehicles.
+                            Already own one? Track your running costs for any journey.
+                        </p>
+                        <p class="hero-tagline">Coming March 2026 · Just £2.99 · No subscriptions</p>
+                        <button class="cta-button" id="registerButton">Register Your Interest</button>
+                    </div>
+
+                    <!-- Right Column: Screenshot with Navigation & Controls -->
+                    <div class="hero-visual">
+                        <div class="hero-phone-wrapper">
+                            <!-- Left Navigation Arrow -->
+                            <button class="hero-nav-btn hero-nav-prev" aria-label="Previous screenshot">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+
+                            <!-- Phone Mockup -->
+                            <div class="phone-mockup">
+                                <div class="screenshot-placeholder">
+                                    <span class="screenshot-emoji">📱</span>
+                                    <span class="screenshot-text">App Screenshot</span>
+                                    <small class="screenshot-subtext">iPhone mockup placeholder</small>
+                                </div>
+                            </div>
+
+                            <!-- Right Navigation Arrow -->
+                            <button class="hero-nav-btn hero-nav-next" aria-label="Next screenshot">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <!-- Controls Below Phone (indicator + theme toggle) -->
+                        <div class="hero-controls">
+                            <div class="hero-indicator" aria-live="polite">
+                                <span class="hero-current">1</span> / <span class="hero-total">6</span>
+                            </div>
+                            <div class="hero-theme-toggle" role="radiogroup" aria-label="Screenshot theme">
+                                <button class="hero-theme-btn active" data-theme="dark" role="radio" aria-checked="true">
+                                    Dark
+                                </button>
+                                <button class="hero-theme-btn" data-theme="light" role="radio" aria-checked="false">
+                                    Light
+                                </button>
+                                <div class="hero-theme-indicator"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section class="features">
+        <!-- Trust Bar (Moved Below Hero) -->
+        <section class="trust-bar" aria-label="Key benefits">
             <div class="container">
-                <h3>Features</h3>
-                <div class="feature-grid">
-                    <div class="feature">
-                        <h4>Journey Cost Calculator</h4>
-                        <p>Calculate costs for any journey with real-world efficiency, charging rates, and winter conditions.</p>
+                <ul class="trust-items">
+                    <li class="trust-item">
+                        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1-1 1.5-2.5 2s-2.5 1-2.5 2a2.5 2.5 0 0 0 5 0"/>
+                            <path d="M12 6v2M12 16v2"/>
+                            <path d="M4 4l16 16" stroke-linecap="round"/>
+                        </svg>
+                        <span>No Subscriptions</span>
+                    </li>
+                    <li class="trust-item">
+                        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M4 4l16 16" stroke-linecap="round"/>
+                        </svg>
+                        <span>No Ads</span>
+                    </li>
+                    <li class="trust-item">
+                        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                            <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
+                            <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
+                            <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+                            <circle cx="12" cy="20" r="1" fill="currentColor"/>
+                            <path d="M2 2l20 20" stroke-linecap="round"/>
+                        </svg>
+                        <span>Works Offline</span>
+                    </li>
+                    <li class="trust-item">
+                        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                            <circle cx="12" cy="8" r="4"/>
+                            <path d="M6 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/>
+                            <path d="M20 8l-2 2 2 2"/>
+                            <path d="M22 10h-4"/>
+                        </svg>
+                        <span>VoiceOver Supported</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features" id="features">
+            <div class="container">
+                <h2 class="section-heading">Everything you need to understand EV costs</h2>
+
+                <div class="features-grid">
+                    <!-- Feature 1: Journey Cost Calculator -->
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M7 17L17 7M7 7h10v10" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Journey Cost Calculator</h3>
+                        <p class="feature-description">Compare EVs before you buy, or calculate costs for your next road trip with real-world efficiency and winter conditions</p>
                     </div>
-                    <div class="feature">
-                        <h4>Battery Degradation</h4>
-                        <p>Predict how your battery will perform over 5 years with chemistry-specific degradation curves.</p>
+
+                    <!-- Feature 2: Multi-Car Comparison -->
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M3 3v18h18"/>
+                                <path d="M18 8l-4 4-4-4-4 4"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Compare up to 5 EVs</h3>
+                        <p class="feature-description">Side-by-side comparison for shoppers, or compare your EV against alternatives to validate your choice</p>
                     </div>
-                    <div class="feature">
-                        <h4>Multi-Car Comparison</h4>
-                        <p>Compare up to 5 vehicles side-by-side to find the perfect EV for your needs.</p>
+
+                    <!-- Feature 3: Battery Degradation -->
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <rect x="2" y="7" width="18" height="11" rx="2"/>
+                                <path d="M22 11v2"/>
+                                <path d="M6 11h8"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">5-Year Battery Predictions</h3>
+                        <p class="feature-description">Predict long-term costs before purchase, or understand your current vehicle's battery performance over time</p>
                     </div>
-                    <div class="feature">
-                        <h4>Savings vs Petrol</h4>
-                        <p>See exactly how much you'll save compared to your current petrol or diesel car.</p>
+
+                    <!-- Feature 4: Savings vs Petrol -->
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1-1 1.5-2.5 2s-2.5 1-2.5 2a2.5 2.5 0 0 0 5 0"/>
+                                <path d="M12 6v2M12 16v2"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Savings Calculator</h3>
+                        <p class="feature-description">See exactly how much you'll save compared to your current petrol or diesel car</p>
+                    </div>
+
+                    <!-- Feature 5: Rate Zones -->
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Smart Rate Zones</h3>
+                        <p class="feature-description">Home, work, and public charging rates with regional defaults for accurate cost estimates</p>
+                    </div>
+
+                    <!-- Feature 6: Works Offline -->
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <rect x="5" y="2" width="14" height="20" rx="2"/>
+                                <path d="M12 18h.01"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">100% On-Device</h3>
+                        <p class="feature-description">All calculations happen on your device. No internet required, complete privacy guaranteed</p>
+                    </div>
+
+                    <!-- Feature 7: iOS Widgets -->
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <rect x="3" y="3" width="7" height="7" rx="1"/>
+                                <rect x="14" y="3" width="7" height="7" rx="1"/>
+                                <rect x="14" y="14" width="7" height="7" rx="1"/>
+                                <rect x="3" y="14" width="7" height="7" rx="1"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Home Screen Widgets</h3>
+                        <p class="feature-description">Quick cost estimates from your home screen and lock screen without opening the app</p>
+                    </div>
+
+                    <!-- Feature 8: Apple Watch -->
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <circle cx="12" cy="12" r="7"/>
+                                <path d="M12 9v3l2 2"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Apple Watch App</h3>
+                        <p class="feature-description">Calculate journey costs on your wrist with complications and standalone calculations</p>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
+    <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2026 EVKit. All rights reserved.</p>
-            <nav>
-                <a href="privacy.html">Privacy Policy</a>
-                <a href="terms.html">Terms of Service</a>
-                <a href="mailto:hello@evkit.app">Contact</a>
-            </nav>
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">EVKit</div>
+                    <p class="footer-tagline">Know Your EV Costs Before You Buy</p>
+                </div>
+                <nav class="footer-links">
+                    <a href="privacy.html">Privacy</a>
+                    <a href="mailto:hello@evkit.app">Contact</a>
+                </nav>
+            </div>
+            <p class="footer-copyright">&copy; 2026 EVKit. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- Registration Modal -->
+    <div id="registrationModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2>Register Your Interest</h2>
+            <p>Be the first to know when EVKit launches in March 2026.</p>
+            <form id="registrationForm">
+                <div class="form-group">
+                    <label for="name">Name (Optional)</label>
+                    <input type="text" id="name" name="name">
+                </div>
+                <div class="form-group">
+                    <label class="radio-group-label">I'm interested in:</label>
+                    <div class="radio-options">
+                        <label class="radio-option">
+                            <input type="radio" name="preference" value="beta" required>
+                            <span class="radio-label">
+                                <strong>Beta testing EVKit</strong>
+                                <small>Get early access via TestFlight</small>
+                            </span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="preference" value="notify" required>
+                            <span class="radio-label">
+                                <strong>Just notify me when it launches</strong>
+                                <small>Be notified when the app is available</small>
+                            </span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="preference" value="both" required>
+                            <span class="radio-label">
+                                <strong>Both - beta test AND notify at launch</strong>
+                                <small>Get the full experience</small>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+                <button type="submit" class="submit-button">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Modal functionality
+        const modal = document.getElementById('registrationModal');
+        const registerBtn = document.getElementById('registerButton');
+        const closeBtn = document.querySelector('.modal-close');
+        const form = document.getElementById('registrationForm');
+
+        registerBtn.onclick = function() {
+            modal.style.display = 'block';
+        }
+
+        closeBtn.onclick = function() {
+            modal.style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        form.onsubmit = function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value.trim();
+            const preference = document.querySelector('input[name="preference"]:checked').value;
+
+            // Map preference values to readable text
+            const preferenceText = {
+                'beta': 'Interested in beta testing',
+                'notify': 'Just notify me when the app goes live',
+                'both': 'Both - beta test AND notify at launch'
+            };
+
+            const subject = 'Notify me when EVKit is available';
+            const body = `Name: ${name || 'Not provided'}%0D%0A%0D%0APreference: ${preferenceText[preference]}`;
+
+            window.location.href = `mailto:hello@evkit.app?subject=${subject}&body=${body}`;
+
+            // Close modal and reset form
+            setTimeout(() => {
+                modal.style.display = 'none';
+                form.reset();
+            }, 500);
+        }
+    </script>
 </body>
 </html>
