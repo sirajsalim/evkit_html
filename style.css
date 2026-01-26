@@ -1053,6 +1053,14 @@ footer {
     transform: translateY(-2px);
 }
 
+.form-note {
+    margin-top: 12px;
+    font-size: 0.85rem;
+    color: #a1a1a6;
+    text-align: center;
+    line-height: 1.4;
+}
+
 /* ===================================
    ANIMATIONS
    =================================== */
