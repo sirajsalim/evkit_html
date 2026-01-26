@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EVKit - Know Your EV Costs Before You Buy</title>
+    <title>EVKit - The Complete EV Cost Calculator</title>
     <meta name="description" content="Calculate real-world EV costs, compare vehicles, predict battery degradation. Coming March 2026. Just £2.99, no subscriptions.">
     <link rel="stylesheet" href="style.css?v=3">
 </head>
@@ -262,7 +262,7 @@
                 </div>
                 <nav class="footer-links">
                     <a href="privacy.html">Privacy</a>
-                    <a href="mailto:hello@evkit.app">Contact</a>
+                    <a href="mailto:hello@evkit.app?subject=EVKit:%20General%20Inquiry">Contact</a>
                 </nav>
             </div>
             <p class="footer-copyright">&copy; 2026 EVKit. All rights reserved.</p>
@@ -398,7 +398,7 @@
                 'both': 'Both - beta test AND notify at launch'
             };
 
-            const subject = 'Notify me when EVKit is available';
+            const subject = 'EVKit: Notify me when EVKit is available';
             const body = `Name: ${name || 'Not provided'}%0D%0A%0D%0APreference: ${preferenceText[preference]}`;
 
             window.location.href = `mailto:hello@evkit.app?subject=${subject}&body=${body}`;
