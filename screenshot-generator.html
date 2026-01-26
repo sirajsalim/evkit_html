@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EVKit Screenshot Generator</title>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
+            background: #f5f5f7;
+            padding: 40px;
+            color: #1d1d1f;
+        }
+
+        .controls {
+            max-width: 800px;
+            margin: 0 auto 40px;
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #1d1d1f;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #86868b;
+            margin-bottom: 32px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 24px;
+        }
+
+        button {
+            background: #62D2A2;
+            color: #000000;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 2px 8px rgba(98, 210, 162, 0.3);
+        }
+
+        button:hover {
+            background: #76E5B4;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(98, 210, 162, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        button:disabled {
+            background: #d2d2d7;
+            color: #86868b;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .progress {
+            background: #f5f5f7;
+            padding: 20px;
+            border-radius: 12px;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            color: #1d1d1f;
+            font-weight: 500;
+        }
+
+        .progress.success {
+            background: rgba(98, 210, 162, 0.1);
+            color: #62D2A2;
+        }
+
+        .preview-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .preview-item {
+            background: white;
+            padding: 16px;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+        }
+
+        .preview-item h3 {
+            font-size: 0.9rem;
+            color: #86868b;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .preview-screenshot {
+            width: 100%;
+            aspect-ratio: 9 / 19.5;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 40px 20px;
+            font-size: 0.6rem;
+        }
+
+        .preview-screenshot.dark {
+            background: #000000;
+            border: 1px solid #1c1c1e;
+            color: #e5e5e7;
+        }
+
+        .preview-screenshot.light {
+            background: #FFFFFF;
+            border: 1px solid #e5e5e7;
+            color: #1d1d1f;
+        }
+
+        .preview-screenshot .emoji {
+            font-size: 2.5rem;
+        }
+
+        .preview-screenshot .text {
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .preview-screenshot .subtext {
+            font-size: 0.7rem;
+            color: #86868b;
+            text-align: center;
+        }
+
+        /* Hidden screenshot frames for export */
+        .screenshot-frame {
+            width: 390px;
+            height: 844px;
+            border-radius: 42px;
+            clip-path: inset(0 round 42px);
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            padding: 60px 40px;
+        }
+
+        .screenshot-frame.dark {
+            background: #000000;
+            border: 2px solid #1c1c1e;
+            color: #e5e5e7;
+        }
+
+        .screenshot-frame.light {
+            background: #FFFFFF;
+            border: 2px solid #e5e5e7;
+            color: #1d1d1f;
+        }
+
+        .screenshot-emoji {
+            font-size: 80px;
+            line-height: 1;
+        }
+
+        .screenshot-text {
+            font-size: 28px;
+            font-weight: 600;
+            text-align: center;
+            line-height: 1.3;
+        }
+
+        .screenshot-frame.dark .screenshot-text {
+            color: #e5e5e7;
+        }
+
+        .screenshot-frame.light .screenshot-text {
+            color: #1d1d1f;
+        }
+
+        .screenshot-subtext {
+            font-size: 18px;
+            color: #86868b;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        .instructions {
+            max-width: 800px;
+            margin: 40px auto;
+            background: #fef6e8;
+            padding: 32px;
+            border-radius: 16px;
+            border-left: 4px solid #62D2A2;
+        }
+
+        .instructions h2 {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+            color: #1d1d1f;
+        }
+
+        .instructions ol {
+            margin-left: 20px;
+        }
+
+        .instructions li {
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <h1>EVKit Screenshot Generator</h1>
+        <p class="subtitle">Generate placeholder screenshots for the carousel</p>
+
+        <div class="button-group">
+            <button onclick="downloadAllDark()" id="btnDark">Download Dark Mode (6 images)</button>
+            <button onclick="downloadAllLight()" id="btnLight">Download Light Mode (6 images)</button>
+            <button onclick="downloadAll()" id="btnAll">Download All (12 images) 🚀</button>
+        </div>
+
+        <div class="progress" id="progress">Ready to generate screenshots</div>
+    </div>
+
+    <div class="instructions">
+        <h2>📝 Instructions</h2>
+        <ol>
+            <li>Click "Download All (12 images)" button above</li>
+            <li>Wait for all 12 PNG files to download (takes ~10 seconds)</li>
+            <li>Move the downloaded files to the <code>assets/</code> folder in your project</li>
+            <li>Refresh your website - the carousel will display these placeholder images</li>
+            <li>Later, replace these with actual app screenshots (same filenames)</li>
+        </ol>
+    </div>
+
+    <div class="preview-container">
+        <div class="preview-item">
+            <h3>evkit_1_dark.png</h3>
+            <div class="preview-screenshot dark">
+                <div class="emoji">🚗⚡</div>
+                <div class="text">Charging Up for Launch</div>
+                <div class="subtext">Screenshots arriving March 2026</div>
+            </div>
+        </div>
+
+        <div class="preview-item">
+            <h3>evkit_1_light.png</h3>
+            <div class="preview-screenshot light">
+                <div class="emoji">🚗⚡</div>
+                <div class="text">Charging Up for Launch</div>
+                <div class="subtext">Screenshots arriving March 2026</div>
+            </div>
+        </div>
+
+        <div class="preview-item">
+            <h3>evkit_2_dark.png</h3>
+            <div class="preview-screenshot dark">
+                <div class="emoji">💰🔌</div>
+                <div class="text">£0.12 per mile?</div>
+                <div class="subtext">Calculate your real costs instantly</div>
+            </div>
+        </div>
+
+        <div class="preview-item">
+            <h3>evkit_2_light.png</h3>
+            <div class="preview-screenshot light">
+                <div class="emoji">💰🔌</div>
+                <div class="text">£0.12 per mile?</div>
+                <div class="subtext">Calculate your real costs instantly</div>
+            </div>
+        </div>
+
+        <div class="preview-item">
+            <h3>evkit_3_dark.png</h3>
+            <div class="preview-screenshot dark">
+                <div class="emoji">🏆⚔️</div>
+                <div class="text">Tesla vs Polestar vs...</div>
+                <div class="subtext">Compare up to 5 EVs side-by-side</div>
+            </div>
+        </div>
+
+        <div class="preview-item">
+            <h3>evkit_3_light.png</h3>
+            <div class="preview-screenshot light">
+                <div class="emoji">🏆⚔️</div>
+                <div class="text">Tesla vs Polestar vs...</div>
+                <div class="subtext">Compare up to 5 EVs side-by-side</div>
+            </div>
+        </div>
+
+        <div class="preview-item">
+            <h3>evkit_4_dark.png</h3>
+            <div class="preview-screenshot dark">
+                <div class="emoji">🔋📉</div>
+                <div class="text">89% capacity in 2030</div>
+                <div class="subtext">Predict battery degradation over time</div>
+            </div>
+        </div>
+
+        <div class="preview-item">
+            <h3>evkit_4_light.png</h3>
+            <div class="preview-screenshot light">
+                <div class="emoji">🔋📉</div>
+                <div class="text">89% capacity in 2030</div>
+                <div class="subtext">Predict battery degradation over time</div>
+            </div>
+        </div>
+
+        <div class="preview-item">
+            <h3>evkit_5_dark.png</h3>
+            <div class="preview-screenshot dark">
+                <div class="emoji">💸🎉</div>
+                <div class="text">Save £1,847/year</div>
+                <div class="subtext">vs your petrol equivalent</div>
+            </div>
+        </div>
+
+        <div class="preview-item">
+            <h3>evkit_5_light.png</h3>
+            <div class="preview-screenshot light">
+                <div class="emoji">💸🎉</div>
+                <div class="text">Save £1,847/year</div>
+                <div class="subtext">vs your petrol equivalent</div>
+            </div>
+        </div>
+
+        <div class="preview-item">
+            <h3>evkit_6_dark.png</h3>
+            <div class="preview-screenshot dark">
+                <div class="emoji">⌚🏠</div>
+                <div class="text">On Your Wrist & Widget</div>
+                <div class="subtext">Apple Watch + Home Screen widgets</div>
+            </div>
+        </div>
+
+        <div class="preview-item">
+            <h3>evkit_6_light.png</h3>
+            <div class="preview-screenshot light">
+                <div class="emoji">⌚🏠</div>
+                <div class="text">On Your Wrist & Widget</div>
+                <div class="subtext">Apple Watch + Home Screen widgets</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden full-size screenshots for export -->
+    <div style="position: fixed; top: -99999px; left: -99999px;">
+        <!-- Dark Mode Screenshots -->
+        <div class="screenshot-frame dark" id="dark-1">
+            <div class="screenshot-emoji">🚗⚡</div>
+            <div class="screenshot-text">Charging Up for Launch</div>
+            <div class="screenshot-subtext">Screenshots arriving March 2026</div>
+        </div>
+
+        <div class="screenshot-frame dark" id="dark-2">
+            <div class="screenshot-emoji">💰🔌</div>
+            <div class="screenshot-text">£0.12 per mile?</div>
+            <div class="screenshot-subtext">Calculate your real costs instantly</div>
+        </div>
+
+        <div class="screenshot-frame dark" id="dark-3">
+            <div class="screenshot-emoji">🏆⚔️</div>
+            <div class="screenshot-text">Tesla vs Polestar vs...</div>
+            <div class="screenshot-subtext">Compare up to 5 EVs side-by-side</div>
+        </div>
+
+        <div class="screenshot-frame dark" id="dark-4">
+            <div class="screenshot-emoji">🔋📉</div>
+            <div class="screenshot-text">89% capacity in 2030</div>
+            <div class="screenshot-subtext">Predict battery degradation over time</div>
+        </div>
+
+        <div class="screenshot-frame dark" id="dark-5">
+            <div class="screenshot-emoji">💸🎉</div>
+            <div class="screenshot-text">Save £1,847/year</div>
+            <div class="screenshot-subtext">vs your petrol equivalent</div>
+        </div>
+
+        <div class="screenshot-frame dark" id="dark-6">
+            <div class="screenshot-emoji">⌚🏠</div>
+            <div class="screenshot-text">On Your Wrist & Widget</div>
+            <div class="screenshot-subtext">Apple Watch + Home Screen widgets</div>
+        </div>
+
+        <!-- Light Mode Screenshots -->
+        <div class="screenshot-frame light" id="light-1">
+            <div class="screenshot-emoji">🚗⚡</div>
+            <div class="screenshot-text">Charging Up for Launch</div>
+            <div class="screenshot-subtext">Screenshots arriving March 2026</div>
+        </div>
+
+        <div class="screenshot-frame light" id="light-2">
+            <div class="screenshot-emoji">💰🔌</div>
+            <div class="screenshot-text">£0.12 per mile?</div>
+            <div class="screenshot-subtext">Calculate your real costs instantly</div>
+        </div>
+
+        <div class="screenshot-frame light" id="light-3">
+            <div class="screenshot-emoji">🏆⚔️</div>
+            <div class="screenshot-text">Tesla vs Polestar vs...</div>
+            <div class="screenshot-subtext">Compare up to 5 EVs side-by-side</div>
+        </div>
+
+        <div class="screenshot-frame light" id="light-4">
+            <div class="screenshot-emoji">🔋📉</div>
+            <div class="screenshot-text">89% capacity in 2030</div>
+            <div class="screenshot-subtext">Predict battery degradation over time</div>
+        </div>
+
+        <div class="screenshot-frame light" id="light-5">
+            <div class="screenshot-emoji">💸🎉</div>
+            <div class="screenshot-text">Save £1,847/year</div>
+            <div class="screenshot-subtext">vs your petrol equivalent</div>
+        </div>
+
+        <div class="screenshot-frame light" id="light-6">
+            <div class="screenshot-emoji">⌚🏠</div>
+            <div class="screenshot-text">On Your Wrist & Widget</div>
+            <div class="screenshot-subtext">Apple Watch + Home Screen widgets</div>
+        </div>
+    </div>
+
+    <script>
+        const progressEl = document.getElementById('progress');
+        const btnDark = document.getElementById('btnDark');
+        const btnLight = document.getElementById('btnLight');
+        const btnAll = document.getElementById('btnAll');
+
+        function updateProgress(message, success = false) {
+            progressEl.textContent = message;
+            if (success) {
+                progressEl.classList.add('success');
+            } else {
+                progressEl.classList.remove('success');
+            }
+        }
+
+        function disableButtons() {
+            btnDark.disabled = true;
+            btnLight.disabled = true;
+            btnAll.disabled = true;
+        }
+
+        function enableButtons() {
+            btnDark.disabled = false;
+            btnLight.disabled = false;
+            btnAll.disabled = false;
+        }
+
+        function delay(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        async function captureScreenshot(elementId, filename) {
+            const element = document.getElementById(elementId);
+            element.style.display = 'flex';
+
+            // Give browser time to render
+            await delay(100);
+
+            const canvas = await html2canvas(element, {
+                backgroundColor: null,
+                scale: 2, // 2x for retina (780x1688)
+                width: 390,
+                height: 844,
+                logging: false
+            });
+
+            element.style.display = 'none';
+
+            // Convert to blob and download
+            return new Promise((resolve) => {
+                canvas.toBlob((blob) => {
+                    const url = URL.createObjectURL(blob);
+                    const link = document.createElement('a');
+                    link.download = filename;
+                    link.href = url;
+                    link.click();
+                    URL.revokeObjectURL(url);
+                    resolve();
+                }, 'image/png');
+            });
+        }
+
+        async function downloadAllDark() {
+            disableButtons();
+            const screenshots = [
+                { id: 'dark-1', name: 'evkit_1_dark.png' },
+                { id: 'dark-2', name: 'evkit_2_dark.png' },
+                { id: 'dark-3', name: 'evkit_3_dark.png' },
+                { id: 'dark-4', name: 'evkit_4_dark.png' },
+                { id: 'dark-5', name: 'evkit_5_dark.png' },
+                { id: 'dark-6', name: 'evkit_6_dark.png' }
+            ];
+
+            for (let i = 0; i < screenshots.length; i++) {
+                const { id, name } = screenshots[i];
+                updateProgress(`Generating ${name}... (${i + 1}/6)`);
+                await captureScreenshot(id, name);
+                await delay(800); // Delay between downloads
+            }
+
+            updateProgress('All dark mode screenshots downloaded! ✅', true);
+            enableButtons();
+        }
+
+        async function downloadAllLight() {
+            disableButtons();
+            const screenshots = [
+                { id: 'light-1', name: 'evkit_1_light.png' },
+                { id: 'light-2', name: 'evkit_2_light.png' },
+                { id: 'light-3', name: 'evkit_3_light.png' },
+                { id: 'light-4', name: 'evkit_4_light.png' },
+                { id: 'light-5', name: 'evkit_5_light.png' },
+                { id: 'light-6', name: 'evkit_6_light.png' }
+            ];
+
+            for (let i = 0; i < screenshots.length; i++) {
+                const { id, name } = screenshots[i];
+                updateProgress(`Generating ${name}... (${i + 1}/6)`);
+                await captureScreenshot(id, name);
+                await delay(800);
+            }
+
+            updateProgress('All light mode screenshots downloaded! ✅', true);
+            enableButtons();
+        }
+
+        async function downloadAll() {
+            disableButtons();
+            const screenshots = [
+                { id: 'dark-1', name: 'evkit_1_dark.png' },
+                { id: 'light-1', name: 'evkit_1_light.png' },
+                { id: 'dark-2', name: 'evkit_2_dark.png' },
+                { id: 'light-2', name: 'evkit_2_light.png' },
+                { id: 'dark-3', name: 'evkit_3_dark.png' },
+                { id: 'light-3', name: 'evkit_3_light.png' },
+                { id: 'dark-4', name: 'evkit_4_dark.png' },
+                { id: 'light-4', name: 'evkit_4_light.png' },
+                { id: 'dark-5', name: 'evkit_5_dark.png' },
+                { id: 'light-5', name: 'evkit_5_light.png' },
+                { id: 'dark-6', name: 'evkit_6_dark.png' },
+                { id: 'light-6', name: 'evkit_6_light.png' }
+            ];
+
+            for (let i = 0; i < screenshots.length; i++) {
+                const { id, name } = screenshots[i];
+                updateProgress(`Generating ${name}... (${i + 1}/12)`);
+                await captureScreenshot(id, name);
+                await delay(800);
+            }
+
+            updateProgress('All 12 screenshots downloaded! 🎉 Move them to the assets/ folder.', true);
+            enableButtons();
+        }
+    </script>
+</body>
+</html>

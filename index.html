@@ -71,10 +71,66 @@
 
                             <!-- Phone Mockup -->
                             <div class="phone-mockup">
-                                <div class="screenshot-placeholder">
-                                    <span class="screenshot-emoji">🚗⚡</span>
-                                    <span class="screenshot-text">Charging Up for Launch</span>
-                                    <small class="screenshot-subtext">Screenshots arriving March 2026</small>
+                                <div class="screenshot-carousel">
+                                    <!-- Screenshot 1 -->
+                                    <div class="screenshot-slide active" data-slide="1">
+                                        <img class="screenshot-image"
+                                             src="assets/evkit_1_dark.png"
+                                             data-dark="assets/evkit_1_dark.png"
+                                             data-light="assets/evkit_1_light.png"
+                                             alt="EVKit app screenshot 1">
+                                        <span class="screenshot-watermark">Screenshots Arriving<br>March 2026</span>
+                                    </div>
+
+                                    <!-- Screenshot 2 -->
+                                    <div class="screenshot-slide" data-slide="2">
+                                        <img class="screenshot-image"
+                                             src="assets/evkit_2_dark.png"
+                                             data-dark="assets/evkit_2_dark.png"
+                                             data-light="assets/evkit_2_light.png"
+                                             alt="EVKit app screenshot 2">
+                                        <span class="screenshot-watermark">Screenshots Arriving<br>March 2026</span>
+                                    </div>
+
+                                    <!-- Screenshot 3 -->
+                                    <div class="screenshot-slide" data-slide="3">
+                                        <img class="screenshot-image"
+                                             src="assets/evkit_3_dark.png"
+                                             data-dark="assets/evkit_3_dark.png"
+                                             data-light="assets/evkit_3_light.png"
+                                             alt="EVKit app screenshot 3">
+                                        <span class="screenshot-watermark">Screenshots Arriving<br>March 2026</span>
+                                    </div>
+
+                                    <!-- Screenshot 4 -->
+                                    <div class="screenshot-slide" data-slide="4">
+                                        <img class="screenshot-image"
+                                             src="assets/evkit_4_dark.png"
+                                             data-dark="assets/evkit_4_dark.png"
+                                             data-light="assets/evkit_4_light.png"
+                                             alt="EVKit app screenshot 4">
+                                        <span class="screenshot-watermark">Screenshots Arriving<br>March 2026</span>
+                                    </div>
+
+                                    <!-- Screenshot 5 -->
+                                    <div class="screenshot-slide" data-slide="5">
+                                        <img class="screenshot-image"
+                                             src="assets/evkit_5_dark.png"
+                                             data-dark="assets/evkit_5_dark.png"
+                                             data-light="assets/evkit_5_light.png"
+                                             alt="EVKit app screenshot 5">
+                                        <span class="screenshot-watermark">Screenshots Arriving<br>March 2026</span>
+                                    </div>
+
+                                    <!-- Screenshot 6 -->
+                                    <div class="screenshot-slide" data-slide="6">
+                                        <img class="screenshot-image"
+                                             src="assets/evkit_6_dark.png"
+                                             data-dark="assets/evkit_6_dark.png"
+                                             data-light="assets/evkit_6_light.png"
+                                             alt="EVKit app screenshot 6">
+                                        <span class="screenshot-watermark">Screenshots Arriving<br>March 2026</span>
+                                    </div>
                                 </div>
                             </div>
 
@@ -426,6 +482,139 @@
                 form.reset();
             }, 500);
         }
+
+        // Screenshot Carousel
+        const screenshots = document.querySelectorAll('.screenshot-slide');
+        const prevBtn = document.querySelector('.hero-nav-prev');
+        const nextBtn = document.querySelector('.hero-nav-next');
+        const currentIndicator = document.querySelector('.hero-current');
+        const totalIndicator = document.querySelector('.hero-total');
+        const themeButtons = document.querySelectorAll('.hero-theme-btn');
+        let currentSlide = 1;
+        let currentTheme = 'dark';
+        const totalSlides = screenshots.length;
+
+        function showSlide(slideNumber) {
+            // Remove active class from all screenshots
+            screenshots.forEach(screenshot => {
+                screenshot.classList.remove('active');
+            });
+
+            // Add active class to current screenshot
+            const targetSlide = document.querySelector(`.screenshot-slide[data-slide="${slideNumber}"]`);
+            if (targetSlide) {
+                targetSlide.classList.add('active');
+            }
+
+            // Update indicator
+            currentIndicator.textContent = slideNumber;
+            currentSlide = slideNumber;
+        }
+
+        function switchTheme(theme) {
+            currentTheme = theme;
+            const allImages = document.querySelectorAll('.screenshot-image');
+
+            allImages.forEach(img => {
+                if (theme === 'light') {
+                    img.src = img.dataset.light;
+                } else {
+                    img.src = img.dataset.dark;
+                }
+            });
+
+            // Update active button
+            themeButtons.forEach(btn => {
+                if (btn.dataset.theme === theme) {
+                    btn.classList.add('active');
+                    btn.setAttribute('aria-checked', 'true');
+                } else {
+                    btn.classList.remove('active');
+                    btn.setAttribute('aria-checked', 'false');
+                }
+            });
+        }
+
+        // Theme toggle event listeners
+        themeButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                switchTheme(btn.dataset.theme);
+            });
+        });
+
+        function nextSlide() {
+            let next = currentSlide + 1;
+            if (next > totalSlides) {
+                next = 1; // Loop back to first
+            }
+            showSlide(next);
+        }
+
+        function prevSlide() {
+            let prev = currentSlide - 1;
+            if (prev < 1) {
+                prev = totalSlides; // Loop to last
+            }
+            showSlide(prev);
+        }
+
+        // Event listeners for navigation buttons
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                prevSlide();
+            }
+        });
+
+        // Auto-advance carousel every 4 seconds
+        let autoAdvance = setInterval(nextSlide, 4000);
+
+        // Pause auto-advance when user interacts
+        const heroVisual = document.querySelector('.hero-visual');
+        heroVisual.addEventListener('mouseenter', () => {
+            clearInterval(autoAdvance);
+        });
+
+        heroVisual.addEventListener('mouseleave', () => {
+            autoAdvance = setInterval(nextSlide, 4000);
+        });
+
+        // Touch/swipe support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+        const carousel = document.querySelector('.screenshot-carousel');
+
+        carousel.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+            clearInterval(autoAdvance);
+        }, { passive: true });
+
+        carousel.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+            autoAdvance = setInterval(nextSlide, 4000);
+        }, { passive: true });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            if (touchEndX < touchStartX - swipeThreshold) {
+                // Swipe left - next slide
+                nextSlide();
+            }
+            if (touchEndX > touchStartX + swipeThreshold) {
+                // Swipe right - previous slide
+                prevSlide();
+            }
+        }
+
+        // Initialize
+        totalIndicator.textContent = totalSlides;
+        showSlide(1);
     </script>
 </body>
 </html>

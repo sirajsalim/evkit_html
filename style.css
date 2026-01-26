@@ -2,6 +2,14 @@
    RESET & BASE STYLES
    =================================== */
 
+:root {
+    /* Color Variables for Alternating Backgrounds */
+    --primary-dark: #0a0a0a;      /* Very dark gray (primary background) */
+    --elevated-dark: #141414;     /* Slightly lighter (elevated sections) */
+    --card-dark: #1a1a1a;        /* For cards/elevated elements */
+    --primary-mint: #62D2A2;      /* Accent color */
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -17,7 +25,7 @@ body {
     line-height: 1.7;
     letter-spacing: 0.3px;
     color: #e5e5e7;
-    background: #000000;
+    background: var(--primary-dark);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -204,13 +212,20 @@ header {
 
 .hero {
     background: #000000;
-    padding: 120px 20px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+.hero .container {
+    width: 100%;
 }
 
 .hero-layout {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 60px;
+    gap: 90px;
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
@@ -340,6 +355,8 @@ header {
 .phone-mockup {
     flex-shrink: 0;
     border-radius: 32px;
+    position: relative;
+    min-height: 520px;
 }
 
 /* Hero Controls (Below Phone) */
@@ -350,7 +367,7 @@ header {
     margin-top: 24px;
     gap: 20px;
     width: 100%;
-    max-width: 350px;
+    max-width: 270px;
 }
 
 .hero-indicator {
@@ -408,49 +425,78 @@ header {
     transform: translateX(100%);
 }
 
-.screenshot-placeholder {
-    background: #1a1a1a;
-    border: 2px solid #2d2d2d;
-    border-radius: 28px;
-    padding: 60px 40px;
+.screenshot-carousel {
+    position: relative;
+    width: 100%;
+    height: 100%;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 12px;
-    aspect-ratio: 9 / 19.5;
-    max-width: 350px;
+}
+
+.screenshot-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.1);
-    transition: border-color 0.3s;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    pointer-events: none;
 }
 
-.screenshot-placeholder:hover {
-    border-color: #62D2A2;
+.screenshot-slide.active {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+    position: relative;
 }
 
-.screenshot-emoji {
-    font-size: 4rem;
-    line-height: 1;
+.screenshot-image {
+    width: 100%;
+    height: 100%;
+    max-width: 270px;
+    aspect-ratio: 9 / 19.5;
+    object-fit: contain;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.3s;
 }
 
-.screenshot-text {
-    color: #e5e5e7;
-    font-size: 1.25rem;
-    font-weight: 600;
+.screenshot-image:hover {
+    box-shadow: 0 15px 50px rgba(98, 210, 162, 0.2);
 }
 
-.screenshot-subtext {
-    color: #86868b;
-    font-size: 0.9rem;
+/* Screenshot Watermark */
+.screenshot-watermark {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.6);
+    background: rgba(0, 0, 0, 0.4);
+    padding: 6px 14px;
+    border-radius: 6px;
+    letter-spacing: 0.3px;
+    font-weight: 500;
+    backdrop-filter: blur(8px);
+    text-align: center;
+    max-width: 180px;
+    line-height: 1.4;
+    z-index: 10;
 }
+
 
 /* ===================================
    FEATURES SECTION
    =================================== */
 
 .features {
-    background: #000000;
+    background: var(--elevated-dark);
     padding: 120px 20px;
 }
 
@@ -487,7 +533,7 @@ header {
 }
 
 .feature-card {
-    background: #252525;
+    background: var(--primary-dark);
     padding: 40px 32px;
     border-radius: 16px;
     border: 2px solid #2d2d2d;
@@ -1026,27 +1072,18 @@ footer {
         order: 2;
     }
 
-    /* Hide navigation arrows on mobile */
-    .hero-nav-btn {
-        display: none;
-    }
-
     /* Stack hero controls vertically */
     .hero-controls {
         flex-direction: column;
         gap: 16px;
     }
 
-    .screenshot-placeholder {
-        padding: 40px 20px;
+    .phone-mockup {
+        min-height: 450px;
     }
 
-    .screenshot-emoji {
-        font-size: 3rem;
-    }
-
-    .screenshot-text {
-        font-size: 1.1rem;
+    .screenshot-image {
+        max-width: 240px;
     }
 
     /* Features */
