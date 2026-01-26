@@ -5,9 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EVKit - Know Your EV Costs Before You Buy</title>
     <meta name="description" content="Calculate real-world EV costs, compare vehicles, predict battery degradation. Coming March 2026. Just £2.99, no subscriptions.">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <!-- Navigation Header -->
     <header>
         <nav class="nav-container">
@@ -19,17 +22,21 @@
         </nav>
     </header>
 
-    <main>
+    <main id="main-content">
         <!-- Hero Section -->
         <section class="hero" id="download">
             <div class="container">
                 <div class="hero-layout">
                     <!-- Left Column: Text Content -->
                     <div class="hero-content">
-                        <h1 class="hero-headline">The EV Cost Calculator Built for Everyone</h1>
+                        <div class="hero-badges">
+                            <span class="hero-badge">For EV Shoppers</span>
+                            <span class="hero-badge-separator">+</span>
+                            <span class="hero-badge">For EV Owners</span>
+                        </div>
+                        <h1 class="hero-headline">The Complete EV Cost Calculator</h1>
                         <p class="hero-subheadline">
-                            Shopping for an EV? Compare real-world costs across 5 vehicles.
-                            Already own one? Track your running costs for any journey.
+                            Compare vehicles before buying, or track costs for journeys you're planning.
                         </p>
                         <p class="hero-tagline">Coming March 2026 · Just £2.99 · No subscriptions</p>
                         <button class="cta-button" id="registerButton">Register Your Interest</button>
@@ -48,9 +55,9 @@
                             <!-- Phone Mockup -->
                             <div class="phone-mockup">
                                 <div class="screenshot-placeholder">
-                                    <span class="screenshot-emoji">📱</span>
-                                    <span class="screenshot-text">App Screenshot</span>
-                                    <small class="screenshot-subtext">iPhone mockup placeholder</small>
+                                    <span class="screenshot-emoji">🚗⚡</span>
+                                    <span class="screenshot-text">Charging Up for Launch</span>
+                                    <small class="screenshot-subtext">Screenshots arriving March 2026</small>
                                 </div>
                             </div>
 
@@ -87,7 +94,8 @@
             <div class="container">
                 <ul class="trust-items">
                     <li class="trust-item">
-                        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" role="img" aria-label="No subscriptions required">
+                            <title>No Subscriptions</title>
                             <circle cx="12" cy="12" r="10"/>
                             <path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1-1 1.5-2.5 2s-2.5 1-2.5 2a2.5 2.5 0 0 0 5 0"/>
                             <path d="M12 6v2M12 16v2"/>
@@ -96,14 +104,16 @@
                         <span>No Subscriptions</span>
                     </li>
                     <li class="trust-item">
-                        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" role="img" aria-label="No advertisements">
+                            <title>No Ads</title>
                             <circle cx="12" cy="12" r="10"/>
                             <path d="M4 4l16 16" stroke-linecap="round"/>
                         </svg>
                         <span>No Ads</span>
                     </li>
                     <li class="trust-item">
-                        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" role="img" aria-label="Works completely offline">
+                            <title>Works Offline</title>
                             <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
                             <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
                             <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
@@ -113,7 +123,8 @@
                         <span>Works Offline</span>
                     </li>
                     <li class="trust-item">
-                        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" role="img" aria-label="Full VoiceOver support">
+                            <title>VoiceOver Supported</title>
                             <circle cx="12" cy="8" r="4"/>
                             <path d="M6 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/>
                             <path d="M20 8l-2 2 2 2"/>
@@ -132,9 +143,10 @@
 
                 <div class="features-grid">
                     <!-- Feature 1: Journey Cost Calculator -->
-                    <div class="feature-card">
+                    <div class="feature-card" tabindex="0">
                         <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" role="img" aria-label="Journey cost calculator">
+                                <title>Journey Cost Calculator</title>
                                 <path d="M7 17L17 7M7 7h10v10" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
                         </div>
@@ -143,9 +155,10 @@
                     </div>
 
                     <!-- Feature 2: Multi-Car Comparison -->
-                    <div class="feature-card">
+                    <div class="feature-card" tabindex="0">
                         <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" role="img" aria-label="Compare up to 5 vehicles">
+                                <title>Compare up to 5 EVs</title>
                                 <path d="M3 3v18h18"/>
                                 <path d="M18 8l-4 4-4-4-4 4"/>
                             </svg>
@@ -155,9 +168,10 @@
                     </div>
 
                     <!-- Feature 3: Battery Degradation -->
-                    <div class="feature-card">
+                    <div class="feature-card" tabindex="0">
                         <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" role="img" aria-label="Five year battery predictions">
+                                <title>5-Year Battery Predictions</title>
                                 <rect x="2" y="7" width="18" height="11" rx="2"/>
                                 <path d="M22 11v2"/>
                                 <path d="M6 11h8"/>
@@ -168,9 +182,10 @@
                     </div>
 
                     <!-- Feature 4: Savings vs Petrol -->
-                    <div class="feature-card">
+                    <div class="feature-card" tabindex="0">
                         <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" role="img" aria-label="Savings calculator">
+                                <title>Savings Calculator</title>
                                 <circle cx="12" cy="12" r="10"/>
                                 <path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1-1 1.5-2.5 2s-2.5 1-2.5 2a2.5 2.5 0 0 0 5 0"/>
                                 <path d="M12 6v2M12 16v2"/>
@@ -181,9 +196,10 @@
                     </div>
 
                     <!-- Feature 5: Rate Zones -->
-                    <div class="feature-card">
+                    <div class="feature-card" tabindex="0">
                         <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" role="img" aria-label="Smart charging rate zones">
+                                <title>Smart Rate Zones</title>
                                 <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
                             </svg>
                         </div>
@@ -192,9 +208,10 @@
                     </div>
 
                     <!-- Feature 6: Works Offline -->
-                    <div class="feature-card">
+                    <div class="feature-card" tabindex="0">
                         <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" role="img" aria-label="One hundred percent on device">
+                                <title>100% On-Device</title>
                                 <rect x="5" y="2" width="14" height="20" rx="2"/>
                                 <path d="M12 18h.01"/>
                             </svg>
@@ -204,9 +221,10 @@
                     </div>
 
                     <!-- Feature 7: iOS Widgets -->
-                    <div class="feature-card">
+                    <div class="feature-card" tabindex="0">
                         <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" role="img" aria-label="Home screen widgets">
+                                <title>Home Screen Widgets</title>
                                 <rect x="3" y="3" width="7" height="7" rx="1"/>
                                 <rect x="14" y="3" width="7" height="7" rx="1"/>
                                 <rect x="14" y="14" width="7" height="7" rx="1"/>
@@ -218,9 +236,10 @@
                     </div>
 
                     <!-- Feature 8: Apple Watch -->
-                    <div class="feature-card">
+                    <div class="feature-card" tabindex="0">
                         <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" role="img" aria-label="Apple Watch app">
+                                <title>Apple Watch App</title>
                                 <circle cx="12" cy="12" r="7"/>
                                 <path d="M12 9v3l2 2"/>
                             </svg>
@@ -239,7 +258,7 @@
             <div class="footer-content">
                 <div class="footer-brand">
                     <div class="footer-logo">EVKit</div>
-                    <p class="footer-tagline">Know Your EV Costs Before You Buy</p>
+                    <p class="footer-tagline">Your EV Cost Companion</p>
                 </div>
                 <nav class="footer-links">
                     <a href="privacy.html">Privacy</a>
@@ -307,23 +326,62 @@
             });
         });
 
-        // Modal functionality
+        // Modal functionality with focus management
         const modal = document.getElementById('registrationModal');
         const registerBtn = document.getElementById('registerButton');
         const closeBtn = document.querySelector('.modal-close');
         const form = document.getElementById('registrationForm');
+        let previouslyFocused = null;
 
-        registerBtn.onclick = function() {
+        // Focus trap for modal
+        function trapFocus(event) {
+            const focusableElements = modal.querySelectorAll('input, button, textarea, select, a[href]');
+            const firstElement = focusableElements[0];
+            const lastElement = focusableElements[focusableElements.length - 1];
+
+            if (event.key === 'Tab') {
+                if (event.shiftKey && document.activeElement === firstElement) {
+                    event.preventDefault();
+                    lastElement.focus();
+                } else if (!event.shiftKey && document.activeElement === lastElement) {
+                    event.preventDefault();
+                    firstElement.focus();
+                }
+            }
+
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        }
+
+        function openModal() {
+            previouslyFocused = document.activeElement;
             modal.style.display = 'block';
+            modal.addEventListener('keydown', trapFocus);
+
+            // Focus first input
+            setTimeout(() => {
+                const firstInput = modal.querySelector('input, button');
+                if (firstInput) firstInput.focus();
+            }, 100);
         }
 
-        closeBtn.onclick = function() {
+        function closeModal() {
             modal.style.display = 'none';
+            modal.removeEventListener('keydown', trapFocus);
+
+            // Restore focus
+            if (previouslyFocused) {
+                previouslyFocused.focus();
+            }
         }
+
+        registerBtn.onclick = openModal;
+        closeBtn.onclick = closeModal;
 
         window.onclick = function(event) {
             if (event.target == modal) {
-                modal.style.display = 'none';
+                closeModal();
             }
         }
 
@@ -347,7 +405,7 @@
 
             // Close modal and reset form
             setTimeout(() => {
-                modal.style.display = 'none';
+                closeModal();
                 form.reset();
             }, 500);
         }
