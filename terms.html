@@ -20,16 +20,23 @@
     <!-- Additional Meta -->
     <link rel="canonical" href="https://evkit.app/terms.html">
 
-    <link rel="stylesheet" href="style.css?v=4">
+    <link rel="stylesheet" href="style.css?v=24">
 </head>
 <body>
     <!-- Navigation Header -->
     <header>
         <nav class="nav-container">
-            <div class="nav-logo"><a href="index.html" style="color: #62D2A2; text-decoration: none;">EVKit</a></div>
+            <a href="index.html" class="nav-logo">EVKit</a>
+            <button class="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <div class="nav-links">
-                <a href="index.html#features">Features</a>
-                <a href="index.html#download" class="nav-cta">Download</a>
+                <a href="index.html#compare">Compare</a>
+                <a href="index.html#battery">Battery</a>
+                <a href="index.html#watch">Watch</a>
+                <a href="index.html#get-started" class="nav-cta">Get Started</a>
             </div>
         </nav>
     </header>
@@ -255,5 +262,25 @@
             <p class="footer-copyright">&copy; 2026 EVKit. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        // Hamburger menu toggle
+        const hamburger = document.querySelector('.nav-hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        if (hamburger) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                });
+            });
+        }
+    </script>
 </body>
 </html>
