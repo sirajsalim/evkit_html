@@ -1177,6 +1177,830 @@ footer {
 /* Shimmer effect removed for cleaner animation */
 
 /* ===================================
+   HERO CHARGING CABLE
+   =================================== */
+
+.hero-cable {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.85;
+}
+
+/* Current flow: a dash of light traveling along the cable */
+.cable-current {
+    stroke-dasharray: 80 2000;
+    animation: currentFlow 4s linear infinite;
+}
+
+@keyframes currentFlow {
+    0% { stroke-dashoffset: 80; }
+    100% { stroke-dashoffset: -2000; }
+}
+
+/* Plug indicator pulse */
+.plug-indicator {
+    animation: plugPulse 2s ease-in-out infinite;
+}
+
+@keyframes plugPulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+}
+
+/* ===================================
+   FULL-SCREEN SECTIONS
+   =================================== */
+
+.section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 100px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.section:nth-child(odd) {
+    background: var(--primary-dark);
+}
+
+.section:nth-child(even) {
+    background: var(--elevated-dark);
+}
+
+.section .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #e5e5e7;
+    margin-bottom: 16px;
+    line-height: 1.2;
+    letter-spacing: -1px;
+}
+
+.section-subtitle {
+    font-size: 1.35rem;
+    color: #a1a1a6;
+    font-weight: 400;
+}
+
+/* ===================================
+   HERO SECTION (NEW)
+   =================================== */
+
+.section-hero {
+    background: #000000;
+    height: 100vh;
+    min-height: 700px;
+    padding-top: 50px;
+    padding-bottom: 40px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.section-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 40%,
+                rgba(98, 210, 162, 0.08) 0%,
+                transparent 50%);
+    pointer-events: none;
+    animation: gradientShift 15s ease-in-out infinite;
+}
+
+.section-hero .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.section-hero .hero-content {
+    text-align: left;
+}
+
+.section-hero .hero-badges {
+    justify-content: flex-start;
+}
+
+/* Hero Devices Container */
+.hero-devices {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    position: relative;
+    perspective: 1000px;
+}
+
+/* Gentle float animation for hero devices */
+.hero-devices .device-iphone {
+    animation: floatDevice 6s ease-in-out infinite;
+}
+
+.hero-devices .device-watch {
+    animation: floatDevice 6s ease-in-out infinite 1s;
+}
+
+@keyframes floatDevice {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+/* Disable hover lift on hero devices (float already handles it) */
+.hero-devices .device-iphone:hover,
+.hero-devices .device-watch:hover {
+    transform: translateY(-8px);
+}
+
+/* ===================================
+   CSS-ONLY DEVICE MOCKUPS
+   =================================== */
+
+/* iPhone Mockup */
+.device-iphone {
+    position: relative;
+    width: 260px;
+    aspect-ratio: 9 / 19.5;
+    background: linear-gradient(145deg, #1a1a1a 0%, #0a0a0a 100%);
+    border-radius: 42px;
+    padding: 10px;
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.1),
+        0 25px 50px rgba(0, 0, 0, 0.5),
+        0 0 100px rgba(98, 210, 162, 0.1);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.device-iphone:hover {
+    box-shadow:
+        0 0 0 1px rgba(98, 210, 162, 0.2),
+        0 35px 70px rgba(0, 0, 0, 0.6),
+        0 0 120px rgba(98, 210, 162, 0.15);
+}
+
+.iphone-notch {
+    position: absolute;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90px;
+    height: 28px;
+    background: #000;
+    border-radius: 20px;
+    z-index: 10;
+}
+
+.iphone-screen {
+    width: 100%;
+    height: 100%;
+    background: #000;
+    border-radius: 34px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Apple Watch Mockup */
+.device-watch {
+    position: relative;
+    width: 140px;
+    height: 170px;
+    background: linear-gradient(145deg, #2a2a2a 0%, #1a1a1a 100%);
+    border-radius: 36px;
+    padding: 8px;
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.08),
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        0 0 60px rgba(98, 210, 162, 0.08);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.device-watch:hover {
+    box-shadow:
+        0 0 0 1px rgba(98, 210, 162, 0.15),
+        0 28px 56px rgba(0, 0, 0, 0.5),
+        0 0 80px rgba(98, 210, 162, 0.12);
+}
+
+.watch-crown {
+    position: absolute;
+    right: -6px;
+    top: 35%;
+    width: 6px;
+    height: 28px;
+    background: linear-gradient(180deg, #3a3a3a 0%, #2a2a2a 100%);
+    border-radius: 3px;
+}
+
+.watch-button {
+    position: absolute;
+    right: -4px;
+    top: 55%;
+    width: 4px;
+    height: 16px;
+    background: #3a3a3a;
+    border-radius: 2px;
+}
+
+.watch-screen {
+    width: 100%;
+    height: 100%;
+    background: #000;
+    border-radius: 30px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Screen Placeholders */
+.screen-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg,
+        rgba(98, 210, 162, 0.05) 0%,
+        rgba(0, 0, 0, 0.9) 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    gap: 12px;
+}
+
+.screen-placeholder-watch {
+    padding: 10px;
+    gap: 6px;
+}
+
+.placeholder-icon {
+    width: 48px;
+    height: 48px;
+    color: var(--primary-mint);
+    opacity: 0.8;
+}
+
+.placeholder-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.placeholder-icon-small {
+    width: 24px;
+    height: 24px;
+    color: var(--primary-mint);
+    opacity: 0.8;
+}
+
+.placeholder-icon-small svg {
+    width: 100%;
+    height: 100%;
+}
+
+.placeholder-text {
+    font-size: 0.9rem;
+    color: #a1a1a6;
+    font-weight: 500;
+}
+
+.placeholder-text-small {
+    font-size: 0.75rem;
+    color: var(--primary-mint);
+    font-weight: 600;
+}
+
+.placeholder-value {
+    font-size: 1.5rem;
+    color: var(--primary-mint);
+    font-weight: 700;
+}
+
+.placeholder-car {
+    font-size: 0.85rem;
+    color: #e5e5e7;
+    font-weight: 600;
+}
+
+.placeholder-stat {
+    font-size: 1.2rem;
+    color: var(--primary-mint);
+    font-weight: 700;
+}
+
+/* Placeholder Bars (Battery Section) */
+.placeholder-bars {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 0 10px;
+    margin-top: 20px;
+}
+
+.placeholder-bar {
+    height: 24px;
+    background: linear-gradient(90deg, var(--primary-mint) 0%, var(--primary-mint-light) 100%);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    transition: width 0.5s ease;
+    padding: 0 10px;
+    transition: width 0.6s ease;
+}
+
+.placeholder-bar span {
+    font-size: 0.65rem;
+    color: #000;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* Device Connector (Hero) */
+.device-connector {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        var(--primary-mint) 50%,
+        transparent 100%);
+    opacity: 0.5;
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    color: #a1a1a6;
+    font-size: 0.75rem;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.scroll-indicator span {
+    opacity: 0.7;
+}
+
+.scroll-indicator svg {
+    width: 24px;
+    height: 24px;
+    color: var(--primary-mint);
+    animation: bounceDown 2s ease-in-out infinite;
+}
+
+@keyframes bounceDown {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(8px);
+    }
+}
+
+/* ===================================
+   COMPARE SECTION
+   =================================== */
+
+.section-compare {
+    background: var(--elevated-dark);
+}
+
+.compare-showcase {
+    position: relative;
+}
+
+/* Compare showcase - phone centered, metrics below */
+.compare-showcase {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+}
+
+.compare-phone {
+    width: 260px;
+}
+
+/* 6 metric cards in 3x2 grid */
+.compare-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 100%;
+    max-width: 700px;
+}
+
+.metric-card {
+    background: rgba(26, 26, 26, 0.8);
+    border: 1px solid #2d2d2d;
+    padding: 24px 20px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.metric-card:hover {
+    border-color: var(--primary-mint);
+    background: rgba(98, 210, 162, 0.06);
+    transform: translateY(-4px);
+}
+
+.metric-icon {
+    width: 36px;
+    height: 36px;
+    color: var(--primary-mint);
+}
+
+.metric-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.metric-label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #e5e5e7;
+}
+
+/* ===================================
+   BATTERY SECTION
+   =================================== */
+
+.section-battery {
+    background: var(--primary-dark);
+}
+
+.battery-showcase {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
+.battery-tabs {
+    display: flex;
+    gap: 16px;
+    width: 100%;
+    max-width: 720px;
+    align-items: stretch;
+}
+
+.battery-tab {
+    flex: 1;
+    background: rgba(26, 26, 26, 0.8);
+    border: 1px solid #2d2d2d;
+    padding: 20px 24px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-align: left;
+}
+
+.battery-tab:hover {
+    border-color: rgba(98, 210, 162, 0.4);
+    background: rgba(98, 210, 162, 0.03);
+}
+
+.battery-tab.active {
+    border-color: var(--primary-mint);
+    background: rgba(98, 210, 162, 0.06);
+    box-shadow: 0 0 20px rgba(98, 210, 162, 0.08);
+}
+
+.battery-tab-name {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--primary-mint);
+}
+
+.battery-tab-label {
+    font-size: 0.8rem;
+    color: #a1a1a6;
+}
+
+.battery-tab-rate {
+    font-size: 0.9rem;
+    color: #e5e5e7;
+    font-weight: 600;
+    margin-top: 4px;
+}
+
+.battery-note {
+    font-size: 0.9rem;
+    color: #86868b;
+    line-height: 1.6;
+    text-align: center;
+    max-width: 500px;
+}
+
+.battery-screenshot {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0;
+    transition: opacity 0.2s ease;
+}
+
+.battery-phone {
+    width: 280px;
+    margin: 0 auto;
+}
+
+/* ===================================
+   SAVINGS SECTION
+   =================================== */
+
+.section-savings {
+    background: var(--elevated-dark);
+}
+
+.savings-showcase {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.savings-comparison {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 50px;
+}
+
+.savings-side {
+    flex: 1;
+    max-width: 250px;
+    text-align: center;
+    padding: 40px;
+    border-radius: 20px;
+    background: rgba(26, 26, 26, 0.6);
+    border: 1px solid #2d2d2d;
+}
+
+.savings-ev {
+    border-color: var(--primary-mint);
+    background: rgba(98, 210, 162, 0.05);
+}
+
+.savings-label {
+    display: block;
+    font-size: 1.1rem;
+    color: #a1a1a6;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.savings-amount {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #e5e5e7;
+    line-height: 1;
+}
+
+.savings-ev .savings-amount {
+    color: var(--primary-mint);
+}
+
+.savings-period {
+    display: block;
+    font-size: 0.9rem;
+    color: #86868b;
+    margin-top: 8px;
+}
+
+.savings-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.savings-vs {
+    font-size: 1rem;
+    color: #86868b;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.savings-result {
+    text-align: center;
+    padding: 40px;
+    background: linear-gradient(135deg,
+        rgba(98, 210, 162, 0.1) 0%,
+        rgba(98, 210, 162, 0.02) 100%);
+    border-radius: 24px;
+    border: 2px solid rgba(98, 210, 162, 0.3);
+}
+
+.savings-you-save {
+    display: block;
+    font-size: 1rem;
+    color: #a1a1a6;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.savings-counter {
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--primary-mint);
+    line-height: 1;
+}
+
+.savings-yearly {
+    font-size: 1.5rem;
+    color: var(--primary-mint);
+    font-weight: 500;
+}
+
+/* ===================================
+   WATCH SECTION
+   =================================== */
+
+.section-watch {
+    background: var(--primary-dark);
+}
+
+.watch-showcase {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+.watch-features {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+}
+
+.watch-feature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    color: #a1a1a6;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.watch-feature svg {
+    width: 32px;
+    height: 32px;
+    color: var(--primary-mint);
+}
+
+.watch-devices {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    perspective: 1000px;
+}
+
+.watch-large {
+    width: 180px;
+    height: 216px;
+}
+
+.watch-large .watch-screen {
+    border-radius: 36px;
+}
+
+.watch-phone {
+    width: 240px;
+}
+
+.widget-preview {
+    background: rgba(26, 26, 26, 0.8);
+    padding: 16px;
+    border-radius: 16px;
+    text-align: center;
+    border: 1px solid #2d2d2d;
+}
+
+.widget-title {
+    display: block;
+    font-size: 0.75rem;
+    color: #a1a1a6;
+    margin-bottom: 8px;
+}
+
+.widget-value {
+    display: block;
+    font-size: 1.25rem;
+    color: var(--primary-mint);
+    font-weight: 700;
+}
+
+/* ===================================
+   CTA SECTION
+   =================================== */
+
+.section-cta {
+    background: var(--elevated-dark);
+    text-align: center;
+}
+
+.cta-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.cta-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #e5e5e7;
+    margin-bottom: 16px;
+}
+
+.cta-subtitle {
+    font-size: 1.25rem;
+    color: #a1a1a6;
+    margin-bottom: 40px;
+}
+
+.cta-button-large {
+    padding: 20px 60px;
+    font-size: 1.2rem;
+}
+
+.cta-trust {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 40px;
+}
+
+.cta-trust .trust-badge {
+    background: rgba(26, 26, 26, 0.8);
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    color: #a1a1a6;
+    border: 1px solid #2d2d2d;
+}
+
+.cable-terminus {
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+}
+
+.terminus-icon {
+    width: 60px;
+    height: 60px;
+}
+
+.terminus-glow {
+    opacity: 0.8;
+}
+
+/* ===================================
    RESPONSIVE DESIGN
    =================================== */
 
@@ -1214,11 +2038,16 @@ footer {
     }
 
     .nav-links {
-        gap: 20px;
+        gap: 16px;
     }
 
     .nav-links a {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
+    }
+
+    .nav-links .nav-cta {
+        padding: 8px 16px;
+        margin-left: 8px;
     }
 
     /* Trust Bar */
@@ -1348,5 +2177,284 @@ footer {
 
     .hero-subheadline {
         font-size: 1rem;
+    }
+}
+
+/* ===================================
+   NEW SECTIONS RESPONSIVE
+   =================================== */
+
+/* Tablet and below */
+@media (max-width: 968px) {
+    .section {
+        padding: 80px 20px;
+    }
+
+    .section-title {
+        font-size: 2.25rem;
+    }
+
+    .section-subtitle {
+        font-size: 1.15rem;
+    }
+
+    /* Hero */
+    .section-hero .container {
+        grid-template-columns: 1fr;
+        gap: 50px;
+        text-align: center;
+    }
+
+    .section-hero .hero-content {
+        text-align: center;
+    }
+
+    .section-hero .hero-badges {
+        justify-content: center;
+    }
+
+    .hero-devices {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .device-iphone {
+        width: 220px;
+    }
+
+    .device-watch {
+        width: 120px;
+        height: 145px;
+    }
+
+    /* Compare */
+    .compare-phone {
+        width: 200px;
+    }
+
+    .compare-metrics {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+
+    .metric-card {
+        padding: 20px 16px;
+    }
+
+    /* Battery */
+    .battery-tabs {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .battery-phone {
+        width: 220px;
+    }
+
+    /* Savings */
+    .savings-comparison {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .savings-side {
+        max-width: 100%;
+        width: 100%;
+        padding: 30px;
+    }
+
+    .savings-divider {
+        padding: 10px 0;
+    }
+
+    .savings-counter {
+        font-size: 3rem;
+    }
+
+    /* Watch */
+    .watch-features {
+        gap: 30px;
+    }
+
+    .watch-devices {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .watch-large {
+        width: 150px;
+        height: 180px;
+    }
+
+    .watch-phone {
+        width: 200px;
+    }
+
+    /* CTA */
+    .cta-title {
+        font-size: 2.25rem;
+    }
+
+    .cta-button-large {
+        padding: 16px 40px;
+        font-size: 1.1rem;
+    }
+
+    /* Simplify cable on smaller screens */
+    .hero-cable {
+        opacity: 0.6;
+    }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+    /* Nav: hide text links, show only logo + CTA */
+    .nav-links a:not(.nav-cta) {
+        display: none;
+    }
+
+    .nav-links {
+        gap: 0;
+    }
+
+    .nav-links .nav-cta {
+        margin-left: 0;
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+
+    .section {
+        padding: 60px 20px;
+        min-height: auto;
+    }
+
+    .section-header {
+        margin-bottom: 40px;
+    }
+
+    .section-title {
+        font-size: 1.75rem;
+    }
+
+    .section-subtitle {
+        font-size: 1rem;
+    }
+
+    .device-iphone {
+        width: 180px;
+        border-radius: 32px;
+    }
+
+    .iphone-notch {
+        width: 70px;
+        height: 22px;
+        top: 10px;
+    }
+
+    .iphone-screen {
+        border-radius: 26px;
+    }
+
+    .device-watch {
+        width: 100px;
+        height: 120px;
+        border-radius: 28px;
+    }
+
+    .watch-screen {
+        border-radius: 22px;
+    }
+
+    .scroll-indicator {
+        display: none;
+    }
+
+    /* Keep cable visible on mobile */
+    .hero-cable {
+        opacity: 0.7;
+    }
+
+    /* Compare */
+    .compare-phone {
+        width: 180px;
+    }
+
+    .compare-metrics {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .metric-card {
+        padding: 16px 12px;
+        gap: 8px;
+    }
+
+    .metric-icon {
+        width: 28px;
+        height: 28px;
+    }
+
+    .metric-label {
+        font-size: 0.85rem;
+    }
+
+    /* Battery */
+    .battery-tab {
+        padding: 16px;
+    }
+
+    .battery-tab-name {
+        font-size: 1.1rem;
+    }
+
+    .battery-phone {
+        width: 180px;
+    }
+
+    /* Savings */
+    .savings-amount {
+        font-size: 2rem;
+    }
+
+    .savings-counter {
+        font-size: 2.5rem;
+    }
+
+    .savings-result {
+        padding: 30px 20px;
+    }
+
+    /* Watch */
+    .watch-features {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .watch-feature svg {
+        width: 28px;
+        height: 28px;
+    }
+
+    .watch-large {
+        width: 130px;
+        height: 156px;
+    }
+
+    .watch-phone {
+        width: 160px;
+    }
+
+    /* CTA */
+    .cta-title {
+        font-size: 1.75rem;
+    }
+
+    .cta-trust {
+        gap: 10px;
+    }
+
+    .cta-trust .trust-badge {
+        padding: 8px 14px;
+        font-size: 0.75rem;
     }
 }

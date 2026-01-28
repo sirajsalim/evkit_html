@@ -22,7 +22,11 @@
     <meta name="theme-color" content="#62D2A2">
     <link rel="canonical" href="https://evkit.app/">
 
-    <link rel="stylesheet" href="style.css?v=4">
+    <link rel="stylesheet" href="style.css?v=23">
+
+    <!-- GSAP for premium scroll animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 </head>
 <body>
     <!-- Skip to main content link for accessibility -->
@@ -33,131 +37,316 @@
         <nav class="nav-container">
             <div class="nav-logo">EVKit</div>
             <div class="nav-links">
-                <a href="#features">Features</a>
-                <a href="#download" class="nav-cta">Download</a>
+                <a href="#compare">Compare</a>
+                <a href="#battery">Battery</a>
+                <a href="#watch">Watch</a>
+                <a href="#get-started" class="nav-cta">Get Started</a>
             </div>
         </nav>
     </header>
 
     <main id="main-content">
-        <!-- Hero Section -->
-        <section class="hero" id="download">
+        <!-- Section 1: Hero -->
+        <section class="section section-hero" id="hero">
+            <!-- Charging Cable SVG - Natural coiled cable lying in hero -->
+            <svg class="hero-cable" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+                <defs>
+                    <linearGradient id="cableGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#1e1e1e"/>
+                        <stop offset="50%" stop-color="#282828"/>
+                        <stop offset="100%" stop-color="#1e1e1e"/>
+                    </linearGradient>
+                </defs>
+
+                <!-- Shadow (simple offset, no filter) -->
+                <path d="M-30,780 C80,740 140,650 130,560 C120,470 180,400 260,420 C340,440 330,530 400,540 C470,550 520,480 540,420 C560,360 650,340 740,360 C830,380 860,440 940,410 C1020,380 1100,360 1200,380"
+                      stroke="#000" stroke-width="7" fill="none" stroke-linecap="round" opacity="0.12" transform="translate(1,3)"/>
+
+                <!-- Main cable body -->
+                <path class="cable-base"
+                      d="M-30,780 C80,740 140,650 130,560 C120,470 180,400 260,420 C340,440 330,530 400,540 C470,550 520,480 540,420 C560,360 650,340 740,360 C830,380 860,440 940,410 C1020,380 1100,360 1200,380"
+                      stroke="url(#cableGradient)" stroke-width="5" fill="none" stroke-linecap="round"/>
+
+                <!-- Current flow (thin bright line on top) -->
+                <path class="cable-current"
+                      d="M-30,780 C80,740 140,650 130,560 C120,470 180,400 260,420 C340,440 330,530 400,540 C470,550 520,480 540,420 C560,360 650,340 740,360 C830,380 860,440 940,410 C1020,380 1100,360 1200,380"
+                      stroke="#62D2A2" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.7"/>
+
+                <!-- Plug at end -->
+                <g transform="translate(1192, 378)">
+                    <rect x="0" y="-7" width="22" height="14" rx="3" fill="#252525" stroke="#3a3a3a" stroke-width="0.5"/>
+                    <rect x="19" y="-4" width="8" height="8" rx="1.5" fill="#1a1a1a"/>
+                    <circle cx="30" cy="0" r="2" fill="#62D2A2" class="plug-indicator"/>
+                </g>
+            </svg>
+
             <div class="container">
-                <div class="hero-layout">
-                    <!-- Left Column: Text Content -->
-                    <div class="hero-content">
-                        <div class="hero-badges">
-                            <span class="hero-badge">For EV Shoppers</span>
-                            <span class="hero-badge-separator">+</span>
-                            <span class="hero-badge">For EV Owners</span>
+                <div class="hero-content">
+                    <div class="hero-badges">
+                        <span class="hero-badge">iPhone</span>
+                        <span class="hero-badge-separator">+</span>
+                        <span class="hero-badge">Apple Watch</span>
+                    </div>
+                    <h1 class="hero-headline">
+                        <span class="headline-primary">The <span class="highlight">EV</span> Cost Calculator</span>
+                        <span class="headline-secondary">That Gets It Right</span>
+                    </h1>
+                    <p class="hero-subheadline">
+                        Real calculations. Real data. Not guesses.
+                    </p>
+                    <p class="hero-tagline">Coming March 2026 · £2.99 · No subscriptions</p>
+                    <button class="cta-button" id="registerButton">Get Early Access</button>
+                </div>
+                <div class="hero-devices">
+                    <!-- iPhone Mockup -->
+                    <div class="device-iphone">
+                        <div class="iphone-notch"></div>
+                        <div class="iphone-screen">
+                            <div class="screen-placeholder">
+                                <span class="placeholder-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                                    </svg>
+                                </span>
+                                <span class="placeholder-text">Dashboard</span>
+                            </div>
                         </div>
-                        <h1 class="hero-headline">
-                            <span class="headline-primary">The <span class="highlight">EV</span> Cost Calculator</span>
-                            <span class="headline-secondary">That Gets It Right</span>
-                        </h1>
-                        <p class="hero-subheadline">
-                            Compare vehicles before buying, or track journey costs with real data — not guesses.
-                        </p>
-                        <p class="hero-tagline">Coming March 2026 · Just £2.99 · No subscriptions</p>
-                        <button class="cta-button" id="registerButton">Get Early Access to EVKit</button>
+                    </div>
+                    <!-- Apple Watch Mockup -->
+                    <div class="device-watch">
+                        <div class="watch-crown"></div>
+                        <div class="watch-button"></div>
+                        <div class="watch-screen">
+                            <div class="screen-placeholder screen-placeholder-watch">
+                                <span class="placeholder-icon-small">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                                    </svg>
+                                </span>
+                                <span class="placeholder-text-small">£0.12/mi</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-indicator" aria-hidden="true">
+                <span>Scroll to explore</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 5v14M19 12l-7 7-7-7"/>
+                </svg>
+            </div>
+        </section>
+
+        <!-- Section 2: Compare Cars -->
+        <section class="section section-compare" id="compare">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Compare Up to 3 EVs</h2>
+                    <p class="section-subtitle">Side by side. No guesswork.</p>
+                </div>
+                <div class="compare-showcase">
+                    <!-- Centered phone -->
+                    <div class="device-iphone compare-phone">
+                        <div class="iphone-notch"></div>
+                        <div class="iphone-screen">
+                            <div class="screen-placeholder">
+                                <span class="placeholder-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M3 3v18h18"/>
+                                        <path d="M18 8l-4 4-4-4-4 4"/>
+                                    </svg>
+                                </span>
+                                <span class="placeholder-text">Compare View</span>
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- Right Column: Screenshot with Navigation & Controls -->
-                    <div class="hero-visual">
-                        <div class="hero-phone-wrapper">
-                            <!-- Left Navigation Arrow -->
-                            <button class="hero-nav-btn hero-nav-prev" aria-label="Previous screenshot">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                    <path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/>
+                    <!-- 6 metric cards in 3x2 grid -->
+                    <div class="compare-metrics">
+                        <div class="metric-card">
+                            <span class="metric-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <path d="M12 6v6l4 2"/>
                                 </svg>
-                            </button>
+                            </span>
+                            <span class="metric-label">Cost per Mile</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M12 2v20M2 12h20"/>
+                                    <path d="M12 2l8 8-8 8-8-8z"/>
+                                </svg>
+                            </span>
+                            <span class="metric-label">Journey Cost</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                                </svg>
+                            </span>
+                            <span class="metric-label">vs Petrol</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                                </svg>
+                            </span>
+                            <span class="metric-label">Range</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <rect x="2" y="7" width="18" height="12" rx="2"/>
+                                    <path d="M22 11v4"/>
+                                    <path d="M6 11v4M10 11v4M14 11v4"/>
+                                </svg>
+                            </span>
+                            <span class="metric-label">Battery Capacity</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M3 3v18h18"/>
+                                    <path d="M7 16l4-4 4 2 5-6"/>
+                                </svg>
+                            </span>
+                            <span class="metric-label">5yr Degradation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                            <!-- Phone Mockup -->
-                            <div class="phone-mockup">
-                                <div class="screenshot-carousel">
-                                    <!-- Screenshot 1 -->
-                                    <div class="screenshot-slide active" data-slide="1">
-                                        <img class="screenshot-image"
-                                             src="assets/evkit_1_dark.png"
-                                             data-dark="assets/evkit_1_dark.png"
-                                             data-light="assets/evkit_1_light.png"
-                                             alt="EVKit app screenshot 1">
-                                        <span class="screenshot-watermark">Screenshots Arriving<br>March 2026</span>
-                                    </div>
+        <!-- Section 3: Battery Intelligence -->
+        <section class="section section-battery" id="battery">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Battery Intelligence</h2>
+                    <p class="section-subtitle">Year by year. Chemistry by chemistry.</p>
+                </div>
+                <div class="battery-showcase">
+                    <div class="battery-tabs">
+                        <div class="battery-tab active" data-chemistry="lfp" role="button" tabindex="0" aria-pressed="true">
+                            <span class="battery-tab-name">LFP</span>
+                            <span class="battery-tab-label">Lithium Iron Phosphate</span>
+                            <span class="battery-tab-rate">93% after 5 years</span>
+                        </div>
+                        <div class="battery-tab" data-chemistry="nmc" role="button" tabindex="0" aria-pressed="false">
+                            <span class="battery-tab-name">NMC</span>
+                            <span class="battery-tab-label">Nickel Manganese Cobalt</span>
+                            <span class="battery-tab-rate">88% after 5 years</span>
+                        </div>
+                        <div class="battery-tab" data-chemistry="nca" role="button" tabindex="0" aria-pressed="false">
+                            <span class="battery-tab-name">NCA</span>
+                            <span class="battery-tab-label">Nickel Cobalt Aluminum</span>
+                            <span class="battery-tab-rate">86.4% after 5 years</span>
+                        </div>
+                    </div>
+                    <div class="device-iphone battery-phone">
+                        <div class="iphone-notch"></div>
+                        <div class="iphone-screen">
+                            <img class="battery-screenshot" id="battery-screenshot"
+                                 src="assets/battery/lfp.png"
+                                 data-lfp="assets/battery/lfp.png"
+                                 data-nmc="assets/battery/nmc.png"
+                                 data-nca="assets/battery/nca.png"
+                                 alt="Battery degradation settings for LFP chemistry">
+                        </div>
+                    </div>
+                    <p class="battery-note">Set custom degradation rates per year. Based on <a href="https://www.geotab.com/blog/ev-battery-health/" target="_blank" rel="noopener noreferrer">Geotab EV Battery Health Study</a>.</p>
+                </div>
+            </div>
+        </section>
 
-                                    <!-- Screenshot 2 -->
-                                    <div class="screenshot-slide" data-slide="2">
-                                        <img class="screenshot-image"
-                                             src="assets/evkit_2_dark.png"
-                                             data-dark="assets/evkit_2_dark.png"
-                                             data-light="assets/evkit_2_light.png"
-                                             alt="EVKit app screenshot 2">
-                                        <span class="screenshot-watermark">Screenshots Arriving<br>March 2026</span>
-                                    </div>
+        <!-- Section 4: Savings -->
+        <section class="section section-savings" id="savings">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Know the Real Cost</h2>
+                    <p class="section-subtitle">Per mile. Per journey. Before you drive.</p>
+                </div>
+                <div class="savings-showcase">
+                    <div class="savings-comparison">
+                        <div class="savings-side savings-ev">
+                            <span class="savings-label">Electric</span>
+                            <span class="savings-amount">£0.05</span>
+                            <span class="savings-period">per mile</span>
+                        </div>
+                        <div class="savings-divider">
+                            <span class="savings-vs">vs</span>
+                        </div>
+                        <div class="savings-side savings-petrol">
+                            <span class="savings-label">Petrol</span>
+                            <span class="savings-amount">£0.16</span>
+                            <span class="savings-period">per mile</span>
+                        </div>
+                    </div>
+                    <div class="savings-result">
+                        <span class="savings-you-save">London → Edinburgh (400 mi)</span>
+                        <span class="savings-counter" data-target="44">£0</span>
+                        <span class="savings-yearly">cheaper by EV</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                                    <!-- Screenshot 3 -->
-                                    <div class="screenshot-slide" data-slide="3">
-                                        <img class="screenshot-image"
-                                             src="assets/evkit_3_dark.png"
-                                             data-dark="assets/evkit_3_dark.png"
-                                             data-light="assets/evkit_3_light.png"
-                                             alt="EVKit app screenshot 3">
-                                        <span class="screenshot-watermark">Screenshots Arriving<br>March 2026</span>
-                                    </div>
-
-                                    <!-- Screenshot 4 -->
-                                    <div class="screenshot-slide" data-slide="4">
-                                        <img class="screenshot-image"
-                                             src="assets/evkit_4_dark.png"
-                                             data-dark="assets/evkit_4_dark.png"
-                                             data-light="assets/evkit_4_light.png"
-                                             alt="EVKit app screenshot 4">
-                                        <span class="screenshot-watermark">Screenshots Arriving<br>March 2026</span>
-                                    </div>
-
-                                    <!-- Screenshot 5 -->
-                                    <div class="screenshot-slide" data-slide="5">
-                                        <img class="screenshot-image"
-                                             src="assets/evkit_5_dark.png"
-                                             data-dark="assets/evkit_5_dark.png"
-                                             data-light="assets/evkit_5_light.png"
-                                             alt="EVKit app screenshot 5">
-                                        <span class="screenshot-watermark">Screenshots Arriving<br>March 2026</span>
-                                    </div>
-
-                                    <!-- Screenshot 6 -->
-                                    <div class="screenshot-slide" data-slide="6">
-                                        <img class="screenshot-image"
-                                             src="assets/evkit_6_dark.png"
-                                             data-dark="assets/evkit_6_dark.png"
-                                             data-light="assets/evkit_6_light.png"
-                                             alt="EVKit app screenshot 6">
-                                        <span class="screenshot-watermark">Screenshots Arriving<br>March 2026</span>
-                                    </div>
+        <!-- Section 5: Apple Watch + Widgets -->
+        <section class="section section-watch" id="watch">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">On Your Wrist</h2>
+                    <p class="section-subtitle">And your home screen.</p>
+                </div>
+                <div class="watch-showcase">
+                    <div class="watch-features">
+                        <div class="watch-feature">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 6v6l4 2"/>
+                            </svg>
+                            <span>Complications</span>
+                        </div>
+                        <div class="watch-feature">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <rect x="3" y="3" width="7" height="7" rx="1"/>
+                                <rect x="14" y="3" width="7" height="7" rx="1"/>
+                                <rect x="3" y="14" width="7" height="7" rx="1"/>
+                                <rect x="14" y="14" width="7" height="7" rx="1"/>
+                            </svg>
+                            <span>Widgets</span>
+                        </div>
+                        <div class="watch-feature">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <rect x="5" y="2" width="14" height="20" rx="2"/>
+                                <path d="M12 18h.01"/>
+                            </svg>
+                            <span>Standalone</span>
+                        </div>
+                    </div>
+                    <div class="watch-devices">
+                        <div class="device-watch watch-large">
+                            <div class="watch-crown"></div>
+                            <div class="watch-button"></div>
+                            <div class="watch-screen">
+                                <div class="screen-placeholder screen-placeholder-watch">
+                                    <span class="placeholder-text-small">Journey Cost</span>
+                                    <span class="placeholder-value">£4.20</span>
                                 </div>
                             </div>
-
-                            <!-- Right Navigation Arrow -->
-                            <button class="hero-nav-btn hero-nav-next" aria-label="Next screenshot">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                    <path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </button>
                         </div>
-
-                        <!-- Controls Below Phone (indicator + theme toggle) -->
-                        <div class="hero-controls">
-                            <div class="hero-indicator" aria-live="polite">
-                                <span class="hero-current">1</span> / <span class="hero-total">6</span>
-                            </div>
-                            <div class="hero-theme-toggle" role="radiogroup" aria-label="Screenshot theme">
-                                <button class="hero-theme-btn active" data-theme="dark" role="radio" aria-checked="true">
-                                    Dark
-                                </button>
-                                <button class="hero-theme-btn" data-theme="light" role="radio" aria-checked="false">
-                                    Light
-                                </button>
-                                <div class="hero-theme-indicator"></div>
+                        <div class="device-iphone watch-phone">
+                            <div class="iphone-notch"></div>
+                            <div class="iphone-screen">
+                                <div class="screen-placeholder">
+                                    <div class="widget-preview">
+                                        <span class="widget-title">EVKit Widget</span>
+                                        <span class="widget-value">£0.12/mi</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -165,164 +354,32 @@
             </div>
         </section>
 
-        <!-- Trust Bar (Moved Below Hero) -->
-        <section class="trust-bar" aria-label="Key benefits">
+        <!-- Section 6: CTA / Get Started -->
+        <section class="section section-cta" id="get-started">
             <div class="container">
-                <ul class="trust-items">
-                    <li class="trust-item">
-                        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" role="img" aria-label="No subscriptions required">
-                            <title>No Subscriptions</title>
-                            <circle cx="12" cy="12" r="10"/>
-                            <path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1-1 1.5-2.5 2s-2.5 1-2.5 2a2.5 2.5 0 0 0 5 0"/>
-                            <path d="M12 6v2M12 16v2"/>
-                            <path d="M4 4l16 16" stroke-linecap="round"/>
-                        </svg>
-                        <span>No Subscriptions</span>
-                    </li>
-                    <li class="trust-item">
-                        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" role="img" aria-label="No advertisements">
-                            <title>No Ads</title>
-                            <circle cx="12" cy="12" r="10"/>
-                            <path d="M4 4l16 16" stroke-linecap="round"/>
-                        </svg>
-                        <span>No Ads</span>
-                    </li>
-                    <li class="trust-item">
-                        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" role="img" aria-label="Works completely offline">
-                            <title>Works Offline</title>
-                            <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
-                            <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
-                            <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
-                            <circle cx="12" cy="20" r="1" fill="currentColor"/>
-                            <path d="M2 2l20 20" stroke-linecap="round"/>
-                        </svg>
-                        <span>Works Offline</span>
-                    </li>
-                    <li class="trust-item">
-                        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" role="img" aria-label="Full VoiceOver support">
-                            <title>VoiceOver Supported</title>
-                            <circle cx="12" cy="8" r="4"/>
-                            <path d="M6 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/>
-                            <path d="M20 8l-2 2 2 2"/>
-                            <path d="M22 10h-4"/>
-                        </svg>
-                        <span>VoiceOver Supported</span>
-                    </li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- Features Section -->
-        <section class="features" id="features">
-            <div class="container">
-                <h2 class="section-heading">Everything you need to understand EV costs</h2>
-
-                <div class="features-grid">
-                    <!-- Feature 1: Journey Cost Calculator -->
-                    <div class="feature-card" tabindex="0">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" role="img" aria-label="Journey cost calculator">
-                                <title>Journey Cost Calculator</title>
-                                <path d="M7 17L17 7M7 7h10v10" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </div>
-                        <h3 class="feature-title">Journey Cost Calculator</h3>
-                        <p class="feature-description">Compare EVs before you buy, or calculate costs for your next road trip with real-world efficiency and winter conditions</p>
+                <div class="cta-content">
+                    <h2 class="cta-title">Join the Journey</h2>
+                    <p class="cta-subtitle">Be first to know when EVKit launches.</p>
+                    <button class="cta-button cta-button-large" id="registerButtonFooter">Get Early Access</button>
+                    <div class="cta-trust">
+                        <span class="trust-badge">No subscriptions</span>
+                        <span class="trust-badge">No ads</span>
+                        <span class="trust-badge">Works offline</span>
+                        <span class="trust-badge">VoiceOver supported</span>
                     </div>
-
-                    <!-- Feature 2: Multi-Car Comparison -->
-                    <div class="feature-card" tabindex="0">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" role="img" aria-label="Compare up to 5 vehicles">
-                                <title>Compare up to 5 EVs</title>
-                                <path d="M3 3v18h18"/>
-                                <path d="M18 8l-4 4-4-4-4 4"/>
-                            </svg>
-                        </div>
-                        <h3 class="feature-title">Compare up to 5 EVs</h3>
-                        <p class="feature-description">Side-by-side comparison for shoppers, or compare your EV against alternatives to validate your choice</p>
-                    </div>
-
-                    <!-- Feature 3: Battery Degradation -->
-                    <div class="feature-card" tabindex="0">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" role="img" aria-label="Five year battery predictions">
-                                <title>5-Year Battery Predictions</title>
-                                <rect x="2" y="7" width="18" height="11" rx="2"/>
-                                <path d="M22 11v2"/>
-                                <path d="M6 11h8"/>
-                            </svg>
-                        </div>
-                        <h3 class="feature-title">5-Year Battery Predictions</h3>
-                        <p class="feature-description">Predict long-term costs before purchase, or understand your current vehicle's battery performance over time</p>
-                    </div>
-
-                    <!-- Feature 4: Savings vs Petrol -->
-                    <div class="feature-card" tabindex="0">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" role="img" aria-label="Savings calculator">
-                                <title>Savings Calculator</title>
-                                <circle cx="12" cy="12" r="10"/>
-                                <path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1-1 1.5-2.5 2s-2.5 1-2.5 2a2.5 2.5 0 0 0 5 0"/>
-                                <path d="M12 6v2M12 16v2"/>
-                            </svg>
-                        </div>
-                        <h3 class="feature-title">Savings Calculator</h3>
-                        <p class="feature-description">See exactly how much you'll save compared to your current petrol or diesel car</p>
-                    </div>
-
-                    <!-- Feature 5: Rate Zones -->
-                    <div class="feature-card" tabindex="0">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" role="img" aria-label="Smart charging rate zones">
-                                <title>Smart Rate Zones</title>
-                                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
-                            </svg>
-                        </div>
-                        <h3 class="feature-title">Smart Rate Zones</h3>
-                        <p class="feature-description">Home, work, and public charging rates with regional defaults for accurate cost estimates</p>
-                    </div>
-
-                    <!-- Feature 6: Works Offline -->
-                    <div class="feature-card" tabindex="0">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" role="img" aria-label="One hundred percent on device">
-                                <title>100% On-Device</title>
-                                <rect x="5" y="2" width="14" height="20" rx="2"/>
-                                <path d="M12 18h.01"/>
-                            </svg>
-                        </div>
-                        <h3 class="feature-title">100% On-Device</h3>
-                        <p class="feature-description">All calculations happen on your device. No internet required, complete privacy guaranteed</p>
-                    </div>
-
-                    <!-- Feature 7: iOS Widgets -->
-                    <div class="feature-card" tabindex="0">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" role="img" aria-label="Home screen widgets">
-                                <title>Home Screen Widgets</title>
-                                <rect x="3" y="3" width="7" height="7" rx="1"/>
-                                <rect x="14" y="3" width="7" height="7" rx="1"/>
-                                <rect x="14" y="14" width="7" height="7" rx="1"/>
-                                <rect x="3" y="14" width="7" height="7" rx="1"/>
-                            </svg>
-                        </div>
-                        <h3 class="feature-title">Home Screen Widgets</h3>
-                        <p class="feature-description">Quick cost estimates from your home screen and lock screen without opening the app</p>
-                    </div>
-
-                    <!-- Feature 8: Apple Watch -->
-                    <div class="feature-card" tabindex="0">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" role="img" aria-label="Apple Watch app">
-                                <title>Apple Watch App</title>
-                                <circle cx="12" cy="12" r="7"/>
-                                <path d="M12 9v3l2 2"/>
-                            </svg>
-                        </div>
-                        <h3 class="feature-title">Apple Watch App</h3>
-                        <p class="feature-description">Calculate journey costs on your wrist with complications and standalone calculations</p>
-                    </div>
+                </div>
+                <div class="cable-terminus">
+                    <svg viewBox="0 0 60 60" class="terminus-icon">
+                        <circle cx="30" cy="30" r="25" fill="none" stroke="#2a2a2a" stroke-width="3"/>
+                        <circle cx="30" cy="30" r="25" fill="none" stroke="url(#terminusGradient)" stroke-width="2" class="terminus-glow"/>
+                        <path d="M30 18v24M22 30h16" stroke="#62D2A2" stroke-width="2" stroke-linecap="round"/>
+                        <defs>
+                            <linearGradient id="terminusGradient">
+                                <stop offset="0%" stop-color="#62D2A2"/>
+                                <stop offset="100%" stop-color="#76E5B4"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
                 </div>
             </div>
         </section>
@@ -338,17 +395,18 @@
                 </div>
                 <nav class="footer-links">
                     <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
                     <a href="mailto:hello@evkit.app?subject=EVKit:%20General%20Inquiry">Contact</a>
                 </nav>
             </div>
-            <p class="footer-copyright">&copy; 2026 EVKit. All rights reserved.</p>
+            <p class="footer-copyright">&copy; 2026 Kukkdi Ltd. All rights reserved.</p>
         </div>
     </footer>
 
     <!-- Registration Modal -->
     <div id="registrationModal" class="modal">
         <div class="modal-content">
-            <span class="modal-close">&times;</span>
+            <button class="modal-close" aria-label="Close modal">&times;</button>
             <h2>Get Early Access to EVKit</h2>
             <p>Be the first to know when EVKit launches in March 2026.</p>
             <form id="registrationForm">
@@ -389,28 +447,130 @@
     </div>
 
     <script>
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
+        // Wait for GSAP to load
+        window.addEventListener('load', function() {
+            // Register ScrollTrigger plugin
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Respect reduced motion preference
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            if (!prefersReducedMotion) {
+                initAnimations();
+            }
+
+            function initAnimations() {
+                // All scroll-triggered sections: fade in once, stay visible
+                const ta = "play none none none";
+
+                // Section content reveals
+                gsap.utils.toArray('.section:not(.section-hero)').forEach((section) => {
+                    const header = section.querySelector('.section-header');
+                    const showcase = section.querySelector('.section-header ~ div');
+
+                    if (header) {
+                        gsap.from(header, {
+                            y: 40, opacity: 0, duration: 0.7,
+                            scrollTrigger: { trigger: header, start: "top 85%", toggleActions: ta }
+                        });
+                    }
+                    if (showcase) {
+                        gsap.from(showcase, {
+                            y: 40, opacity: 0, duration: 0.7, delay: 0.15,
+                            scrollTrigger: { trigger: showcase, start: "top 85%", toggleActions: ta }
+                        });
+                    }
+                });
+
+                // Compare: metric cards stagger in
+                gsap.from('.metric-card', {
+                    y: 30, duration: 0.5, stagger: 0.08,
+                    scrollTrigger: { trigger: '.compare-metrics', start: "top 85%", toggleActions: ta }
+                });
+
+                // Battery tabs
+                gsap.from('.battery-tab', {
+                    y: 20, duration: 0.5, stagger: 0.1,
+                    scrollTrigger: { trigger: '.battery-tabs', start: "top 85%", toggleActions: ta }
+                });
+
+                // Battery chemistry switcher
+                function selectChemistry(chem) {
+                    document.querySelectorAll('.battery-tab').forEach(f => {
+                        const isActive = f.dataset.chemistry === chem;
+                        f.classList.toggle('active', isActive);
+                        f.setAttribute('aria-pressed', isActive);
+                    });
+                    const img = document.getElementById('battery-screenshot');
+                    if (img) {
+                        img.style.opacity = '0';
+                        setTimeout(() => {
+                            img.src = img.dataset[chem];
+                            img.alt = 'Battery degradation settings for ' + chem.toUpperCase() + ' chemistry';
+                            img.style.opacity = '1';
+                        }, 200);
+                    }
+                }
+
+                // Initialize with LFP
+                selectChemistry('lfp');
+
+                document.querySelectorAll('.battery-tab').forEach(card => {
+                    card.addEventListener('click', () => selectChemistry(card.dataset.chemistry));
+                    card.addEventListener('keydown', (e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            selectChemistry(card.dataset.chemistry);
+                        }
+                    });
+                });
+
+                // Savings counter
+                const counter = document.querySelector('.savings-counter');
+                if (counter) {
+                    const target = parseInt(counter.dataset.target);
+                    let counted = false;
+                    ScrollTrigger.create({
+                        trigger: '.savings-result',
+                        start: "top 85%",
+                        onEnter: () => {
+                            if (counted) return;
+                            counted = true;
+                            let obj = { val: 0 };
+                            gsap.to(obj, {
+                                val: target, duration: 2, ease: "power2.out",
+                                onUpdate: () => { counter.textContent = '£' + Math.round(obj.val).toLocaleString(); }
+                            });
+                        }
                     });
                 }
-            });
+
+                // Watch devices
+                gsap.from('.watch-large', {
+                    y: 40, opacity: 0, duration: 0.6,
+                    scrollTrigger: { trigger: '.watch-devices', start: "top 85%", toggleActions: ta }
+                });
+                gsap.from('.watch-phone', {
+                    y: 40, opacity: 0, duration: 0.6, delay: 0.15,
+                    scrollTrigger: { trigger: '.watch-devices', start: "top 85%", toggleActions: ta }
+                });
+
+                // CTA
+                gsap.from('.cta-content', {
+                    y: 40, opacity: 0, duration: 0.7,
+                    scrollTrigger: { trigger: '.section-cta', start: "top 80%", toggleActions: ta }
+                });
+            }
         });
 
-        // Modal functionality with focus management
+        // Modal functionality
         const modal = document.getElementById('registrationModal');
         const registerBtn = document.getElementById('registerButton');
+        const registerBtnFooter = document.getElementById('registerButtonFooter');
         const closeBtn = document.querySelector('.modal-close');
         const form = document.getElementById('registrationForm');
         let previouslyFocused = null;
 
-        // Focus trap for modal
         function trapFocus(event) {
             const focusableElements = modal.querySelectorAll('input, button, textarea, select, a[href]');
             const firstElement = focusableElements[0];
@@ -435,8 +595,8 @@
             previouslyFocused = document.activeElement;
             modal.style.display = 'block';
             modal.addEventListener('keydown', trapFocus);
+            document.body.style.overflow = 'hidden';
 
-            // Focus first input
             setTimeout(() => {
                 const firstInput = modal.querySelector('input, button');
                 if (firstInput) firstInput.focus();
@@ -446,14 +606,15 @@
         function closeModal() {
             modal.style.display = 'none';
             modal.removeEventListener('keydown', trapFocus);
+            document.body.style.overflow = '';
 
-            // Restore focus
             if (previouslyFocused) {
                 previouslyFocused.focus();
             }
         }
 
         registerBtn.onclick = openModal;
+        registerBtnFooter.onclick = openModal;
         closeBtn.onclick = closeModal;
 
         window.onclick = function(event) {
@@ -468,7 +629,6 @@
             const name = document.getElementById('name').value.trim();
             const preference = document.querySelector('input[name="preference"]:checked').value;
 
-            // Map preference values to readable text
             const preferenceText = {
                 'beta': 'Interested in beta testing',
                 'notify': 'Just notify me when the app goes live',
@@ -480,166 +640,24 @@
 
             window.location.href = `mailto:hello@evkit.app?subject=${subject}&body=${body}`;
 
-            // Close modal and reset form
             setTimeout(() => {
                 closeModal();
                 form.reset();
             }, 500);
         }
 
-        // Screenshot Carousel
-        const screenshots = document.querySelectorAll('.screenshot-slide');
-        const prevBtn = document.querySelector('.hero-nav-prev');
-        const nextBtn = document.querySelector('.hero-nav-next');
-        const currentIndicator = document.querySelector('.hero-current');
-        const totalIndicator = document.querySelector('.hero-total');
-        const themeButtons = document.querySelectorAll('.hero-theme-btn');
-        let currentSlide = 1;
-        let currentTheme = 'dark';
-        const totalSlides = screenshots.length;
-
-        function showSlide(slideNumber) {
-            // Remove active class from all screenshots
-            screenshots.forEach(screenshot => {
-                screenshot.classList.remove('active');
-            });
-
-            // Add active class to current screenshot
-            const targetSlide = document.querySelector(`.screenshot-slide[data-slide="${slideNumber}"]`);
-            if (targetSlide) {
-                targetSlide.classList.add('active');
-            }
-
-            // Update indicator
-            currentIndicator.textContent = slideNumber;
-            currentSlide = slideNumber;
-        }
-
-        function switchTheme(theme) {
-            currentTheme = theme;
-            const allImages = document.querySelectorAll('.screenshot-image');
-
-            allImages.forEach(img => {
-                if (theme === 'light') {
-                    img.src = img.dataset.light;
-                } else {
-                    img.src = img.dataset.dark;
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
                 }
             });
-
-            // Update active button
-            themeButtons.forEach(btn => {
-                if (btn.dataset.theme === theme) {
-                    btn.classList.add('active');
-                    btn.setAttribute('aria-checked', 'true');
-                } else {
-                    btn.classList.remove('active');
-                    btn.setAttribute('aria-checked', 'false');
-                }
-            });
-        }
-
-        // Theme toggle event listeners
-        themeButtons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                switchTheme(btn.dataset.theme);
-            });
-        });
-
-        function nextSlide() {
-            let next = currentSlide + 1;
-            if (next > totalSlides) {
-                next = 1; // Loop back to first
-            }
-            showSlide(next);
-        }
-
-        function prevSlide() {
-            let prev = currentSlide - 1;
-            if (prev < 1) {
-                prev = totalSlides; // Loop to last
-            }
-            showSlide(prev);
-        }
-
-        // Event listeners for navigation buttons
-        nextBtn.addEventListener('click', nextSlide);
-        prevBtn.addEventListener('click', prevSlide);
-
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowRight') {
-                nextSlide();
-            } else if (e.key === 'ArrowLeft') {
-                prevSlide();
-            }
-        });
-
-        // Auto-advance carousel every 4 seconds
-        let autoAdvance = setInterval(nextSlide, 4000);
-
-        // Pause auto-advance when user interacts
-        const heroVisual = document.querySelector('.hero-visual');
-        heroVisual.addEventListener('mouseenter', () => {
-            clearInterval(autoAdvance);
-        });
-
-        heroVisual.addEventListener('mouseleave', () => {
-            autoAdvance = setInterval(nextSlide, 4000);
-        });
-
-        // Touch/swipe support for mobile
-        let touchStartX = 0;
-        let touchEndX = 0;
-        const carousel = document.querySelector('.screenshot-carousel');
-
-        carousel.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-            clearInterval(autoAdvance);
-        }, { passive: true });
-
-        carousel.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
-            autoAdvance = setInterval(nextSlide, 4000);
-        }, { passive: true });
-
-        function handleSwipe() {
-            const swipeThreshold = 50;
-            if (touchEndX < touchStartX - swipeThreshold) {
-                // Swipe left - next slide
-                nextSlide();
-            }
-            if (touchEndX > touchStartX + swipeThreshold) {
-                // Swipe right - previous slide
-                prevSlide();
-            }
-        }
-
-        // Initialize
-        totalIndicator.textContent = totalSlides;
-        showSlide(1);
-
-        // Scroll-triggered fade-in animations for feature cards
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.feature-card').forEach((card, index) => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(40px)';
-            card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
-            observer.observe(card);
         });
     </script>
 </body>
