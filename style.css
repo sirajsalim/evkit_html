@@ -2720,6 +2720,12 @@ footer {
 
     .calculate-main {
         gap: 20px;
+        align-items: center;
+        width: 100%;
+    }
+
+    .calculate-tabs {
+        width: 100%;
     }
 
     .calculate-tab {
@@ -2734,12 +2740,15 @@ footer {
     .calculate-features {
         gap: 24px;
         text-align: center;
+        align-items: center;
+        width: 100%;
     }
 
     .feature-item {
         flex-direction: column;
         align-items: center;
         gap: 12px;
+        width: 100%;
     }
 
     /* Winter Mode */
