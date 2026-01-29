@@ -22,7 +22,7 @@
     <meta name="theme-color" content="#62D2A2">
     <link rel="canonical" href="https://evkit.app/">
 
-    <link rel="stylesheet" href="style.css?v=26">
+    <link rel="stylesheet" href="style.css?v=28">
 
     <!-- GSAP for premium scroll animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
@@ -146,9 +146,41 @@
         <section class="section section-compare" id="compare">
             <div class="container">
                 <div class="section-header">
-                    <h2 class="section-title">Compare Up to 3 EVs</h2>
-                    <p class="section-subtitle">Side by side. No guesswork.</p>
+                    <h2 class="section-title">Head to Head</h2>
+                    <p class="section-subtitle">Pick two. See which wins.</p>
                 </div>
+
+                <!-- Visual comparison element -->
+                <div class="compare-visual">
+                    <div class="compare-car compare-car-left">
+                        <svg viewBox="0 0 120 50" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M10 35h100M20 35v-8c0-4 2-8 6-10l20-7c4-1 20-2 35 0l15 5c4 2 6 6 6 12v8"/>
+                            <circle cx="30" cy="35" r="8"/>
+                            <circle cx="90" cy="35" r="8"/>
+                            <circle cx="30" cy="35" r="4"/>
+                            <circle cx="90" cy="35" r="4"/>
+                            <path d="M45 15l3 10h20l2-10" opacity="0.5"/>
+                        </svg>
+                    </div>
+
+                    <div class="compare-vs">
+                        <div class="vs-line vs-line-top"></div>
+                        <span class="vs-text">VS</span>
+                        <div class="vs-line vs-line-bottom"></div>
+                    </div>
+
+                    <div class="compare-car compare-car-right">
+                        <svg viewBox="0 0 120 50" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M10 35h100M100 35v-8c0-4-2-8-6-10l-20-7c-4-1-20-2-35 0l-15 5c-4 2-6 6-6 12v8"/>
+                            <circle cx="30" cy="35" r="8"/>
+                            <circle cx="90" cy="35" r="8"/>
+                            <circle cx="30" cy="35" r="4"/>
+                            <circle cx="90" cy="35" r="4"/>
+                            <path d="M75 15l-3 10h-20l-2-10" opacity="0.5"/>
+                        </svg>
+                    </div>
+                </div>
+
                 <div class="compare-showcase">
                     <!-- Centered phone -->
                     <div class="device-iphone compare-phone">
@@ -498,6 +530,20 @@
                             scrollTrigger: { trigger: showcase, start: "top 85%", toggleActions: ta }
                         });
                     }
+                });
+
+                // Compare: visual cars slide in from sides
+                gsap.from('.compare-car-left', {
+                    x: -50, duration: 0.6,
+                    scrollTrigger: { trigger: '.compare-visual', start: "top 85%", toggleActions: ta }
+                });
+                gsap.from('.compare-car-right', {
+                    x: 50, duration: 0.6,
+                    scrollTrigger: { trigger: '.compare-visual', start: "top 85%", toggleActions: ta }
+                });
+                gsap.from('.compare-vs', {
+                    scale: 0.8, duration: 0.4, delay: 0.3,
+                    scrollTrigger: { trigger: '.compare-visual', start: "top 85%", toggleActions: ta }
                 });
 
                 // Compare: metric cards stagger in

@@ -1638,6 +1638,70 @@ footer {
     background: var(--elevated-dark);
 }
 
+/* Visual car comparison element */
+.compare-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 60px;
+    padding: 40px;
+    background: rgba(26, 26, 26, 0.5);
+    border-radius: 24px;
+    border: 1px solid #2d2d2d;
+}
+
+.compare-car {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.compare-car svg {
+    width: 160px;
+    height: 70px;
+    color: var(--primary-mint);
+    opacity: 0.9;
+    transition: all 0.3s ease;
+}
+
+.compare-car:hover svg {
+    opacity: 1;
+    filter: drop-shadow(0 0 20px rgba(98, 210, 162, 0.4));
+}
+
+.compare-vs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    position: relative;
+}
+
+.vs-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-mint);
+    padding: 12px 20px;
+    border: 2px solid var(--primary-mint);
+    border-radius: 12px;
+    background: rgba(98, 210, 162, 0.1);
+}
+
+.vs-line {
+    width: 2px;
+    height: 40px;
+}
+
+.vs-line-top {
+    background: linear-gradient(to bottom, transparent, var(--primary-mint));
+}
+
+.vs-line-bottom {
+    background: linear-gradient(to bottom, var(--primary-mint), transparent);
+}
+
 .compare-showcase {
     position: relative;
 }
@@ -2271,6 +2335,26 @@ footer {
     }
 
     /* Compare */
+    .compare-visual {
+        gap: 20px;
+        padding: 30px 20px;
+        margin-bottom: 40px;
+    }
+
+    .compare-car svg {
+        width: 120px;
+        height: 55px;
+    }
+
+    .vs-text {
+        font-size: 1.2rem;
+        padding: 10px 16px;
+    }
+
+    .vs-line {
+        height: 30px;
+    }
+
     .compare-phone {
         width: 200px;
     }
@@ -2440,6 +2524,41 @@ footer {
     }
 
     /* Compare */
+    .compare-visual {
+        flex-direction: column;
+        gap: 24px;
+        padding: 24px 16px;
+        margin-bottom: 30px;
+    }
+
+    .compare-car svg {
+        width: 100px;
+        height: 45px;
+    }
+
+    .compare-vs {
+        flex-direction: row;
+        gap: 16px;
+    }
+
+    .vs-text {
+        font-size: 1rem;
+        padding: 8px 14px;
+    }
+
+    .vs-line {
+        width: 50px;
+        height: 2px;
+    }
+
+    .vs-line-top {
+        background: linear-gradient(to right, transparent, var(--primary-mint));
+    }
+
+    .vs-line-bottom {
+        background: linear-gradient(to right, var(--primary-mint), transparent);
+    }
+
     .compare-phone {
         width: 180px;
     }
@@ -2463,17 +2582,29 @@ footer {
         font-size: 0.85rem;
     }
 
-    /* Battery - compact pill tabs on mobile */
+    /* Battery - compact button tabs on mobile */
     .battery-tabs {
         flex-direction: row;
         justify-content: center;
-        gap: 12px;
+        gap: 10px;
+        margin-bottom: 20px;
     }
 
     .battery-tab {
-        padding: 12px 20px;
+        padding: 12px 24px;
         flex: 0 0 auto;
-        border-radius: 24px;
+        border-radius: 12px;
+        background: transparent;
+        border: 1.5px solid #3d3d3d;
+    }
+
+    .battery-tab.active {
+        background: var(--primary-mint);
+        border-color: var(--primary-mint);
+    }
+
+    .battery-tab.active .battery-tab-name {
+        color: #000;
     }
 
     .battery-tab-label,
@@ -2483,6 +2614,7 @@ footer {
 
     .battery-tab-name {
         font-size: 1rem;
+        color: #e5e5e7;
     }
 
     /* Mobile info display */
@@ -2492,16 +2624,15 @@ footer {
         align-items: center;
         gap: 4px;
         text-align: center;
-        margin-top: -20px;
     }
 
     .battery-info-label {
-        font-size: 0.9rem;
+        font-size: 0.95rem;
         color: #a1a1a6;
     }
 
     .battery-info-rate {
-        font-size: 1.1rem;
+        font-size: 1.15rem;
         font-weight: 600;
         color: var(--primary-mint);
     }
