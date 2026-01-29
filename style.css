@@ -1631,6 +1631,334 @@ footer {
 }
 
 /* ===================================
+   CALCULATE SECTION
+   =================================== */
+
+.section-calculate {
+    background: var(--elevated-dark);
+}
+
+.calculate-showcase {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 80px;
+}
+
+.calculate-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+/* Calculate mode tabs */
+.calculate-tabs {
+    display: flex;
+    gap: 12px;
+}
+
+.calculate-tab {
+    padding: 12px 24px;
+    border: 1.5px solid #3d3d3d;
+    background: rgba(26, 26, 26, 0.8);
+    color: #a1a1a6;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.calculate-tab:hover:not(.active) {
+    border-color: rgba(98, 210, 162, 0.4);
+    background: rgba(98, 210, 162, 0.03);
+    color: #e5e5e7;
+}
+
+.calculate-tab.active {
+    border-color: var(--primary-mint);
+    background: rgba(98, 210, 162, 0.06);
+    color: var(--primary-mint);
+    box-shadow: 0 0 20px rgba(98, 210, 162, 0.08);
+}
+
+.calculate-phone {
+    width: 260px;
+    flex-shrink: 0;
+}
+
+.calculate-phone .iphone-screen {
+    overflow: hidden;
+}
+
+.screen-screenshot {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: inherit;
+}
+
+.calculate-features {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    max-width: 400px;
+}
+
+.feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.feature-item .feature-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(98, 210, 162, 0.1);
+    border: 1px solid rgba(98, 210, 162, 0.3);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.feature-item .feature-icon svg {
+    width: 24px;
+    height: 24px;
+    color: var(--primary-mint);
+}
+
+.feature-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.feature-label {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #e5e5e7;
+}
+
+.feature-desc {
+    font-size: 0.95rem;
+    color: #a1a1a6;
+}
+
+/* ===================================
+   WINTER MODE SECTION
+   =================================== */
+
+.section-winter {
+    background: var(--primary-dark);
+}
+
+.winter-showcase {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+}
+
+/* Winter Controls Panel */
+.winter-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background: var(--card-dark);
+    border: 1px solid #2d2d2d;
+    border-radius: 16px;
+    padding: 20px;
+    max-width: 320px;
+    width: 100%;
+}
+
+.winter-control {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.control-label {
+    font-size: 0.8rem;
+    color: #a1a1a6;
+}
+
+/* Toggle Switch */
+.winter-toggle {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.toggle-switch {
+    width: 44px;
+    height: 26px;
+    background: #3d3d3d;
+    border-radius: 13px;
+    position: relative;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.toggle-switch.active {
+    background: var(--primary-mint);
+}
+
+.toggle-knob {
+    width: 22px;
+    height: 22px;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    transition: transform 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-switch.active .toggle-knob {
+    transform: translateX(18px);
+}
+
+/* Segmented Control */
+.segmented-control {
+    display: flex;
+    background: #2d2d2d;
+    border-radius: 8px;
+    padding: 2px;
+    gap: 2px;
+}
+
+.segment {
+    flex: 1;
+    padding: 8px 12px;
+    border: none;
+    background: transparent;
+    color: #a1a1a6;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.segment.active {
+    background: var(--primary-mint);
+    color: #000;
+}
+
+.segment:hover:not(.active) {
+    color: #e5e5e7;
+}
+
+/* Severity Control with two lines */
+.severity-control .segment {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1px;
+    padding: 8px 4px;
+}
+
+.segment-title {
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+
+.segment-detail {
+    font-size: 0.6rem;
+    opacity: 0.8;
+}
+
+/* Reduction Result */
+.winter-result {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 12px;
+    border-top: 1px solid #2d2d2d;
+}
+
+.reduction-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-mint);
+}
+
+/* Efficiency Table */
+.efficiency-table {
+    background: var(--card-dark);
+    border: 1px solid #2d2d2d;
+    border-radius: 12px;
+    overflow: hidden;
+    max-width: 320px;
+    width: 100%;
+}
+
+.table-header {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    padding: 12px 16px;
+    background: rgba(98, 210, 162, 0.1);
+    border-bottom: 1px solid #2d2d2d;
+}
+
+.table-header .table-cell {
+    font-weight: 600;
+    color: #e5e5e7;
+    font-size: 0.75rem;
+}
+
+.table-row {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    padding: 10px 16px;
+    border-bottom: 1px solid #2d2d2d;
+}
+
+.table-row:last-child {
+    border-bottom: none;
+}
+
+.table-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.table-cell strong {
+    color: #e5e5e7;
+    font-size: 0.85rem;
+}
+
+.temp-range {
+    font-size: 0.65rem;
+    color: #6b6b6b;
+}
+
+.value-hp {
+    color: var(--primary-mint);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.value-no-hp {
+    color: #ff9f43;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+/* Citation */
+.winter-citation {
+    font-size: 0.85rem;
+    color: #6b6b6b;
+    text-align: center;
+}
+
+/* ===================================
    COMPARE SECTION
    =================================== */
 
@@ -1638,60 +1966,54 @@ footer {
     background: var(--elevated-dark);
 }
 
-/* Visual car comparison element */
+.compare-showcase {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
+/* Compact car VS visual */
 .compare-visual {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 30px;
-    margin-bottom: 60px;
-    padding: 40px;
-    background: rgba(26, 26, 26, 0.5);
-    border-radius: 24px;
-    border: 1px solid #2d2d2d;
-}
-
-.compare-car {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
+    gap: 20px;
 }
 
 .compare-car svg {
-    width: 160px;
-    height: 70px;
+    width: 100px;
+    height: 45px;
     color: var(--primary-mint);
-    opacity: 0.9;
+    opacity: 0.8;
     transition: all 0.3s ease;
 }
 
 .compare-car:hover svg {
     opacity: 1;
-    filter: drop-shadow(0 0 20px rgba(98, 210, 162, 0.4));
+    filter: drop-shadow(0 0 15px rgba(98, 210, 162, 0.4));
 }
 
 .compare-vs {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
-    position: relative;
+    gap: 8px;
 }
 
 .vs-text {
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: 700;
     color: var(--primary-mint);
-    padding: 12px 20px;
+    padding: 8px 14px;
     border: 2px solid var(--primary-mint);
-    border-radius: 12px;
+    border-radius: 10px;
     background: rgba(98, 210, 162, 0.1);
 }
 
 .vs-line {
     width: 2px;
-    height: 40px;
+    height: 24px;
 }
 
 .vs-line-top {
@@ -1702,23 +2024,78 @@ footer {
     background: linear-gradient(to bottom, var(--primary-mint), transparent);
 }
 
-.compare-showcase {
+/* Phone wrapper with PDF badge */
+.compare-phone-wrapper {
     position: relative;
-}
-
-/* Compare showcase - phone centered, metrics below */
-.compare-showcase {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 50px;
 }
 
 .compare-phone {
     width: 260px;
 }
 
-/* 6 metric cards in 3x2 grid */
+.pdf-badge {
+    position: absolute;
+    top: 100px;
+    right: -160px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--card-dark);
+    border: 1px solid #2d2d2d;
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #e5e5e7;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.pdf-badge:hover {
+    border-color: var(--primary-mint);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(98, 210, 162, 0.15);
+}
+
+.pdf-badge svg {
+    width: 20px;
+    height: 20px;
+    color: var(--primary-mint);
+}
+
+.pdf-preview-hint {
+    font-size: 0.7rem;
+    color: var(--primary-mint);
+    background: rgba(98, 210, 162, 0.15);
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 4px;
+}
+
+/* Feature highlights */
+.compare-highlights {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.highlight-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #a1a1a6;
+    font-size: 0.95rem;
+}
+
+.highlight-item svg {
+    width: 20px;
+    height: 20px;
+    color: var(--primary-mint);
+}
+
+/* Legacy metric cards (kept for potential reuse) */
 .compare-metrics {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1969,7 +2346,7 @@ footer {
    =================================== */
 
 .section-watch {
-    background: var(--primary-dark);
+    background: var(--elevated-dark);
 }
 
 .watch-showcase {
@@ -2048,7 +2425,7 @@ footer {
    =================================== */
 
 .section-cta {
-    background: var(--elevated-dark);
+    background: var(--primary-dark);
     text-align: center;
 }
 
@@ -2334,38 +2711,89 @@ footer {
         height: 145px;
     }
 
+    /* Calculate */
+    .calculate-showcase {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .calculate-main {
+        gap: 20px;
+    }
+
+    .calculate-tab {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+    }
+
+    .calculate-phone {
+        width: 220px;
+    }
+
+    .calculate-features {
+        gap: 24px;
+        text-align: center;
+    }
+
+    .feature-item {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
+    /* Winter Mode */
+    .winter-controls {
+        padding: 24px;
+    }
+
+    .severity-control .segment {
+        padding: 10px 6px;
+    }
+
+    .segment-detail {
+        font-size: 0.65rem;
+    }
+
     /* Compare */
     .compare-visual {
-        gap: 20px;
-        padding: 30px 20px;
-        margin-bottom: 40px;
-    }
-
-    .compare-car svg {
-        width: 120px;
-        height: 55px;
-    }
-
-    .vs-text {
-        font-size: 1.2rem;
-        padding: 10px 16px;
-    }
-
-    .vs-line {
-        height: 30px;
-    }
-
-    .compare-phone {
-        width: 200px;
-    }
-
-    .compare-metrics {
-        grid-template-columns: repeat(2, 1fr);
         gap: 16px;
     }
 
-    .metric-card {
-        padding: 20px 16px;
+    .compare-car svg {
+        width: 80px;
+        height: 36px;
+    }
+
+    .vs-text {
+        font-size: 0.9rem;
+        padding: 6px 12px;
+    }
+
+    .vs-line {
+        height: 16px;
+    }
+
+    .compare-phone {
+        width: 220px;
+    }
+
+    .pdf-badge {
+        position: static;
+        margin-top: 20px;
+    }
+
+    .compare-phone-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .compare-highlights {
+        gap: 20px;
+    }
+
+    .highlight-item {
+        font-size: 0.9rem;
     }
 
     /* Battery */
@@ -2523,62 +2951,110 @@ footer {
         opacity: 0.7;
     }
 
+    /* Calculate */
+    .calculate-tab {
+        padding: 8px 14px;
+        font-size: 0.8rem;
+    }
+
+    .calculate-phone {
+        width: 180px;
+    }
+
+    .calculate-features {
+        gap: 20px;
+    }
+
+    .feature-item .feature-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .feature-item .feature-icon svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .feature-label {
+        font-size: 1rem;
+    }
+
+    .feature-desc {
+        font-size: 0.85rem;
+    }
+
+    /* Winter Mode */
+    .winter-controls {
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .segment {
+        padding: 8px 10px;
+        font-size: 0.8rem;
+    }
+
+    .severity-control .segment {
+        padding: 10px 4px;
+    }
+
+    .segment-detail {
+        font-size: 0.6rem;
+    }
+
+    .reduction-value {
+        font-size: 1.5rem;
+    }
+
+    .table-header,
+    .table-row {
+        padding: 12px 16px;
+    }
+
+    .table-header .table-cell {
+        font-size: 0.8rem;
+    }
+
+    .value-hp,
+    .value-no-hp {
+        font-size: 1rem;
+    }
+
     /* Compare */
     .compare-visual {
-        flex-direction: column;
-        gap: 24px;
-        padding: 24px 16px;
-        margin-bottom: 30px;
+        gap: 12px;
     }
 
     .compare-car svg {
-        width: 100px;
-        height: 45px;
-    }
-
-    .compare-vs {
-        flex-direction: row;
-        gap: 16px;
+        width: 70px;
+        height: 32px;
     }
 
     .vs-text {
-        font-size: 1rem;
-        padding: 8px 14px;
+        font-size: 0.8rem;
+        padding: 5px 10px;
     }
 
     .vs-line {
-        width: 50px;
-        height: 2px;
-    }
-
-    .vs-line-top {
-        background: linear-gradient(to right, transparent, var(--primary-mint));
-    }
-
-    .vs-line-bottom {
-        background: linear-gradient(to right, var(--primary-mint), transparent);
+        height: 12px;
     }
 
     .compare-phone {
         width: 180px;
     }
 
-    .compare-metrics {
-        grid-template-columns: repeat(2, 1fr);
+    .pdf-badge {
+        padding: 10px 14px;
+        font-size: 0.8rem;
+    }
+
+    .compare-highlights {
+        flex-direction: column;
         gap: 12px;
+        align-items: center;
     }
 
-    .metric-card {
-        padding: 16px 12px;
-        gap: 8px;
-    }
-
-    .metric-icon {
-        width: 28px;
-        height: 28px;
-    }
-
-    .metric-label {
+    .highlight-item {
         font-size: 0.85rem;
     }
 

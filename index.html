@@ -22,7 +22,7 @@
     <meta name="theme-color" content="#62D2A2">
     <link rel="canonical" href="https://evkit.app/">
 
-    <link rel="stylesheet" href="style.css?v=28">
+    <link rel="stylesheet" href="style.css?v=39">
 
     <!-- GSAP for premium scroll animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
@@ -107,14 +107,7 @@
                     <div class="device-iphone">
                         <div class="iphone-notch"></div>
                         <div class="iphone-screen">
-                            <div class="screen-placeholder">
-                                <span class="placeholder-icon">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
-                                    </svg>
-                                </span>
-                                <span class="placeholder-text">Dashboard</span>
-                            </div>
+                            <img src="assets/hero-vehicle.png" alt="EVKit showing Tesla Model Y with journey costs for Home, Work and Public charging" class="screen-screenshot">
                         </div>
                     </div>
                     <!-- Apple Watch Mockup -->
@@ -142,7 +135,165 @@
             </div>
         </section>
 
-        <!-- Section 2: Compare Cars -->
+        <!-- Section 2: Calculate -->
+        <section class="section section-calculate" id="calculate">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Know Before You Go</h2>
+                    <p class="section-subtitle">Enter a distance. See exactly what it costs.</p>
+                </div>
+
+                <div class="calculate-showcase">
+                    <div class="calculate-main">
+                        <!-- Mode tabs -->
+                        <div class="calculate-tabs">
+                            <button class="calculate-tab active" data-mode="manual">Manual Calc</button>
+                            <button class="calculate-tab" data-mode="vehicle">Selected Vehicle</button>
+                        </div>
+
+                        <div class="device-iphone calculate-phone">
+                            <div class="iphone-notch"></div>
+                            <div class="iphone-screen">
+                                <img src="assets/calculate-manual.png"
+                                     data-manual="assets/calculate-manual.png"
+                                     data-vehicle="assets/calculate-vehicle.png"
+                                     alt="EVKit journey cost calculator"
+                                     class="screen-screenshot calculate-screenshot">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="calculate-features">
+                        <div class="feature-item">
+                            <span class="feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+                                    <polyline points="9 22 9 12 15 12 15 22"/>
+                                </svg>
+                            </span>
+                            <div class="feature-text">
+                                <span class="feature-label">Home, Work & Public Rates</span>
+                                <span class="feature-desc">Use your actual electricity prices</span>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <path d="M12 6v6l4 2"/>
+                                </svg>
+                            </span>
+                            <div class="feature-text">
+                                <span class="feature-label">Cost Per Mile Breakdown</span>
+                                <span class="feature-desc">Know your real running costs</span>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                                </svg>
+                            </span>
+                            <div class="feature-text">
+                                <span class="feature-label">vs Petrol & Diesel</span>
+                                <span class="feature-desc">See your savings instantly</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Winter Mode -->
+        <section class="section section-winter" id="winter">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Real Costs. Even in the Cold.</h2>
+                    <p class="section-subtitle">Other calculators ignore winter. We don't.</p>
+                </div>
+
+                <div class="winter-showcase">
+                    <!-- Exploded UI Controls -->
+                    <div class="winter-controls">
+                        <div class="winter-control winter-toggle">
+                            <span class="control-label">Enable winter mode</span>
+                            <div class="toggle-switch active">
+                                <div class="toggle-knob"></div>
+                            </div>
+                        </div>
+
+                        <div class="winter-control winter-heatpump">
+                            <span class="control-label">Heat pump?</span>
+                            <div class="segmented-control">
+                                <button class="segment active">Yes</button>
+                                <button class="segment">No</button>
+                                <button class="segment">Not sure</button>
+                            </div>
+                        </div>
+
+                        <div class="winter-control winter-severity">
+                            <span class="control-label">Weather severity</span>
+                            <div class="segmented-control severity-control">
+                                <button class="segment">
+                                    <span class="segment-title">Mild</span>
+                                    <span class="segment-detail">0-5°C / 32-40°F</span>
+                                </button>
+                                <button class="segment active">
+                                    <span class="segment-title">Typical</span>
+                                    <span class="segment-detail">-7-0°C / 20-32°F</span>
+                                </button>
+                                <button class="segment">
+                                    <span class="segment-title">Severe</span>
+                                    <span class="segment-detail">&lt;-7°C / &lt;20°F</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="winter-control winter-result">
+                            <span class="control-label">Efficiency reduction</span>
+                            <span class="reduction-value">25%</span>
+                        </div>
+                    </div>
+
+                    <!-- Efficiency Table -->
+                    <div class="efficiency-table">
+                        <div class="table-header">
+                            <span class="table-cell">Weather</span>
+                            <span class="table-cell">Heat Pump</span>
+                            <span class="table-cell">No Heat Pump</span>
+                        </div>
+                        <div class="table-row">
+                            <span class="table-cell">
+                                <strong>Mild</strong>
+                                <span class="temp-range">0-5°C / 32-40°F</span>
+                            </span>
+                            <span class="table-cell value-hp">15%</span>
+                            <span class="table-cell value-no-hp">25%</span>
+                        </div>
+                        <div class="table-row">
+                            <span class="table-cell">
+                                <strong>Typical</strong>
+                                <span class="temp-range">-7-0°C / 20-32°F</span>
+                            </span>
+                            <span class="table-cell value-hp">25%</span>
+                            <span class="table-cell value-no-hp">35%</span>
+                        </div>
+                        <div class="table-row">
+                            <span class="table-cell">
+                                <strong>Severe</strong>
+                                <span class="temp-range">&lt;-7°C / &lt;20°F</span>
+                            </span>
+                            <span class="table-cell value-hp">35%</span>
+                            <span class="table-cell value-no-hp">45%</span>
+                        </div>
+                    </div>
+
+                    <p class="winter-citation">Based on research from DOE, AAA, and Recurrent Auto (30,000+ vehicles)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Compare Cars -->
         <section class="section section-compare" id="compare">
             <div class="container">
                 <div class="section-header">
@@ -150,108 +301,78 @@
                     <p class="section-subtitle">Pick two. See which wins.</p>
                 </div>
 
-                <!-- Visual comparison element -->
-                <div class="compare-visual">
-                    <div class="compare-car compare-car-left">
-                        <svg viewBox="0 0 120 50" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M10 35h100M20 35v-8c0-4 2-8 6-10l20-7c4-1 20-2 35 0l15 5c4 2 6 6 6 12v8"/>
-                            <circle cx="30" cy="35" r="8"/>
-                            <circle cx="90" cy="35" r="8"/>
-                            <circle cx="30" cy="35" r="4"/>
-                            <circle cx="90" cy="35" r="4"/>
-                            <path d="M45 15l3 10h20l2-10" opacity="0.5"/>
-                        </svg>
-                    </div>
-
-                    <div class="compare-vs">
-                        <div class="vs-line vs-line-top"></div>
-                        <span class="vs-text">VS</span>
-                        <div class="vs-line vs-line-bottom"></div>
-                    </div>
-
-                    <div class="compare-car compare-car-right">
-                        <svg viewBox="0 0 120 50" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M10 35h100M100 35v-8c0-4-2-8-6-10l-20-7c-4-1-20-2-35 0l-15 5c-4 2-6 6-6 12v8"/>
-                            <circle cx="30" cy="35" r="8"/>
-                            <circle cx="90" cy="35" r="8"/>
-                            <circle cx="30" cy="35" r="4"/>
-                            <circle cx="90" cy="35" r="4"/>
-                            <path d="M75 15l-3 10h-20l-2-10" opacity="0.5"/>
-                        </svg>
-                    </div>
-                </div>
-
                 <div class="compare-showcase">
-                    <!-- Centered phone -->
-                    <div class="device-iphone compare-phone">
-                        <div class="iphone-notch"></div>
-                        <div class="iphone-screen">
-                            <div class="screen-placeholder">
-                                <span class="placeholder-icon">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                        <path d="M3 3v18h18"/>
-                                        <path d="M18 8l-4 4-4-4-4 4"/>
-                                    </svg>
-                                </span>
-                                <span class="placeholder-text">Compare View</span>
+                    <!-- Visual comparison element (compact) -->
+                    <div class="compare-visual">
+                        <div class="compare-car compare-car-left">
+                            <svg viewBox="0 0 120 50" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M10 35h100M20 35v-8c0-4 2-8 6-10l20-7c4-1 20-2 35 0l15 5c4 2 6 6 6 12v8"/>
+                                <circle cx="30" cy="35" r="8"/>
+                                <circle cx="90" cy="35" r="8"/>
+                                <circle cx="30" cy="35" r="4"/>
+                                <circle cx="90" cy="35" r="4"/>
+                                <path d="M45 15l3 10h20l2-10" opacity="0.5"/>
+                            </svg>
+                        </div>
+
+                        <div class="compare-vs">
+                            <div class="vs-line vs-line-top"></div>
+                            <span class="vs-text">VS</span>
+                            <div class="vs-line vs-line-bottom"></div>
+                        </div>
+
+                        <div class="compare-car compare-car-right">
+                            <svg viewBox="0 0 120 50" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M10 35h100M100 35v-8c0-4-2-8-6-10l-20-7c-4-1-20-2-35 0l-15 5c-4 2-6 6-6 12v8"/>
+                                <circle cx="30" cy="35" r="8"/>
+                                <circle cx="90" cy="35" r="8"/>
+                                <circle cx="30" cy="35" r="4"/>
+                                <circle cx="90" cy="35" r="4"/>
+                                <path d="M75 15l-3 10h-20l-2-10" opacity="0.5"/>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Phone with real screenshot -->
+                    <div class="compare-phone-wrapper">
+                        <div class="device-iphone compare-phone">
+                            <div class="iphone-notch"></div>
+                            <div class="iphone-screen">
+                                <img src="assets/compare.png" alt="EVKit vehicle comparison showing Battery & Range details with winner indicators" class="screen-screenshot">
                             </div>
                         </div>
+
+                        <!-- PDF Export badge -->
+                        <a href="assets/ev-comparison-sample.pdf" target="_blank" rel="noopener" class="pdf-badge">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                                <polyline points="14 2 14 8 20 8"/>
+                                <path d="M12 18v-6M9 15l3 3 3-3"/>
+                            </svg>
+                            <span>Export as PDF</span>
+                            <span class="pdf-preview-hint">Preview</span>
+                        </a>
                     </div>
 
-                    <!-- 6 metric cards in 3x2 grid -->
-                    <div class="compare-metrics">
-                        <div class="metric-card">
-                            <span class="metric-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <circle cx="12" cy="12" r="10"/>
-                                    <path d="M12 6v6l4 2"/>
-                                </svg>
-                            </span>
-                            <span class="metric-label">Cost per Mile</span>
+                    <!-- Feature highlights -->
+                    <div class="compare-highlights">
+                        <div class="highlight-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <span>Battery health estimates</span>
                         </div>
-                        <div class="metric-card">
-                            <span class="metric-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <path d="M12 2v20M2 12h20"/>
-                                    <path d="M12 2l8 8-8 8-8-8z"/>
-                                </svg>
-                            </span>
-                            <span class="metric-label">Journey Cost</span>
+                        <div class="highlight-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <span>Winter cost comparison</span>
                         </div>
-                        <div class="metric-card">
-                            <span class="metric-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
-                                </svg>
-                            </span>
-                            <span class="metric-label">vs Petrol</span>
-                        </div>
-                        <div class="metric-card">
-                            <span class="metric-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
-                                </svg>
-                            </span>
-                            <span class="metric-label">Range</span>
-                        </div>
-                        <div class="metric-card">
-                            <span class="metric-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <rect x="2" y="7" width="18" height="12" rx="2"/>
-                                    <path d="M22 11v4"/>
-                                    <path d="M6 11v4M10 11v4M14 11v4"/>
-                                </svg>
-                            </span>
-                            <span class="metric-label">Battery Capacity</span>
-                        </div>
-                        <div class="metric-card">
-                            <span class="metric-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <path d="M3 3v18h18"/>
-                                    <path d="M7 16l4-4 4 2 5-6"/>
-                                </svg>
-                            </span>
-                            <span class="metric-label">5yr Degradation</span>
+                        <div class="highlight-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <span>Share as professional PDF</span>
                         </div>
                     </div>
                 </div>
@@ -304,37 +425,6 @@
         </section>
 
         <!-- Section 4: Savings -->
-        <section class="section section-savings" id="savings">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Know the Real Cost</h2>
-                    <p class="section-subtitle">Per mile. Per journey. Before you drive.</p>
-                </div>
-                <div class="savings-showcase">
-                    <div class="savings-comparison">
-                        <div class="savings-side savings-ev">
-                            <span class="savings-label">Electric</span>
-                            <span class="savings-amount">£0.05</span>
-                            <span class="savings-period">per mile</span>
-                        </div>
-                        <div class="savings-divider">
-                            <span class="savings-vs">vs</span>
-                        </div>
-                        <div class="savings-side savings-petrol">
-                            <span class="savings-label">Petrol</span>
-                            <span class="savings-amount">£0.16</span>
-                            <span class="savings-period">per mile</span>
-                        </div>
-                    </div>
-                    <div class="savings-result">
-                        <span class="savings-you-save">London → Edinburgh (400 mi)</span>
-                        <span class="savings-counter" data-target="44">£0</span>
-                        <span class="savings-yearly">cheaper by EV</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- Section 5: Apple Watch + Widgets -->
         <section class="section section-watch" id="watch">
             <div class="container">
@@ -532,30 +622,137 @@
                     }
                 });
 
+                // Calculate: phone and features
+                gsap.from('.calculate-tabs', {
+                    y: 20, duration: 0.5,
+                    scrollTrigger: { trigger: '.calculate-showcase', start: "top 85%", toggleActions: ta }
+                });
+                gsap.from('.calculate-phone', {
+                    y: 50, duration: 0.7, delay: 0.1,
+                    scrollTrigger: { trigger: '.calculate-showcase', start: "top 85%", toggleActions: ta }
+                });
+                gsap.from('.feature-item', {
+                    x: 30, duration: 0.5, stagger: 0.15,
+                    scrollTrigger: { trigger: '.calculate-features', start: "top 85%", toggleActions: ta }
+                });
+
+                // Calculate mode switcher
+                document.querySelectorAll('.calculate-tab').forEach(tab => {
+                    tab.addEventListener('click', function() {
+                        const mode = this.dataset.mode;
+                        const img = document.querySelector('.calculate-screenshot');
+
+                        // Update active tab
+                        document.querySelectorAll('.calculate-tab').forEach(t => t.classList.remove('active'));
+                        this.classList.add('active');
+
+                        // Switch screenshot
+                        img.src = img.dataset[mode];
+                    });
+                });
+
+                // Winter Mode: exploded UI assembly effect
+                gsap.from('.winter-toggle', {
+                    x: -80, y: -40, rotation: -5, duration: 0.8, ease: "back.out(1.2)",
+                    scrollTrigger: { trigger: '.winter-controls', start: "top 80%", toggleActions: ta }
+                });
+                gsap.from('.winter-heatpump', {
+                    x: 60, y: -30, rotation: 3, duration: 0.8, delay: 0.1, ease: "back.out(1.2)",
+                    scrollTrigger: { trigger: '.winter-controls', start: "top 80%", toggleActions: ta }
+                });
+                gsap.from('.winter-severity', {
+                    x: -50, y: 40, rotation: -3, duration: 0.8, delay: 0.2, ease: "back.out(1.2)",
+                    scrollTrigger: { trigger: '.winter-controls', start: "top 80%", toggleActions: ta }
+                });
+                gsap.from('.winter-result', {
+                    x: 70, y: 30, rotation: 5, duration: 0.8, delay: 0.3, ease: "back.out(1.2)",
+                    scrollTrigger: { trigger: '.winter-controls', start: "top 80%", toggleActions: ta }
+                });
+                gsap.from('.efficiency-table', {
+                    y: 40, duration: 0.6, delay: 0.5,
+                    scrollTrigger: { trigger: '.efficiency-table', start: "top 85%", toggleActions: ta }
+                });
+
                 // Compare: visual cars slide in from sides
                 gsap.from('.compare-car-left', {
-                    x: -50, duration: 0.6,
+                    x: -30, duration: 0.5,
                     scrollTrigger: { trigger: '.compare-visual', start: "top 85%", toggleActions: ta }
                 });
                 gsap.from('.compare-car-right', {
-                    x: 50, duration: 0.6,
+                    x: 30, duration: 0.5,
                     scrollTrigger: { trigger: '.compare-visual', start: "top 85%", toggleActions: ta }
                 });
                 gsap.from('.compare-vs', {
-                    scale: 0.8, duration: 0.4, delay: 0.3,
+                    scale: 0.8, duration: 0.3, delay: 0.2,
                     scrollTrigger: { trigger: '.compare-visual', start: "top 85%", toggleActions: ta }
                 });
 
-                // Compare: metric cards stagger in
-                gsap.from('.metric-card', {
-                    y: 30, duration: 0.5, stagger: 0.08,
-                    scrollTrigger: { trigger: '.compare-metrics', start: "top 85%", toggleActions: ta }
+                // Compare: phone and PDF badge
+                gsap.from('.compare-phone', {
+                    y: 40, duration: 0.6,
+                    scrollTrigger: { trigger: '.compare-phone-wrapper', start: "top 85%", toggleActions: ta }
+                });
+                gsap.from('.pdf-badge', {
+                    x: 30, duration: 0.5, delay: 0.3,
+                    scrollTrigger: { trigger: '.compare-phone-wrapper', start: "top 85%", toggleActions: ta }
+                });
+                gsap.from('.highlight-item', {
+                    y: 20, duration: 0.4, stagger: 0.1,
+                    scrollTrigger: { trigger: '.compare-highlights', start: "top 90%", toggleActions: ta }
                 });
 
                 // Battery tabs
                 gsap.from('.battery-tab', {
                     y: 20, duration: 0.5, stagger: 0.1,
                     scrollTrigger: { trigger: '.battery-tabs', start: "top 85%", toggleActions: ta }
+                });
+
+                // Winter Mode interactive controls
+                const winterData = {
+                    // [heatPump][severity] = percentage
+                    'yes': { 'mild': 15, 'typical': 25, 'severe': 35 },
+                    'no': { 'mild': 25, 'typical': 35, 'severe': 45 },
+                    'notsure': { 'mild': 20, 'typical': 30, 'severe': 40 }
+                };
+
+                let winterState = {
+                    enabled: true,
+                    heatPump: 'yes',
+                    severity: 'typical'
+                };
+
+                function updateWinterReduction() {
+                    const value = winterState.enabled
+                        ? winterData[winterState.heatPump][winterState.severity]
+                        : 0;
+                    document.querySelector('.reduction-value').textContent = value + '%';
+                }
+
+                // Toggle switch
+                document.querySelector('.toggle-switch').addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    winterState.enabled = this.classList.contains('active');
+                    updateWinterReduction();
+                });
+
+                // Heat pump selector
+                document.querySelectorAll('.winter-heatpump .segment').forEach((seg, idx) => {
+                    seg.addEventListener('click', function() {
+                        document.querySelectorAll('.winter-heatpump .segment').forEach(s => s.classList.remove('active'));
+                        this.classList.add('active');
+                        winterState.heatPump = ['yes', 'no', 'notsure'][idx];
+                        updateWinterReduction();
+                    });
+                });
+
+                // Weather severity selector
+                document.querySelectorAll('.winter-severity .segment').forEach((seg, idx) => {
+                    seg.addEventListener('click', function() {
+                        document.querySelectorAll('.winter-severity .segment').forEach(s => s.classList.remove('active'));
+                        this.classList.add('active');
+                        winterState.severity = ['mild', 'typical', 'severe'][idx];
+                        updateWinterReduction();
+                    });
                 });
 
                 // Battery chemistry switcher
