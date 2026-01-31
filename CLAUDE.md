@@ -7,7 +7,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 EVKit is a marketing website for an iOS EV (Electric Vehicle) cost calculator app launching March 2026. The site is a static HTML/CSS/JavaScript website designed with premium aesthetics, accessibility, and mobile-first responsiveness.
 
 **Key Details:**
-- Pure HTML/CSS/JS (no build process, no dependencies beyond CDN for html2canvas)
+- Pure HTML/CSS/JS (no build process, dependencies: GSAP/ScrollTrigger via CDN, html2canvas)
 - Hosted as static site (GitHub Pages compatible)
 - Domain: evkit.app
 - Price: £2.99 one-time purchase (no subscriptions)
@@ -17,17 +17,22 @@ EVKit is a marketing website for an iOS EV (Electric Vehicle) cost calculator ap
 
 ```
 evkit_html/
-├── index.html              # Main landing page with hero, features, carousel
+├── index.html              # Main landing page with all sections
 ├── privacy.html            # Privacy policy page
 ├── terms.html             # Terms of service page
-├── style.css              # Single stylesheet for all pages (v=3 cache busting)
+├── style.css              # Single stylesheet for all pages (v=39+ cache busting)
 ├── screenshot-generator.html  # Tool to generate placeholder screenshots
 ├── CNAME                  # Domain configuration for GitHub Pages
 └── assets/
     ├── README.md          # Screenshot specifications and guidelines
-    ├── evkit_1_dark.png   # Screenshot placeholders (6 dark + 6 light)
+    ├── hero-vehicle.png   # Hero section screenshot (Tesla Model Y)
+    ├── calculate-manual.png    # Calculate section - manual mode
+    ├── calculate-vehicle.png   # Calculate section - selected vehicle mode
+    ├── compare.png        # Compare section screenshot
+    ├── ev-comparison-sample.pdf  # Sample PDF export for Compare section
+    ├── evkit_1_dark.png   # Battery Intelligence screenshots (dark + light)
     ├── evkit_1_light.png
-    └── ...                # evkit_2-6 in dark/light variants
+    └── ...                # Additional carousel screenshots
 ```
 
 ## Design System
@@ -110,7 +115,90 @@ evkit_html/
 - `notify` → "Just notify me when the app goes live"
 - `both` → "Both - beta test AND notify at launch"
 
-### 3. CSS Section Organization
+### 3. Calculate Section (Know Before You Go)
+
+**Purpose**: Shows journey cost calculator with mode switching between manual input and selected vehicle.
+
+**HTML Pattern**:
+```html
+<div class="calculate-tabs">
+    <button class="calculate-tab active" data-mode="manual">Manual Calc</button>
+    <button class="calculate-tab" data-mode="vehicle">Selected Vehicle</button>
+</div>
+<div class="device-iphone calculate-phone">
+    <img src="assets/calculate-manual.png"
+         data-manual="assets/calculate-manual.png"
+         data-vehicle="assets/calculate-vehicle.png"
+         class="screen-screenshot calculate-screenshot">
+</div>
+```
+
+**JavaScript**: Click handler switches `img.src` based on `data-mode` attribute and updates active tab styling.
+
+**CSS Classes**:
+- `.calculate-tabs` - Flex container for tab buttons (centered)
+- `.calculate-tab` - Tab button with border styling
+- `.calculate-tab.active` - Mint border and subtle glow
+- `.calculate-showcase` - Main container (flex, centers phone + features)
+- `.calculate-features` - Feature list beside/below phone
+
+### 4. Winter Mode Section (Real Costs)
+
+**Purpose**: Interactive CSS-only recreation of the app's winter mode controls with "exploded UI" animation effect.
+
+**HTML Pattern**:
+```html
+<div class="winter-controls">
+    <div class="winter-control winter-toggle">
+        <span class="control-label">Enable winter mode</span>
+        <div class="toggle-switch active"><div class="toggle-knob"></div></div>
+    </div>
+    <div class="winter-control winter-heatpump">
+        <span class="control-label">Heat pump</span>
+        <div class="toggle-switch"><div class="toggle-knob"></div></div>
+    </div>
+    <div class="winter-control winter-severity">
+        <span class="control-label">Severity</span>
+        <div class="segmented-control">
+            <button class="segment">Mild</button>
+            <button class="segment active">Moderate</button>
+            <button class="segment">Severe</button>
+        </div>
+    </div>
+    <div class="winter-control winter-result">
+        <span class="result-value">+22%</span>
+        <span class="result-label">efficiency loss</span>
+    </div>
+</div>
+```
+
+**GSAP Animation**: Controls fly in from different directions with rotation (`back.out` easing) creating an "exploded UI assembly" effect on scroll.
+
+**Interactive JavaScript**: Toggle switches and segmented controls are clickable, updating the efficiency percentage dynamically.
+
+**Efficiency Table**: Shows real-world efficiency data with/without heat pump across severity levels.
+
+### 5. Compare Section (Head to Head)
+
+**Purpose**: Shows vehicle comparison feature with PDF export capability.
+
+**HTML Pattern**:
+```html
+<div class="compare-visual">
+    <a href="assets/ev-comparison-sample.pdf" target="_blank" class="pdf-badge">
+        <svg>...</svg>
+        <span>Export as PDF</span>
+        <span class="pdf-preview-hint">Preview</span>
+    </a>
+    <div class="device-iphone compare-phone">
+        <img src="assets/compare.png" class="screen-screenshot">
+    </div>
+</div>
+```
+
+**PDF Badge**: Positioned overlay that links to sample PDF export. Styled with mint border, hover glow effect.
+
+### 6. CSS Section Organization
 
 The `style.css` file is organized into clearly marked sections:
 1. **Reset & Base Styles** - CSS variables, resets, body defaults
@@ -119,13 +207,17 @@ The `style.css` file is organized into clearly marked sections:
 4. **Motion Preferences** - `prefers-reduced-motion` media query
 5. **Navigation Header** - Sticky nav with logo and links
 6. **Trust Bar** - Floating trust badges with staggered animation
-7. **Hero Section** - Two-column layout with carousel
-8. **Features Section** - Grid of feature cards with hover effects
-9. **Privacy Page** - Legal content styling
-10. **Footer** - Site footer
-11. **Modal Styles** - Registration form modal
-12. **Animations** - `@keyframes` definitions (float, shimmer)
-13. **Responsive Design** - Media queries for 768px and 480px breakpoints
+7. **Hero Section** - Two-column layout with iPhone mockup
+8. **Calculate Section** - Mode tabs, phone mockup, feature list
+9. **Winter Mode Section** - Interactive controls, efficiency table
+10. **Compare Section** - PDF badge overlay, phone mockup
+11. **Battery Intelligence Section** - Tab switching, degradation/health screenshots
+12. **Watch Section** - Apple Watch mockup placeholder
+13. **CTA Section** - Final call-to-action
+14. **Footer** - Site footer
+15. **Modal Styles** - Registration form modal
+16. **Animations** - `@keyframes` definitions (float, shimmer)
+17. **Responsive Design** - Media queries for 968px, 768px, 640px, 480px breakpoints
 
 ## Critical Implementation Details
 
@@ -138,11 +230,38 @@ The `style.css` file is organized into clearly marked sections:
 
 **Why this matters**: The border-radius must match the PNG's baked corners proportionally, otherwise hover shadows reveal transparent corners.
 
+### CSS Device Mockups
+The site uses CSS-only device mockups for iPhones and Apple Watch:
+
+**iPhone Pattern**:
+```html
+<div class="device-iphone">
+    <div class="iphone-notch"></div>
+    <div class="iphone-screen">
+        <img src="assets/screenshot.png" class="screen-screenshot">
+    </div>
+</div>
+```
+
+**Key CSS Classes**:
+- `.device-iphone` - Main container with rounded corners, border, aspect ratio
+- `.iphone-notch` - Dynamic Island notch at top
+- `.iphone-screen` - Screen area containing screenshot
+- `.screen-screenshot` - Full-width screenshot image
+
+**Variants**: `.hero-phone`, `.calculate-phone`, `.compare-phone`, `.battery-phone` for section-specific sizing.
+
 ### Alternating Section Backgrounds
-Pattern learned from flipunit.app analysis:
-- Hero section: `--primary-dark` (#0a0a0a)
-- Features section: `--elevated-dark` (#141414)
-- Footer: `--primary-dark` (#0a0a0a)
+Pattern learned from flipunit.app analysis. Sections alternate between `--primary-dark` (#0a0a0a) and `--elevated-dark` (#141414):
+
+1. **Hero** - `--primary-dark`
+2. **Calculate** (Know Before You Go) - `--elevated-dark`
+3. **Winter Mode** (Real Costs) - `--primary-dark`
+4. **Compare** (Head to Head) - `--elevated-dark`
+5. **Battery Intelligence** - `--primary-dark`
+6. **Watch** - `--elevated-dark`
+7. **CTA** - `--primary-dark`
+8. **Footer** - `--elevated-dark`
 
 This creates subtle visual separation between sections (only 10-unit hex difference).
 
@@ -161,7 +280,30 @@ Navigation arrows remain visible on mobile (initially were hidden). CSS previous
 - Gradient applied to `<span class="highlight">` within primary line
 
 ### Cache Busting
-All pages load `style.css?v=3` - increment version parameter when updating styles to bust browser/CDN cache.
+All pages load `style.css?v=39` (or higher) - increment version parameter when updating styles to bust browser/CDN cache.
+
+### GSAP ScrollTrigger Animations
+The site uses GSAP with ScrollTrigger plugin for scroll-based animations:
+
+```html
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+```
+
+**Animation Patterns**:
+- **Fade up**: Elements animate from `y: 30` to final position
+- **Slide in**: Elements slide from `x: -30` or `x: 30`
+- **Exploded UI**: Winter Mode controls fly in from different directions with rotation
+- **Stagger**: Multiple elements animate sequentially with `stagger: 0.1` or similar
+
+**ScrollTrigger Config**:
+```javascript
+scrollTrigger: {
+    trigger: '.section-class',
+    start: "top 85%",
+    toggleActions: "play none none reverse"
+}
+```
 
 ## Common Editing Scenarios
 
@@ -247,11 +389,14 @@ Both pages emphasize:
 ## Testing Checklist
 
 When making changes, verify:
-1. **Carousel**: All 6 screenshots load correctly in both themes
-2. **Navigation**: Arrows work on mobile, keyboard arrows work, touch swipe works
-3. **Theme Toggle**: Dark/Light buttons switch all 6 screenshots
-4. **Modal**: Opens, closes (X, Escape, outside click), focus trap works
-5. **Form**: Validates preference selection, generates correct mailto link
-6. **Responsive**: Test at 768px and 480px breakpoints
-7. **Accessibility**: Tab navigation works, focus states visible, skip link appears on focus
-8. **Animation**: Hover effects work on feature cards, trust badges float
+1. **Hero**: iPhone mockup displays correctly with real screenshot
+2. **Calculate Section**: Mode tabs switch between Manual Calc / Selected Vehicle screenshots
+3. **Winter Mode**: Toggle switches and segmented controls are interactive, efficiency % updates
+4. **Compare Section**: PDF badge links to sample PDF, phone mockup displays correctly
+5. **Battery Intelligence**: Tab switching works for degradation/health screenshots
+6. **GSAP Animations**: Scroll-triggered animations fire correctly (exploded UI effect, slide-ins)
+7. **Modal**: Opens, closes (X, Escape, outside click), focus trap works
+8. **Form**: Validates preference selection, generates correct mailto link
+9. **Responsive**: Test at 968px, 768px, 640px, and 480px breakpoints
+10. **Accessibility**: Tab navigation works, focus states visible, skip link appears on focus
+11. **Mobile Alignment**: All sections centered properly on mobile devices
