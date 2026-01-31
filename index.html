@@ -22,7 +22,7 @@
     <meta name="theme-color" content="#62D2A2">
     <link rel="canonical" href="https://evkit.app/">
 
-    <link rel="stylesheet" href="style.css?v=39">
+    <link rel="stylesheet" href="style.css?v=42">
 
     <!-- GSAP for premium scroll animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
@@ -213,6 +213,7 @@
                 </div>
 
                 <div class="winter-showcase">
+                    <p class="interactive-hint">Try adjusting the controls below to see efficiency reduction</p>
                     <!-- Exploded UI Controls -->
                     <div class="winter-controls">
                         <div class="winter-control winter-toggle">
@@ -393,15 +394,20 @@
                             <span class="battery-tab-label">Lithium Iron Phosphate</span>
                             <span class="battery-tab-rate">93% after 5 years</span>
                         </div>
+                        <div class="battery-tab" data-chemistry="lmf" data-label="Lithium Manganese Iron Phosphate" data-rate="90% after 5 years" role="button" tabindex="0" aria-pressed="false">
+                            <span class="battery-tab-name">LMFP</span>
+                            <span class="battery-tab-label">Lithium Manganese Iron Phosphate</span>
+                            <span class="battery-tab-rate">90% after 5 years</span>
+                        </div>
                         <div class="battery-tab" data-chemistry="nmc" data-label="Nickel Manganese Cobalt" data-rate="88% after 5 years" role="button" tabindex="0" aria-pressed="false">
                             <span class="battery-tab-name">NMC</span>
                             <span class="battery-tab-label">Nickel Manganese Cobalt</span>
                             <span class="battery-tab-rate">88% after 5 years</span>
                         </div>
-                        <div class="battery-tab" data-chemistry="nca" data-label="Nickel Cobalt Aluminum" data-rate="86.4% after 5 years" role="button" tabindex="0" aria-pressed="false">
+                        <div class="battery-tab" data-chemistry="nca" data-label="Nickel Cobalt Aluminum" data-rate="83% after 5 years" role="button" tabindex="0" aria-pressed="false">
                             <span class="battery-tab-name">NCA</span>
                             <span class="battery-tab-label">Nickel Cobalt Aluminum</span>
-                            <span class="battery-tab-rate">86.4% after 5 years</span>
+                            <span class="battery-tab-rate">83% after 5 years</span>
                         </div>
                     </div>
                     <div class="battery-info-mobile">
@@ -414,6 +420,7 @@
                             <img class="battery-screenshot" id="battery-screenshot"
                                  src="assets/battery/lfp.png"
                                  data-lfp="assets/battery/lfp.png"
+                                 data-lmf="assets/battery/lmf.png"
                                  data-nmc="assets/battery/nmc.png"
                                  data-nca="assets/battery/nca.png"
                                  alt="Battery degradation settings for LFP chemistry">

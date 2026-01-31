@@ -1959,6 +1959,38 @@ footer {
     text-align: center;
 }
 
+/* Interactive Hint */
+.interactive-hint {
+    text-align: center;
+    color: var(--primary-mint);
+    font-size: 0.9rem;
+    font-weight: 500;
+    opacity: 0.85;
+    margin-bottom: -40px;
+}
+
+/* Pulse animation for interactive controls */
+@keyframes subtle-pulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(98, 210, 162, 0);
+    }
+    50% {
+        box-shadow: 0 0 12px 2px rgba(98, 210, 162, 0.3);
+    }
+}
+
+.winter-controls .toggle-switch,
+.winter-controls .segmented-control {
+    animation: subtle-pulse 2.5s ease-in-out infinite;
+}
+
+/* Hover enhancement for desktop */
+.winter-controls .toggle-switch:hover,
+.winter-controls .segment:hover {
+    transform: scale(1.02);
+    transition: transform 0.2s ease;
+}
+
 /* ===================================
    COMPARE SECTION
    =================================== */
@@ -2160,7 +2192,7 @@ footer {
     display: flex;
     gap: 16px;
     width: 100%;
-    max-width: 720px;
+    max-width: 880px;
     align-items: stretch;
 }
 
@@ -2176,6 +2208,7 @@ footer {
     transition: all 0.3s ease;
     cursor: pointer;
     text-align: left;
+    justify-content: space-between;
 }
 
 .battery-tab:hover {
