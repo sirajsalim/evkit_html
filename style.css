@@ -134,6 +134,19 @@ header {
     color: #62D2A2;
     cursor: pointer;
     text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.nav-logo-icon {
+    width: 32px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.nav-logo-img {
+    height: 67px;
+    width: auto;
 }
 
 .nav-links {
@@ -923,6 +936,19 @@ footer {
     font-weight: 700;
     color: #62D2A2;
     margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.footer-logo-icon {
+    width: 32px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.footer-logo-img {
+    height: 50px;
+    width: auto;
 }
 
 .footer-tagline {
