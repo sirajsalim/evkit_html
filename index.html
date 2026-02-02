@@ -23,7 +23,7 @@
     <link rel="icon" type="image/svg+xml" href="assets/evkit-icon.svg">
     <link rel="canonical" href="https://evkit.app/">
 
-    <link rel="stylesheet" href="style.css?v=42">
+    <link rel="stylesheet" href="style.css?v=48">
 
     <!-- GSAP for premium scroll animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
@@ -434,13 +434,41 @@
             </div>
         </section>
 
-        <!-- Section 4: Savings -->
-        <!-- Section 5: Apple Watch + Widgets -->
+        <!-- Section 5: Widgets -->
+        <section class="section section-widgets" id="widgets">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">At a Glance</h2>
+                    <p class="section-subtitle">Beautiful widgets for any vehicle. Tap to dive deeper.</p>
+                </div>
+
+                <div class="widgets-showcase">
+                    <div class="widget-large">
+                        <img src="assets/widget-large.png" alt="Large widget showing Tesla Model Y stats with charging costs and battery info">
+                    </div>
+                    <div class="widgets-right">
+                        <div class="widget-medium">
+                            <img src="assets/widget-medium.png" alt="Medium widget showing Ford Dina's Fiesta charging costs">
+                        </div>
+                        <div class="widgets-small-row">
+                            <div class="widget-small">
+                                <img src="assets/widget-small-1.png" alt="Small widget showing Kia journey cost">
+                            </div>
+                            <div class="widget-small">
+                                <img src="assets/widget-small-2.png" alt="Small widget showing Tesla with winter mode">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: Apple Watch -->
         <section class="section section-watch" id="watch">
             <div class="container">
                 <div class="section-header">
                     <h2 class="section-title">On Your Wrist</h2>
-                    <p class="section-subtitle">And your home screen.</p>
+                    <p class="section-subtitle">Quick glances. Instant answers.</p>
                 </div>
                 <div class="watch-showcase">
                     <div class="watch-features">
@@ -453,15 +481,6 @@
                         </div>
                         <div class="watch-feature">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <rect x="3" y="3" width="7" height="7" rx="1"/>
-                                <rect x="14" y="3" width="7" height="7" rx="1"/>
-                                <rect x="3" y="14" width="7" height="7" rx="1"/>
-                                <rect x="14" y="14" width="7" height="7" rx="1"/>
-                            </svg>
-                            <span>Widgets</span>
-                        </div>
-                        <div class="watch-feature">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                                 <rect x="5" y="2" width="14" height="20" rx="2"/>
                                 <path d="M12 18h.01"/>
                             </svg>
@@ -469,7 +488,7 @@
                         </div>
                     </div>
                     <div class="watch-devices">
-                        <div class="device-watch watch-large">
+                        <div class="device-watch">
                             <div class="watch-crown"></div>
                             <div class="watch-button"></div>
                             <div class="watch-screen">
@@ -479,14 +498,33 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="device-iphone watch-phone">
-                            <div class="iphone-notch"></div>
-                            <div class="iphone-screen">
-                                <div class="screen-placeholder">
-                                    <div class="widget-preview">
-                                        <span class="widget-title">EVKit Widget</span>
-                                        <span class="widget-value">£0.12/mi</span>
-                                    </div>
+                        <div class="device-watch">
+                            <div class="watch-crown"></div>
+                            <div class="watch-button"></div>
+                            <div class="watch-screen">
+                                <div class="screen-placeholder screen-placeholder-watch">
+                                    <span class="placeholder-text-small">Cost per Mile</span>
+                                    <span class="placeholder-value">£0.04</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="device-watch">
+                            <div class="watch-crown"></div>
+                            <div class="watch-button"></div>
+                            <div class="watch-screen">
+                                <div class="screen-placeholder screen-placeholder-watch">
+                                    <span class="placeholder-text-small">Battery Health</span>
+                                    <span class="placeholder-value">94%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="device-watch">
+                            <div class="watch-crown"></div>
+                            <div class="watch-button"></div>
+                            <div class="watch-screen">
+                                <div class="screen-placeholder screen-placeholder-watch">
+                                    <span class="placeholder-text-small">Range Today</span>
+                                    <span class="placeholder-value">241 mi</span>
                                 </div>
                             </div>
                         </div>
@@ -495,7 +533,59 @@
             </div>
         </section>
 
-        <!-- Section 6: CTA / Get Started -->
+        <!-- Section 6: iCloud Sync -->
+        <section class="section section-sync" id="sync">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Seamlessly Synced</h2>
+                    <p class="section-subtitle">Powered by iCloud. Private by design.</p>
+                </div>
+
+                <div class="sync-showcase">
+                    <div class="sync-cards">
+                        <div class="sync-card">
+                            <div class="sync-icon">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/>
+                                </svg>
+                            </div>
+                            <h3 class="sync-card-title">Vehicles</h3>
+                            <p class="sync-card-desc">Your saved vehicles sync automatically across all your devices</p>
+                        </div>
+                        <div class="sync-card">
+                            <div class="sync-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z"/>
+                                    <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"/>
+                                </svg>
+                            </div>
+                            <h3 class="sync-card-title">Settings</h3>
+                            <p class="sync-card-desc">Charging rates, preferences, and customizations follow you everywhere</p>
+                        </div>
+                        <div class="sync-card">
+                            <div class="sync-icon">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 2L4.5 6.5v3L12 14l7.5-4.5v-3L12 2zm0 2.311l5.176 3.106L12 10.523 6.824 7.417 12 4.311zM4.5 11.5v3L12 19l7.5-4.5v-3L12 16l-7.5-4.5zm0 5v3L12 24l7.5-4.5v-3L12 21l-7.5-4.5z" opacity="0.9"/>
+                                </svg>
+                            </div>
+                            <h3 class="sync-card-title">Compare</h3>
+                            <p class="sync-card-desc">Pick up your vehicle comparisons right where you left off</p>
+                        </div>
+                    </div>
+
+                    <div class="sync-privacy">
+                        <svg class="privacy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"/>
+                            <path d="M17 4a2 2 0 0 0 2 2a2 2 0 0 0 -2 2a2 2 0 0 0 -2 -2a2 2 0 0 0 2 -2"/>
+                            <path d="M19 11h2m-1 -1v2"/>
+                        </svg>
+                        <span class="privacy-text">Stored securely in your personal iCloud · We never see your data</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 7: CTA / Get Started -->
         <section class="section section-cta" id="get-started">
             <div class="container">
                 <div class="cta-content">

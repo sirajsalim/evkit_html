@@ -8,7 +8,13 @@
       "Bash(git commit:*)",
       "Bash(git push:*)",
       "Bash(git mv:*)",
-      "Bash(sips:*)"
+      "Bash(sips:*)",
+      "Bash(python3:*)",
+      "Bash(pip3 install:*)",
+      "Bash(for f in /Users/siraj/Projects/EVKit/evkit_html/assets/widget-*.png)",
+      "Bash(do echo \"$f:\")",
+      "Bash(done)",
+      "Bash(for f in widget-*.png)"
     ]
   }
 }
