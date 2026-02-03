@@ -3,27 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EVKit - The Complete EV Cost Calculator</title>
-    <meta name="description" content="Calculate real-world EV costs, compare vehicles, predict battery degradation. Coming March 2026. Just £2.99, no subscriptions.">
+    <title>EVKit - The Complete EV Journey Cost Calculator</title>
+    <meta name="description" content="Calculate real-world EV journey costs with winter mode, battery degradation, and vehicle comparison. Coming March 2026. Just £2.99, no subscriptions.">
+    <meta name="keywords" content="EV cost calculator, electric car running costs, EV journey cost, electric vehicle cost per mile, EV battery degradation, winter EV range, compare electric vehicles UK">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://evkit.app/">
-    <meta property="og:title" content="EVKit - The Complete EV Cost Calculator">
-    <meta property="og:description" content="Calculate real-world EV costs, compare vehicles, predict battery degradation. Coming March 2026. Just £2.99, no subscriptions.">
+    <meta property="og:title" content="EVKit - The Complete EV Journey Cost Calculator">
+    <meta property="og:description" content="Calculate real-world EV journey costs with winter mode, battery degradation, and vehicle comparison. Coming March 2026. Just £2.99, no subscriptions.">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:url" content="https://evkit.app/">
-    <meta name="twitter:title" content="EVKit - The Complete EV Cost Calculator">
-    <meta name="twitter:description" content="Calculate real-world EV costs, compare vehicles, predict battery degradation. Coming March 2026. Just £2.99, no subscriptions.">
+    <meta name="twitter:title" content="EVKit - The Complete EV Journey Cost Calculator">
+    <meta name="twitter:description" content="Calculate real-world EV journey costs with winter mode, battery degradation, and vehicle comparison. Coming March 2026. Just £2.99, no subscriptions.">
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "EVKit",
+        "description": "Calculate real-world EV journey costs with winter mode, battery degradation, and vehicle comparison",
+        "operatingSystem": "iOS, watchOS",
+        "applicationCategory": "UtilitiesApplication",
+        "offers": {
+            "@type": "Offer",
+            "price": "2.99",
+            "priceCurrency": "GBP"
+        }
+    }
+    </script>
+
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "How do I calculate EV running costs?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "EVKit calculates your real running costs by combining your vehicle's efficiency (miles per kWh), your actual electricity rates for home, work, and public charging, and factors in seasonal efficiency loss from cold weather. Simply enter the distance you want to travel, and EVKit shows you exactly what it will cost at each charging location."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How much does it cost to charge an electric car at home?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Home charging costs depend on your electricity tariff and region. Many EV owners take advantage of off-peak tariffs to charge overnight at lower rates. EVKit lets you enter your exact home, work, and public charging rates — in your local currency — so you always know your true costs, not national averages."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How does cold weather affect EV range?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Cold weather can reduce EV range by 15-45% depending on temperature and whether your vehicle has a heat pump. EVKit's winter mode calculates this automatically based on research from the DOE, AAA, and Recurrent Auto (studying 30,000+ vehicles). Select your conditions — mild, typical, or severe winter — and EVKit adjusts your cost calculations accordingly."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How much does EV battery degrade each year?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Battery degradation varies by chemistry. LFP batteries retain about 93% capacity after 5 years, while NMC and NCA batteries retain around 87-88%. EVKit models degradation year-by-year based on real-world studies, showing you projected range and costs over your ownership period. All research sources are linked directly within the app if you want to dive deeper."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I compare different electric vehicles?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes! EVKit lets you compare two vehicles side-by-side, showing differences in journey costs, battery health projections, winter performance, and more. Export unlimited comparisons as professional PDFs to share with family, friends, or your local EV community."
+                }
+            }
+        ]
+    }
+    </script>
 
     <!-- Additional Meta -->
     <meta name="theme-color" content="#62D2A2">
     <link rel="icon" type="image/svg+xml" href="assets/evkit-icon.svg">
     <link rel="canonical" href="https://evkit.app/">
 
-    <link rel="stylesheet" href="style.css?v=48">
+    <link rel="stylesheet" href="style.css?v=51">
 
     <!-- GSAP for premium scroll animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
@@ -92,15 +160,17 @@
                 <div class="hero-content">
                     <div class="hero-badges">
                         <span class="hero-badge">iPhone</span>
-                        <span class="hero-badge-separator">+</span>
+                        <span class="hero-badge-separator">·</span>
                         <span class="hero-badge">Apple Watch</span>
+                        <span class="hero-badge-separator">·</span>
+                        <span class="hero-badge hero-badge-winter">❄️ Winter-aware</span>
                     </div>
                     <h1 class="hero-headline">
-                        <span class="headline-primary">The <span class="highlight">EV</span> Cost Calculator</span>
-                        <span class="headline-secondary">That Gets It Right</span>
+                        <span class="headline-primary">Finally Know What</span>
+                        <span class="headline-secondary">Your <span class="highlight">EV</span> Journey Actually Costs</span>
                     </h1>
                     <p class="hero-subheadline">
-                        Real calculations. Real data. Not guesses.
+                        Winter range loss. Battery degradation. Your actual electricity rates. All factored in.
                     </p>
                     <p class="hero-tagline">Coming March 2026 · £2.99 · No subscriptions</p>
                     <button class="cta-button" id="registerButton">Get Early Access</button>
@@ -110,7 +180,7 @@
                     <div class="device-iphone">
                         <div class="iphone-notch"></div>
                         <div class="iphone-screen">
-                            <img src="assets/hero-vehicle.png" alt="EVKit showing Tesla Model Y with journey costs for Home, Work and Public charging" class="screen-screenshot">
+                            <img src="assets/ev-journey-cost-calculator.png" alt="EVKit showing Tesla Model Y with journey costs for Home, Work and Public charging" class="screen-screenshot">
                         </div>
                     </div>
                     <!-- Apple Watch Mockup -->
@@ -157,11 +227,12 @@
                         <div class="device-iphone calculate-phone">
                             <div class="iphone-notch"></div>
                             <div class="iphone-screen">
-                                <img src="assets/calculate-manual.png"
-                                     data-manual="assets/calculate-manual.png"
-                                     data-vehicle="assets/calculate-vehicle.png"
+                                <img src="assets/ev-cost-calculator-manual.png"
+                                     data-manual="assets/ev-cost-calculator-manual.png"
+                                     data-vehicle="assets/ev-cost-calculator-vehicle.png"
                                      alt="EVKit journey cost calculator"
-                                     class="screen-screenshot calculate-screenshot">
+                                     class="screen-screenshot calculate-screenshot"
+                                     loading="lazy">
                             </div>
                         </div>
                     </div>
@@ -175,8 +246,8 @@
                                 </svg>
                             </span>
                             <div class="feature-text">
-                                <span class="feature-label">Home, Work & Public Rates</span>
-                                <span class="feature-desc">Use your actual electricity prices</span>
+                                <span class="feature-label">Your Actual Electricity Costs</span>
+                                <span class="feature-desc">Home, work & public rates — not assumptions</span>
                             </div>
                         </div>
                         <div class="feature-item">
@@ -187,8 +258,8 @@
                                 </svg>
                             </span>
                             <div class="feature-text">
-                                <span class="feature-label">Cost Per Mile Breakdown</span>
-                                <span class="feature-desc">Know your real running costs</span>
+                                <span class="feature-label">Know If That Trip Is Worth It</span>
+                                <span class="feature-desc">Cost per mile breakdown for any journey</span>
                             </div>
                         </div>
                         <div class="feature-item">
@@ -342,7 +413,7 @@
                         <div class="device-iphone compare-phone">
                             <div class="iphone-notch"></div>
                             <div class="iphone-screen">
-                                <img src="assets/compare.png" alt="EVKit vehicle comparison showing Battery & Range details with winner indicators" class="screen-screenshot">
+                                <img src="assets/ev-comparison-tool.png" alt="EVKit vehicle comparison showing Battery & Range details with winner indicators" class="screen-screenshot" loading="lazy">
                             </div>
                         </div>
 
@@ -388,7 +459,7 @@
             <div class="container">
                 <div class="section-header">
                     <h2 class="section-title">Battery Intelligence</h2>
-                    <p class="section-subtitle">Year by year. Chemistry by chemistry.</p>
+                    <p class="section-subtitle">See how your battery holds up over time.</p>
                 </div>
                 <div class="battery-showcase">
                     <div class="battery-tabs">
@@ -426,7 +497,8 @@
                                  data-lmf="assets/battery/lmf.png"
                                  data-nmc="assets/battery/nmc.png"
                                  data-nca="assets/battery/nca.png"
-                                 alt="Battery degradation settings for LFP chemistry">
+                                 alt="Battery degradation settings for LFP chemistry"
+                                 loading="lazy">
                         </div>
                     </div>
                     <p class="battery-note">Set custom degradation rates per year. Based on <a href="https://www.geotab.com/blog/ev-battery-health/" target="_blank" rel="noopener noreferrer">Geotab EV Battery Health Study</a>.</p>
@@ -444,18 +516,18 @@
 
                 <div class="widgets-showcase">
                     <div class="widget-large">
-                        <img src="assets/widget-large.png" alt="Large widget showing Tesla Model Y stats with charging costs and battery info">
+                        <img src="assets/widget-large.png" alt="Large widget showing Tesla Model Y stats with charging costs and battery info" loading="lazy">
                     </div>
                     <div class="widgets-right">
                         <div class="widget-medium">
-                            <img src="assets/widget-medium.png" alt="Medium widget showing Ford Dina's Fiesta charging costs">
+                            <img src="assets/widget-medium.png" alt="Medium widget showing Ford Dina's Fiesta charging costs" loading="lazy">
                         </div>
                         <div class="widgets-small-row">
                             <div class="widget-small">
-                                <img src="assets/widget-small-1.png" alt="Small widget showing Kia journey cost">
+                                <img src="assets/widget-small-1.png" alt="Small widget showing Kia journey cost" loading="lazy">
                             </div>
                             <div class="widget-small">
-                                <img src="assets/widget-small-2.png" alt="Small widget showing Tesla with winter mode">
+                                <img src="assets/widget-small-2.png" alt="Small widget showing Tesla with winter mode" loading="lazy">
                             </div>
                         </div>
                     </div>
@@ -585,7 +657,79 @@
             </div>
         </section>
 
-        <!-- Section 7: CTA / Get Started -->
+        <!-- Section 8: FAQ -->
+        <section class="section section-faq" id="faq">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Frequently Asked Questions</h2>
+                    <p class="section-subtitle">Everything you need to know about EVKit.</p>
+                </div>
+
+                <div class="faq-list">
+                    <details class="faq-item">
+                        <summary class="faq-question">
+                            <span>How do I calculate EV running costs?</span>
+                            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M6 9l6 6 6-6"/>
+                            </svg>
+                        </summary>
+                        <div class="faq-answer">
+                            <p>EVKit calculates your real running costs by combining your vehicle's efficiency (miles per kWh), your actual electricity rates for home, work, and public charging, and factors in seasonal efficiency loss from cold weather. Simply enter the distance you want to travel, and EVKit shows you exactly what it will cost at each charging location.</p>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary class="faq-question">
+                            <span>How much does it cost to charge an electric car at home?</span>
+                            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M6 9l6 6 6-6"/>
+                            </svg>
+                        </summary>
+                        <div class="faq-answer">
+                            <p>Home charging costs depend on your electricity tariff and region. Many EV owners take advantage of off-peak tariffs to charge overnight at lower rates. EVKit lets you enter your exact home, work, and public charging rates — in your local currency — so you always know your true costs, not national averages.</p>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary class="faq-question">
+                            <span>How does cold weather affect EV range?</span>
+                            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M6 9l6 6 6-6"/>
+                            </svg>
+                        </summary>
+                        <div class="faq-answer">
+                            <p>Cold weather can reduce EV range by 15-45% depending on temperature and whether your vehicle has a heat pump. EVKit's winter mode calculates this automatically based on research from the DOE, AAA, and Recurrent Auto (studying 30,000+ vehicles). Select your conditions — mild, typical, or severe winter — and EVKit adjusts your cost calculations accordingly.</p>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary class="faq-question">
+                            <span>How much does EV battery degrade each year?</span>
+                            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M6 9l6 6 6-6"/>
+                            </svg>
+                        </summary>
+                        <div class="faq-answer">
+                            <p>Battery degradation varies by chemistry. LFP batteries retain about 93% capacity after 5 years, while NMC and NCA batteries retain around 87-88%. EVKit models degradation year-by-year based on real-world studies, showing you projected range and costs over your ownership period. All research sources are linked directly within the app if you want to dive deeper.</p>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary class="faq-question">
+                            <span>Can I compare different electric vehicles?</span>
+                            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M6 9l6 6 6-6"/>
+                            </svg>
+                        </summary>
+                        <div class="faq-answer">
+                            <p>Yes! EVKit lets you compare two vehicles side-by-side, showing differences in journey costs, battery health projections, winter performance, and more. Export unlimited comparisons as professional PDFs to share with family, friends, or your local EV community.</p>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 9: CTA / Get Started -->
         <section class="section section-cta" id="get-started">
             <div class="container">
                 <div class="cta-content">

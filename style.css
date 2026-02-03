@@ -1666,7 +1666,7 @@ footer {
 
 .calculate-showcase {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
     gap: 80px;
 }
@@ -1729,6 +1729,7 @@ footer {
 .calculate-features {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     gap: 32px;
     max-width: 400px;
 }
@@ -2674,6 +2675,99 @@ footer {
         text-align: center;
         border-radius: 16px;
         padding: 20px;
+    }
+}
+
+/* ===================================
+   FAQ SECTION
+   =================================== */
+
+.section-faq {
+    background: var(--elevated-dark);
+}
+
+.faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background: rgba(26, 26, 26, 0.6);
+    border: 1px solid #2d2d2d;
+    border-radius: 16px;
+    margin-bottom: 16px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+    border-color: rgba(98, 210, 162, 0.3);
+}
+
+.faq-item[open] {
+    border-color: rgba(98, 210, 162, 0.4);
+    background: rgba(98, 210, 162, 0.03);
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px;
+    cursor: pointer;
+    list-style: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #e5e5e7;
+    transition: color 0.2s ease;
+}
+
+.faq-question::-webkit-details-marker {
+    display: none;
+}
+
+.faq-question:hover {
+    color: var(--primary-mint);
+}
+
+.faq-question span {
+    flex: 1;
+    padding-right: 16px;
+}
+
+.faq-icon {
+    width: 24px;
+    height: 24px;
+    color: #6e6e73;
+    transition: transform 0.3s ease, color 0.2s ease;
+    flex-shrink: 0;
+}
+
+.faq-item[open] .faq-icon {
+    transform: rotate(180deg);
+    color: var(--primary-mint);
+}
+
+.faq-answer {
+    padding: 0 24px 24px;
+    color: #a1a1a6;
+    line-height: 1.7;
+    font-size: 1rem;
+}
+
+.faq-answer p {
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .faq-question {
+        padding: 20px;
+        font-size: 1rem;
+    }
+
+    .faq-answer {
+        padding: 0 20px 20px;
+        font-size: 0.95rem;
     }
 }
 

@@ -50,7 +50,7 @@
             <div class="container">
                 <div class="privacy-wrapper">
                     <h1 class="privacy-title">Privacy Policy</h1>
-                    <p class="privacy-updated">Last updated: January 26, 2026</p>
+                    <p class="privacy-updated">Last updated: February 3, 2026</p>
 
                     <div class="privacy-intro">
                         <p>At EVKit, your privacy isn't a feature—it's the foundation. We built EVKit from the ground up to keep your data yours, and yours alone.</p>
@@ -60,7 +60,7 @@
                         <h2>The Short Version</h2>
                         <ul class="privacy-list">
                             <li><strong>All calculations happen on your device.</strong> We never send your vehicle data, journeys, or charging costs to our servers.</li>
-                            <li><strong>Anonymized analytics only.</strong> We collect anonymized app usage patterns to improve EVKit—no personal information, no location data, no identifiable tracking.</li>
+                            <li><strong>Anonymized analytics only.</strong> We collect anonymized app usage patterns to improve EVKit—no personal information, country-level location only (no precise location), no identifiable tracking.</li>
                             <li><strong>No account required.</strong> EVKit works entirely offline without any login or registration.</li>
                             <li><strong>iCloud sync is optional and private.</strong> If you enable sync, your data stays in your private iCloud account—we can't access it.</li>
                             <li><strong>We can't see your data. Ever.</strong> Not your vehicles, not your journeys, not your charging rates. Nothing.</li>
@@ -81,12 +81,12 @@
                         <p><strong>Where this data is stored:</strong> Exclusively on your device using SwiftData. This data never leaves your device unless you enable iCloud sync (see below).</p>
 
                         <h3>Optional iCloud Sync</h3>
-                        <p>If you enable iCloud sync in Settings:</p>
+                        <p>If you have iCloud enabled for EVKit on your device:</p>
                         <ul class="privacy-list">
                             <li>Your vehicle profiles and settings sync to your private iCloud account via CloudKit.</li>
                             <li>This data is encrypted using your Apple ID credentials.</li>
                             <li>We (EVKit developers) cannot access, read, or decrypt your iCloud data.</li>
-                            <li>You can disable iCloud sync at any time in Settings → iCloud.</li>
+                            <li>You can disable iCloud sync at any time in iPhone Settings → [Your Name] → iCloud → EVKit.</li>
                         </ul>
 
                         <h3>Information We Don't Collect</h3>
@@ -127,7 +127,7 @@
                         <h3>What We DON'T Collect</h3>
                         <ul class="privacy-list">
                             <li>❌ No personal information (name, email, Apple ID)</li>
-                            <li>❌ No location data (GPS, region, country)</li>
+                            <li>❌ No precise location data (GPS coordinates)—country-level only</li>
                             <li>❌ No vehicle data (makes, models, efficiency, battery capacity)</li>
                             <li>❌ No journey data (distances, costs, charging rates)</li>
                             <li>❌ No user-created content (vehicle names, custom rates, notes)</li>
@@ -155,6 +155,11 @@
                         <h3>Opt-Out</h3>
                         <p>We're exploring options to let you disable analytics entirely while still using EVKit. Check back for updates in future releases.</p>
                         <p>TelemetryDeck's approach ensures that even if you don't opt out, we cannot identify you or access your personal data.</p>
+                    </div>
+
+                    <div class="privacy-section">
+                        <h2>Website Analytics</h2>
+                        <p>EVKit collects anonymous usage statistics on this website to understand how features are used and improve the app. This includes general location data (country only, not precise location). This data is anonymous, never includes personal information, and is never sold or shared with third parties.</p>
                     </div>
 
                     <div class="privacy-section">
@@ -187,7 +192,7 @@
                             <li><strong>Access:</strong> All your data is visible in the app (vehicles, settings, calculations).</li>
                             <li><strong>Deletion:</strong> Delete individual vehicles, clear journey history, or delete the entire app to remove all data.</li>
                             <li><strong>Export:</strong> Your data is stored in standard SwiftData format on your device.</li>
-                            <li><strong>Disable sync:</strong> Turn off iCloud sync in Settings → iCloud at any time.</li>
+                            <li><strong>Disable sync:</strong> Turn off iCloud for EVKit in iPhone Settings → [Your Name] → iCloud at any time.</li>
                         </ul>
                         <p>Under GDPR and CCPA, you have rights including data portability, deletion, and access. Since we don't collect or store your personal data on servers, most of these rights are inherently satisfied by EVKit's design.</p>
                     </div>
@@ -237,7 +242,7 @@
                             <li><strong>Email:</strong> <a href="mailto:hello@evkit.app?subject=EVKit:%20Privacy%20Question">hello@evkit.app</a></li>
                             <li><strong>Response time:</strong> We aim to respond within 48 hours.</li>
                         </ul>
-                        <p>For data deletion requests, simply delete the app from your device. For iCloud data deletion, disable iCloud sync in EVKit, then manage your iCloud data via Settings → [Your Name] → iCloud → Manage Storage.</p>
+                        <p>For data deletion requests, simply delete the app from your device. For iCloud data deletion, disable iCloud for EVKit in iPhone Settings → [Your Name] → iCloud, then manage your iCloud data via Settings → [Your Name] → iCloud → Manage Storage.</p>
                     </div>
 
                     <div class="privacy-footer">
@@ -259,6 +264,7 @@
                     <p class="footer-tagline">Your EV Cost Companion</p>
                 </div>
                 <nav class="footer-links">
+                    <a href="index.html">Home</a>
                     <a href="privacy.html">Privacy</a>
                     <a href="terms.html">Terms</a>
                     <a href="mailto:hello@evkit.app?subject=EVKit:%20General%20Inquiry">Contact</a>
