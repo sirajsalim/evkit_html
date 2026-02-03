@@ -113,7 +113,7 @@
 
                     <div class="privacy-section">
                         <h2>Anonymized Analytics</h2>
-                        <p>To improve EVKit and understand how features are used, we collect <strong>anonymized, aggregated usage data</strong> using TelemetryDeck, a privacy-focused analytics platform designed for Apple developers.</p>
+                        <p>To improve EVKit and understand how features are used, we collect <strong>anonymized, aggregated usage data</strong> using Firebase Analytics, Google's app analytics platform.</p>
 
                         <h3>What We Collect (Anonymously)</h3>
                         <ul class="privacy-list">
@@ -135,12 +135,12 @@
                         </ul>
 
                         <h3>How Anonymization Works</h3>
-                        <p>TelemetryDeck uses <strong>salted hashing</strong> to anonymize all data before it leaves your device:</p>
+                        <p>Firebase Analytics uses anonymized identifiers:</p>
                         <ul class="privacy-list">
-                            <li>Your device generates a random identifier that changes periodically.</li>
-                            <li>This identifier is salted and hashed, making it impossible to link back to you.</li>
-                            <li>We receive only aggregated, anonymized statistics (e.g., "42% of users use the journey calculator weekly").</li>
-                            <li>Even TelemetryDeck cannot identify individual users or link sessions together.</li>
+                            <li>Data is aggregated and anonymized before we access it.</li>
+                            <li>We receive only aggregated statistics (e.g., "42% of users use the journey calculator weekly").</li>
+                            <li>We do not link analytics data to individual users or personal information.</li>
+                            <li>Country-level location is collected to understand regional usage patterns.</li>
                         </ul>
 
                         <h3>Why We Use Analytics</h3>
@@ -154,7 +154,7 @@
 
                         <h3>Opt-Out</h3>
                         <p>We're exploring options to let you disable analytics entirely while still using EVKit. Check back for updates in future releases.</p>
-                        <p>TelemetryDeck's approach ensures that even if you don't opt out, we cannot identify you or access your personal data.</p>
+                        <p>Even without opting out, we cannot identify you or access your personal data through analytics.</p>
                     </div>
 
                     <div class="privacy-section">
@@ -169,7 +169,7 @@
                         <ul class="privacy-list">
                             <li><strong>Apple App Store:</strong> When you purchase EVKit, Apple processes the transaction. We receive anonymized sales data (e.g., "3 purchases in the UK") but no personal information.</li>
                             <li><strong>CloudKit (optional):</strong> If you enable iCloud sync, your data syncs to your private iCloud account. Apple encrypts this data end-to-end.</li>
-                            <li><strong>TelemetryDeck (analytics):</strong> Anonymized, aggregated usage data (screen views, feature usage, crashes) is sent to TelemetryDeck. No personal or identifiable information is included.</li>
+                            <li><strong>Firebase Analytics:</strong> Anonymized, aggregated usage data (screen views, feature usage, crashes, country-level location) is sent to Firebase. No personal or identifiable information is included.</li>
                         </ul>
                         <p><strong>We never share:</strong> Your vehicle profiles, journey data, charging rates, or any information that identifies you. We have no advertising networks or social media trackers.</p>
                     </div>
@@ -230,7 +230,7 @@
                         <p>EVKit integrates with two privacy-focused third-party services:</p>
                         <ul class="privacy-list">
                             <li><strong>Apple CloudKit</strong> (optional, if you enable iCloud sync): Governed by <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener noreferrer">Apple's Privacy Policy</a>. Your data is stored in your private CloudKit container, encrypted with your Apple ID.</li>
-                            <li><strong>TelemetryDeck</strong> (analytics): Governed by <a href="https://telemetrydeck.com/privacy/" target="_blank" rel="noopener noreferrer">TelemetryDeck's Privacy Policy</a>. A privacy-first analytics platform built for Apple developers. Uses salted hashing to anonymize all data before transmission.</li>
+                            <li><strong>Firebase Analytics</strong> (analytics): Governed by <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener noreferrer">Firebase Privacy Policy</a>. Google's app analytics platform. Collects anonymized usage data and country-level location.</li>
                         </ul>
                         <p><strong>No advertising SDKs. No social media trackers. No data brokers.</strong></p>
                     </div>
