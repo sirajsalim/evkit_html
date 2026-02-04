@@ -91,7 +91,7 @@
     <link rel="icon" type="image/svg+xml" href="assets/evkit-icon.svg">
     <link rel="canonical" href="https://evkit.app/">
 
-    <link rel="stylesheet" href="style.css?v=51">
+    <link rel="stylesheet" href="style.css?v=54">
 
     <!-- GSAP for premium scroll animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
@@ -539,24 +539,36 @@
         <section class="section section-watch" id="watch">
             <div class="container">
                 <div class="section-header">
-                    <h2 class="section-title">On Your Wrist</h2>
-                    <p class="section-subtitle">Quick glances. Instant answers.</p>
+                    <h2 class="section-title">Built for Your Wrist</h2>
+                    <p class="section-subtitle">Select. Twist. Done.</p>
+                    <p class="section-note">Rectangular complication shows vehicle, distance & cost. Circular opens directly to any vehicle.</p>
                 </div>
                 <div class="watch-showcase">
                     <div class="watch-features">
                         <div class="watch-feature">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                                 <circle cx="12" cy="12" r="10"/>
-                                <path d="M12 6v6l4 2"/>
+                                <path d="M12 8v4"/>
+                                <path d="M8 12h8"/>
+                                <circle cx="12" cy="12" r="3"/>
                             </svg>
-                            <span>Complications</span>
+                            <span>Crown Control</span>
                         </div>
                         <div class="watch-feature">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <rect x="5" y="2" width="14" height="20" rx="2"/>
-                                <path d="M12 18h.01"/>
+                                <path d="M4 12h4m12 0h-4"/>
+                                <path d="M8 12a4 4 0 1 0 8 0 4 4 0 1 0-8 0"/>
+                                <path d="M12 8V4m0 16v-4"/>
                             </svg>
-                            <span>Standalone</span>
+                            <span>Real-time Sync</span>
+                        </div>
+                        <div class="watch-feature">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9L18 10l-1.4-3.5A2 2 0 0 0 14.8 5H9.2a2 2 0 0 0-1.8 1.5L6 10l-2.5 1.1C2.7 11.3 2 12.1 2 13v3c0 .6.4 1 1 1h2"/>
+                                <circle cx="7" cy="17" r="2"/>
+                                <circle cx="17" cy="17" r="2"/>
+                            </svg>
+                            <span>Any Vehicle</span>
                         </div>
                     </div>
                     <div class="watch-devices">
@@ -564,40 +576,28 @@
                             <div class="watch-crown"></div>
                             <div class="watch-button"></div>
                             <div class="watch-screen">
-                                <div class="screen-placeholder screen-placeholder-watch">
-                                    <span class="placeholder-text-small">Journey Cost</span>
-                                    <span class="placeholder-value">£4.20</span>
-                                </div>
+                                <img src="assets/watch-1.png" alt="EVKit complication on Apple Watch face showing journey cost" class="watch-screenshot" loading="lazy">
                             </div>
                         </div>
                         <div class="device-watch">
                             <div class="watch-crown"></div>
                             <div class="watch-button"></div>
                             <div class="watch-screen">
-                                <div class="screen-placeholder screen-placeholder-watch">
-                                    <span class="placeholder-text-small">Cost per Mile</span>
-                                    <span class="placeholder-value">£0.04</span>
-                                </div>
+                                <img src="assets/watch-2.png" alt="EVKit Apple Watch app showing journey costs for home, work, and public charging" class="watch-screenshot" loading="lazy">
                             </div>
                         </div>
                         <div class="device-watch">
                             <div class="watch-crown"></div>
                             <div class="watch-button"></div>
                             <div class="watch-screen">
-                                <div class="screen-placeholder screen-placeholder-watch">
-                                    <span class="placeholder-text-small">Battery Health</span>
-                                    <span class="placeholder-value">94%</span>
-                                </div>
+                                <img src="assets/watch-3.png" alt="EVKit Apple Watch showing Tesla Model Y battery health" class="watch-screenshot" loading="lazy">
                             </div>
                         </div>
                         <div class="device-watch">
                             <div class="watch-crown"></div>
                             <div class="watch-button"></div>
                             <div class="watch-screen">
-                                <div class="screen-placeholder screen-placeholder-watch">
-                                    <span class="placeholder-text-small">Range Today</span>
-                                    <span class="placeholder-value">241 mi</span>
-                                </div>
+                                <img src="assets/watch-4.png" alt="EVKit Apple Watch showing Kia battery information" class="watch-screenshot" loading="lazy">
                             </div>
                         </div>
                     </div>

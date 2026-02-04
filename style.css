@@ -1325,6 +1325,24 @@ footer {
     font-weight: 400;
 }
 
+.section-description {
+    font-size: 1.1rem;
+    color: #8e8e93;
+    font-weight: 400;
+    max-width: 600px;
+    margin: 16px auto 0;
+    line-height: 1.6;
+}
+
+.section-note {
+    font-size: 0.95rem;
+    color: #8e8e93;
+    font-weight: 400;
+    max-width: 500px;
+    margin: 12px auto 0;
+    line-height: 1.5;
+}
+
 /* ===================================
    HERO SECTION (NEW)
    =================================== */
@@ -1501,6 +1519,13 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.watch-screenshot {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 30px;
 }
 
 /* Screen Placeholders */
@@ -3033,6 +3058,14 @@ footer {
         font-size: 1.15rem;
     }
 
+    .section-description {
+        font-size: 1rem;
+    }
+
+    .section-note {
+        font-size: 0.9rem;
+    }
+
     /* Hero */
     .section-hero .container {
         grid-template-columns: 1fr;
@@ -3278,6 +3311,14 @@ footer {
         font-size: 1rem;
     }
 
+    .section-description {
+        font-size: 0.9rem;
+    }
+
+    .section-note {
+        font-size: 0.85rem;
+    }
+
     .device-iphone {
         width: 180px;
         border-radius: 32px;
@@ -3300,6 +3341,10 @@ footer {
     }
 
     .watch-screen {
+        border-radius: 22px;
+    }
+
+    .watch-screenshot {
         border-radius: 22px;
     }
 
