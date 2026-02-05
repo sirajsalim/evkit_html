@@ -347,6 +347,7 @@ header {
     gap: 12px;
     margin-bottom: 24px;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .hero-badge {
@@ -359,6 +360,7 @@ header {
     font-weight: 600;
     letter-spacing: 0.3px;
     box-shadow: 0 0 12px rgba(98, 210, 162, 0.08);
+    white-space: nowrap;
 }
 
 .hero-badge-separator {
@@ -1349,8 +1351,7 @@ footer {
 
 .section-hero {
     background: #000000;
-    height: 100vh;
-    min-height: 700px;
+    min-height: 100vh;
     padding-top: 50px;
     padding-bottom: 40px;
     position: relative;
@@ -1358,6 +1359,7 @@ footer {
     flex-direction: column;
     justify-content: center;
     box-sizing: border-box;
+    overflow: visible;
 }
 
 .section-hero::before {
@@ -3038,6 +3040,19 @@ footer {
     .hero-subheadline {
         font-size: 1rem;
     }
+
+    .hero-badges {
+        gap: 8px;
+    }
+
+    .hero-badge {
+        padding: 7px 12px;
+        font-size: 0.85rem;
+    }
+
+    .hero-badge-separator {
+        display: none;
+    }
 }
 
 /* ===================================
@@ -3067,6 +3082,12 @@ footer {
     }
 
     /* Hero */
+    .section-hero {
+        min-height: auto;
+        padding-top: 100px;
+        padding-bottom: 60px;
+    }
+
     .section-hero .container {
         grid-template-columns: 1fr;
         gap: 50px;
