@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - EVKit</title>
+    <meta name="description" content="Get help with EVKit. Find answers to common questions, learn how to use features, or contact us directly.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://evkit.app/support.html">
+    <meta property="og:title" content="Support - EVKit">
+    <meta property="og:description" content="Get help with EVKit. Find answers to common questions, learn how to use features, or contact us directly.">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Support - EVKit">
+    <meta name="twitter:description" content="Get help with EVKit. Find answers to common questions, learn how to use features, or contact us directly.">
+
+    <!-- Additional Meta -->
+    <link rel="icon" type="image/svg+xml" href="assets/evkit-icon.svg">
+    <link rel="canonical" href="https://evkit.app/support.html">
+
+    <link rel="stylesheet" href="style.css?v=56">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header>
+        <nav class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="assets/evkit-logo@3x.png" alt="EVKit" class="nav-logo-img">
+            </a>
+            <button class="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-links">
+                <a href="index.html#calculate">Calculate</a>
+                <a href="index.html#compare">Compare</a>
+                <a href="index.html#battery">Battery</a>
+                <a href="index.html#widgets">Widgets</a>
+                <a href="index.html#watch">Watch</a>
+                <a href="index.html#get-started" class="nav-cta">Get Started</a>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <section class="privacy-content">
+            <div class="container">
+                <div class="privacy-wrapper">
+                    <h1 class="privacy-title">Support</h1>
+
+                    <div class="privacy-intro">
+                        <p>EVKit runs entirely on your device, so most things just work. If you need help, you'll likely find your answer below — otherwise, we're always happy to hear from you.</p>
+                    </div>
+
+                    <div class="privacy-section">
+                        <h2>Getting Started</h2>
+                        <p>EVKit helps you understand the real cost of driving an electric vehicle. Here's what you can do:</p>
+                        <ul class="privacy-list">
+                            <li><strong>Calculate:</strong> Enter your journey details to see real costs — either manually or by selecting a vehicle from the built-in database.</li>
+                            <li><strong>Winter Mode:</strong> See how cold weather affects your EV's efficiency, with or without a heat pump, across different severity levels.</li>
+                            <li><strong>Compare:</strong> Put two EVs side by side to compare running costs, and export the results as a PDF.</li>
+                            <li><strong>Battery Intelligence:</strong> View long-term degradation data by battery chemistry (LFP, NMC, NCA, LMFP) to understand how your battery will age.</li>
+                            <li><strong>Widgets:</strong> Add Home Screen widgets for at-a-glance cost information in large, medium, or small sizes.</li>
+                            <li><strong>Apple Watch:</strong> Access key data from your wrist with complications and a dedicated watch app.</li>
+                        </ul>
+                    </div>
+
+                    <div class="privacy-section">
+                        <h2>Contact Us</h2>
+                        <p>We'd love to hear from you. Choose the option that best fits your enquiry:</p>
+                        <ul class="privacy-list">
+                            <li><strong>General Support:</strong> <a href="mailto:hello@evkit.app?subject=EVKit:%20Support%20Request">hello@evkit.app</a> — for help with the app or any questions.</li>
+                            <li><strong>Feature Requests:</strong> <a href="mailto:hello@evkit.app?subject=EVKit:%20Feature%20Request">Send a feature request</a> — we read every suggestion.</li>
+                            <li><strong>Bug Reports:</strong> <a href="mailto:hello@evkit.app?subject=EVKit:%20Bug%20Report">Report a bug</a> — please include your device model and iOS version so we can investigate.</li>
+                        </ul>
+                        <p>We typically respond within 2–3 business days.</p>
+                    </div>
+
+                    <div class="privacy-section">
+                        <h2>Legal</h2>
+                        <ul class="privacy-list">
+                            <li><a href="privacy.html">Privacy Policy</a></li>
+                            <li><a href="terms.html">Terms of Service</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="privacy-footer">
+                        <p><a href="index.html" class="privacy-back-link">← Back to Home</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="assets/evkit-logo@3x.png" alt="EVKit" class="footer-logo-img">
+                    </div>
+                    <p class="footer-tagline">Your EV Cost Companion</p>
+                </div>
+                <nav class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
+                    <a href="support.html">Support</a>
+                    <a href="mailto:hello@evkit.app?subject=EVKit:%20General%20Inquiry">Contact</a>
+                </nav>
+            </div>
+            <p class="footer-copyright">&copy; 2026 Kukkdi Ltd. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Hamburger menu toggle
+        const hamburger = document.querySelector('.nav-hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        if (hamburger) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                });
+            });
+        }
+    </script>
+</body>
+</html>
