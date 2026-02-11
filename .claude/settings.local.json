@@ -14,7 +14,8 @@
       "Bash(for f in /Users/siraj/Projects/EVKit/evkit_html/assets/widget-*.png)",
       "Bash(do echo \"$f:\")",
       "Bash(done)",
-      "Bash(for f in widget-*.png)"
+      "Bash(for f in widget-*.png)",
+      "Bash(file:*)"
     ]
   }
 }
