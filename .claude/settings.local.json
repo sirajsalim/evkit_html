@@ -15,7 +15,8 @@
       "Bash(do echo \"$f:\")",
       "Bash(done)",
       "Bash(for f in widget-*.png)",
-      "Bash(file:*)"
+      "Bash(file:*)",
+      "Bash(git -C /Users/siraj/Projects/EVKit/evkit_html log --oneline -20)"
     ]
   }
 }

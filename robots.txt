@@ -1,6 +1,6 @@
-# EVKit robots.txt
+# WattKit robots.txt
 User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://evkit.app/sitemap.xml
+Sitemap: https://wattkit.app/sitemap.xml

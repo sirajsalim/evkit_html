@@ -4,19 +4,19 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-EVKit is a marketing website for an iOS EV (Electric Vehicle) cost calculator app launching March 2026. The site is a static HTML/CSS/JavaScript website designed with premium aesthetics, accessibility, and mobile-first responsiveness.
+WattKit is a marketing website for an iOS EV (Electric Vehicle) cost calculator app launching March 2026. The site is a static HTML/CSS/JavaScript website designed with premium aesthetics, accessibility, and mobile-first responsiveness.
 
 **Key Details:**
 - Pure HTML/CSS/JS (no build process, dependencies: GSAP/ScrollTrigger via CDN, html2canvas)
 - Hosted as static site (GitHub Pages compatible)
-- Domain: evkit.app
+- Domain: wattkit.app
 - Price: £2.99 one-time purchase (no subscriptions)
 - Company: Kukkdi Ltd
 
 ## File Structure
 
 ```
-evkit_html/
+wattkit_html/
 ├── index.html              # Main landing page with all sections
 ├── privacy.html            # Privacy policy page
 ├── terms.html             # Terms of service page
@@ -30,8 +30,8 @@ evkit_html/
     ├── calculate-vehicle.png   # Calculate section - selected vehicle mode
     ├── compare.png        # Compare section screenshot
     ├── ev-comparison-sample.pdf  # Sample PDF export for Compare section
-    ├── evkit_1_dark.png   # Battery Intelligence screenshots (dark + light)
-    ├── evkit_1_light.png
+    ├── wattkit_1_dark.png   # Battery Intelligence screenshots (dark + light)
+    ├── wattkit_1_light.png
     └── ...                # Additional carousel screenshots
 ```
 
@@ -73,9 +73,9 @@ evkit_html/
 <div class="screenshot-carousel">
   <div class="screenshot-slide active" data-slide="1">
     <img class="screenshot-image"
-         src="assets/evkit_1_dark.png"
-         data-dark="assets/evkit_1_dark.png"
-         data-light="assets/evkit_1_light.png"
+         src="assets/wattkit_1_dark.png"
+         data-dark="assets/wattkit_1_dark.png"
+         data-light="assets/wattkit_1_light.png"
          alt="...">
   </div>
   <!-- Repeat for slides 2-6 -->
@@ -94,13 +94,13 @@ evkit_html/
 
 ### 2. Registration Modal System
 
-**Purpose**: "Get Early Access to EVKit" button opens modal that generates a pre-filled mailto: link.
+**Purpose**: "Get Early Access to WattKit" button opens modal that generates a pre-filled mailto: link.
 
 **Flow**:
 1. User clicks CTA button → `openModal()` called
 2. Modal shows with focus trap (Tab cycles through form elements)
 3. Form validates name (optional) + preference (required radio buttons)
-4. On submit → generates `mailto:hello@evkit.app` with pre-filled subject/body
+4. On submit → generates `mailto:hello@wattkit.app` with pre-filled subject/body
 5. Opens email client → closes modal after 500ms
 
 **Accessibility Features**:
@@ -310,7 +310,7 @@ scrollTrigger: {
 ### Adding New Screenshots
 1. Generate PNG at 1170 x 2532px (or use screenshot-generator.html)
 2. Create both dark and light versions
-3. Name as `evkit_N_dark.png` and `evkit_N_light.png` (where N = slide number)
+3. Name as `wattkit_N_dark.png` and `wattkit_N_light.png` (where N = slide number)
 4. Add to index.html carousel following existing pattern
 5. Ensure both `data-dark` and `data-light` attributes are set
 6. Update `totalSlides` count will auto-update via `screenshots.length`
@@ -318,7 +318,7 @@ scrollTrigger: {
 ### Modifying Hero Copy
 **Headline**: Lines 54-57 in index.html (two-tier structure)
 **Subheadline**: Lines 58-60 (emphasizes "real data — not guesses")
-**CTA Button**: Line 62 ("Get Early Access to EVKit")
+**CTA Button**: Line 62 ("Get Early Access to WattKit")
 **Tagline**: Line 61 (pricing and launch date)
 
 ### Updating Colors
@@ -356,9 +356,9 @@ This site follows WCAG 2.1 AA standards:
 
 All email links use this format:
 ```html
-mailto:hello@evkit.app?subject=EVKit:%20[Context]
+mailto:hello@wattkit.app?subject=WattKit:%20[Context]
 ```
-- Subject prefix: "EVKit: " (with space after colon)
+- Subject prefix: "WattKit: " (with space after colon)
 - URL-encoded subject and body parameters
 - Modal form generates pre-filled emails (name + preference)
 
@@ -378,7 +378,7 @@ mailto:hello@evkit.app?subject=EVKit:%20[Context]
 - Special `.privacy-content` wrapper for legal text styling
 - Last updated date: January 26, 2026
 - Company: Kukkdi Ltd
-- Contact: hello@evkit.app
+- Contact: hello@wattkit.app
 
 Both pages emphasize:
 - 100% on-device calculations (no server processing)

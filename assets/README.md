@@ -1,4 +1,4 @@
-# EVKit Screenshot Assets
+# WattKit Screenshot Assets
 
 This folder contains placeholder PNG files for the app screenshot carousel on the homepage.
 
@@ -6,12 +6,12 @@ This folder contains placeholder PNG files for the app screenshot carousel on th
 
 Each screenshot has two versions: **Dark mode** and **Light mode**
 
-- `evkit_1_dark.png` / `evkit_1_light.png`
-- `evkit_2_dark.png` / `evkit_2_light.png`
-- `evkit_3_dark.png` / `evkit_3_light.png`
-- `evkit_4_dark.png` / `evkit_4_light.png`
-- `evkit_5_dark.png` / `evkit_5_light.png`
-- `evkit_6_dark.png` / `evkit_6_light.png`
+- `wattkit_1_dark.png` / `wattkit_1_light.png`
+- `wattkit_2_dark.png` / `wattkit_2_light.png`
+- `wattkit_3_dark.png` / `wattkit_3_light.png`
+- `wattkit_4_dark.png` / `wattkit_4_light.png`
+- `wattkit_5_dark.png` / `wattkit_5_light.png`
+- `wattkit_6_dark.png` / `wattkit_6_light.png`
 
 ## Image Specifications
 
@@ -36,7 +36,7 @@ Each screenshot has two versions: **Dark mode** and **Light mode**
 - **Light Mode:** White background (#FFFFFF), systemMint accents (#62D2A2)
 - Use iPhone mockup with rounded corners (32px border-radius in CSS)
 - Ensure text is readable and UI elements are clearly visible
-- Match EVKit's design system (SF Pro typography, minimalist iOS style)
+- Match WattKit's design system (SF Pro typography, minimalist iOS style)
 
 ## How to Replace
 
