@@ -446,6 +446,23 @@ header {
     transform: translateY(0);
 }
 
+/* App Store Badge */
+.app-store-badge {
+    display: inline-block;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.app-store-badge:hover {
+    opacity: 0.85;
+    transform: scale(1.03);
+}
+
+.app-store-img {
+    height: 54px;
+    width: auto;
+    border-radius: 10px;
+}
+
 /* Right Column - Screenshot & Theme Toggle */
 .hero-visual {
     display: flex;

@@ -91,6 +91,15 @@
     <link rel="icon" type="image/svg+xml" href="assets/wattkit-icon.svg">
     <link rel="canonical" href="https://wattkit.app/">
 
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VS6NKZJBD8"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-VS6NKZJBD8');
+    </script>
+
     <link rel="stylesheet" href="style.css?v=56">
 
     <!-- GSAP for premium scroll animations -->
@@ -118,7 +127,7 @@
                 <a href="#battery">Battery</a>
                 <a href="#widgets">Widgets</a>
                 <a href="#watch">Watch</a>
-                <a href="#get-started" class="nav-cta">Get Started</a>
+                <a href="https://apps.apple.com/app/wattkit/id6758916890" class="nav-cta" target="_blank" rel="noopener">Download</a>
             </div>
         </nav>
     </header>
@@ -174,8 +183,10 @@
                     <p class="hero-subheadline">
                         Winter range loss. Battery degradation. Your actual electricity rates. All factored in.
                     </p>
-                    <p class="hero-tagline">Coming March 2026 · £2.99 · No subscriptions</p>
-                    <button class="cta-button" id="registerButton">Get Early Access</button>
+                    <p class="hero-tagline">£2.99 · One-time purchase · No subscriptions</p>
+                    <a href="https://apps.apple.com/app/wattkit/id6758916890" target="_blank" rel="noopener" class="app-store-badge" aria-label="Download WattKit on the App Store">
+                        <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/white/en-us?size=250x83" alt="Download on the App Store" class="app-store-img">
+                    </a>
                 </div>
                 <div class="hero-devices">
                     <!-- iPhone Mockup -->
@@ -728,9 +739,11 @@
         <section class="section section-cta" id="get-started">
             <div class="container">
                 <div class="cta-content">
-                    <h2 class="cta-title">Join the Journey</h2>
-                    <p class="cta-subtitle">Be first to know when WattKit launches.</p>
-                    <button class="cta-button cta-button-large" id="registerButtonFooter">Get Early Access</button>
+                    <h2 class="cta-title">Get WattKit</h2>
+                    <p class="cta-subtitle">Your EV costs, finally figured out.</p>
+                    <a href="https://apps.apple.com/app/wattkit/id6758916890" target="_blank" rel="noopener" class="app-store-badge" aria-label="Download WattKit on the App Store">
+                        <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/white/en-us?size=250x83" alt="Download on the App Store" class="app-store-img">
+                    </a>
                     <div class="cta-trust">
                         <span class="trust-badge">No subscriptions</span>
                         <span class="trust-badge">No ads</span>
@@ -762,49 +775,6 @@
             <p class="footer-copyright">&copy; 2026 Kukkdi Ltd. All rights reserved.</p>
         </div>
     </footer>
-
-    <!-- Registration Modal -->
-    <div id="registrationModal" class="modal">
-        <div class="modal-content">
-            <button class="modal-close" aria-label="Close modal">&times;</button>
-            <h2>Get Early Access to WattKit</h2>
-            <p>Be the first to know when WattKit launches in March 2026.</p>
-            <form id="registrationForm">
-                <div class="form-group">
-                    <label for="name">Name (Optional)</label>
-                    <input type="text" id="name" name="name">
-                </div>
-                <div class="form-group">
-                    <label class="radio-group-label">I'm interested in:</label>
-                    <div class="radio-options">
-                        <label class="radio-option">
-                            <input type="radio" name="preference" value="beta" required>
-                            <span class="radio-label">
-                                <strong>Beta testing WattKit</strong>
-                                <small>Get early access via TestFlight</small>
-                            </span>
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="preference" value="notify" required>
-                            <span class="radio-label">
-                                <strong>Just notify me when it launches</strong>
-                                <small>Be notified when the app is available</small>
-                            </span>
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="preference" value="both" required>
-                            <span class="radio-label">
-                                <strong>Both - beta test AND notify at launch</strong>
-                                <small>Get the full experience</small>
-                            </span>
-                        </label>
-                    </div>
-                </div>
-                <button type="submit" class="submit-button">Submit</button>
-                <p class="form-note">This will open your email app with details pre-filled — just hit send.</p>
-            </form>
-        </div>
-    </div>
 
     <script>
         // Hamburger menu toggle
@@ -1075,89 +1045,6 @@
                 });
             }
         });
-
-        // Modal functionality
-        const modal = document.getElementById('registrationModal');
-        const registerBtn = document.getElementById('registerButton');
-        const registerBtnFooter = document.getElementById('registerButtonFooter');
-        const closeBtn = document.querySelector('.modal-close');
-        const form = document.getElementById('registrationForm');
-        let previouslyFocused = null;
-
-        function trapFocus(event) {
-            const focusableElements = modal.querySelectorAll('input, button, textarea, select, a[href]');
-            const firstElement = focusableElements[0];
-            const lastElement = focusableElements[focusableElements.length - 1];
-
-            if (event.key === 'Tab') {
-                if (event.shiftKey && document.activeElement === firstElement) {
-                    event.preventDefault();
-                    lastElement.focus();
-                } else if (!event.shiftKey && document.activeElement === lastElement) {
-                    event.preventDefault();
-                    firstElement.focus();
-                }
-            }
-
-            if (event.key === 'Escape') {
-                closeModal();
-            }
-        }
-
-        function openModal() {
-            previouslyFocused = document.activeElement;
-            modal.style.display = 'block';
-            modal.addEventListener('keydown', trapFocus);
-            document.body.style.overflow = 'hidden';
-
-            setTimeout(() => {
-                const firstInput = modal.querySelector('input, button');
-                if (firstInput) firstInput.focus();
-            }, 100);
-        }
-
-        function closeModal() {
-            modal.style.display = 'none';
-            modal.removeEventListener('keydown', trapFocus);
-            document.body.style.overflow = '';
-
-            if (previouslyFocused) {
-                previouslyFocused.focus();
-            }
-        }
-
-        registerBtn.onclick = openModal;
-        registerBtnFooter.onclick = openModal;
-        closeBtn.onclick = closeModal;
-
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                closeModal();
-            }
-        }
-
-        form.onsubmit = function(event) {
-            event.preventDefault();
-
-            const name = document.getElementById('name').value.trim();
-            const preference = document.querySelector('input[name="preference"]:checked').value;
-
-            const preferenceText = {
-                'beta': 'Interested in beta testing',
-                'notify': 'Just notify me when the app goes live',
-                'both': 'Both - beta test AND notify at launch'
-            };
-
-            const subject = 'WattKit: Notify me when WattKit is available';
-            const body = `Name: ${name || 'Not provided'}%0D%0A%0D%0APreference: ${preferenceText[preference]}`;
-
-            window.location.href = `mailto:hello@wattkit.app?subject=${subject}&body=${body}`;
-
-            setTimeout(() => {
-                closeModal();
-                form.reset();
-            }, 500);
-        }
 
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
