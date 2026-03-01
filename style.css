@@ -1722,37 +1722,6 @@ footer {
     gap: 24px;
 }
 
-/* Calculate mode tabs */
-.calculate-tabs {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-}
-
-.calculate-tab {
-    padding: 12px 24px;
-    border: 1.5px solid #3d3d3d;
-    background: rgba(26, 26, 26, 0.8);
-    color: #a1a1a6;
-    font-size: 0.9rem;
-    font-weight: 500;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.calculate-tab:hover:not(.active) {
-    border-color: rgba(98, 210, 162, 0.4);
-    background: rgba(98, 210, 162, 0.03);
-    color: #e5e5e7;
-}
-
-.calculate-tab.active {
-    border-color: var(--primary-mint);
-    background: rgba(98, 210, 162, 0.06);
-    color: var(--primary-mint);
-    box-shadow: 0 0 20px rgba(98, 210, 162, 0.08);
-}
 
 .calculate-phone {
     width: 260px;
@@ -1823,8 +1792,80 @@ footer {
    WINTER MODE SECTION
    =================================== */
 
-.section-winter {
+.section-database {
     background: var(--primary-dark);
+}
+
+.database-stats {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--card-dark);
+    border: 1px solid rgba(98, 210, 162, 0.15);
+    border-radius: 20px;
+    padding: 40px 60px;
+    max-width: 700px;
+    margin: 0 auto 64px;
+}
+
+.db-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+}
+
+.db-stat-number {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--primary-mint);
+    line-height: 1;
+    letter-spacing: -2px;
+}
+
+.db-stat-plus {
+    font-size: 2rem;
+    font-weight: 500;
+    vertical-align: super;
+    letter-spacing: 0;
+}
+
+.db-stat-label {
+    font-size: 1rem;
+    color: #a1a1a6;
+    font-weight: 500;
+}
+
+.db-stat-divider {
+    width: 1px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.1);
+    flex-shrink: 0;
+}
+
+.database-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 80px;
+}
+
+.database-phone {
+    width: 260px;
+    flex-shrink: 0;
+}
+
+.database-features {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+    max-width: 400px;
+}
+
+.section-winter {
+    background: var(--elevated-dark);
 }
 
 .winter-showcase {
@@ -2067,7 +2108,7 @@ footer {
    =================================== */
 
 .section-compare {
-    background: var(--elevated-dark);
+    background: var(--primary-dark);
 }
 
 .compare-showcase {
@@ -2249,7 +2290,7 @@ footer {
    =================================== */
 
 .section-battery {
-    background: var(--primary-dark);
+    background: var(--elevated-dark);
 }
 
 .battery-showcase {
@@ -2544,7 +2585,7 @@ footer {
    =================================== */
 
 .section-watch {
-    background: var(--elevated-dark);
+    background: var(--primary-dark);
 }
 
 .watch-showcase {
@@ -2820,7 +2861,7 @@ footer {
    =================================== */
 
 .section-cta {
-    background: var(--primary-dark);
+    background: var(--elevated-dark);
     text-align: center;
 }
 
@@ -3140,21 +3181,6 @@ footer {
         gap: 40px;
     }
 
-    .calculate-main {
-        gap: 20px;
-        align-items: center;
-        width: 100%;
-    }
-
-    .calculate-tabs {
-        width: 100%;
-    }
-
-    .calculate-tab {
-        padding: 8px 16px;
-        font-size: 0.85rem;
-    }
-
     .calculate-phone {
         width: 220px;
     }
@@ -3170,6 +3196,37 @@ footer {
         flex-direction: column;
         align-items: center;
         gap: 12px;
+        width: 100%;
+    }
+
+    /* Database */
+    .database-stats {
+        padding: 32px 24px;
+        gap: 0;
+    }
+
+    .db-stat-number {
+        font-size: 2.5rem;
+    }
+
+    .db-stat-plus {
+        font-size: 1.5rem;
+    }
+
+    .database-content {
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+    }
+
+    .database-phone {
+        width: 220px;
+    }
+
+    .database-features {
+        gap: 24px;
+        text-align: center;
+        align-items: center;
         width: 100%;
     }
 
@@ -3396,16 +3453,37 @@ footer {
     }
 
     /* Calculate */
-    .calculate-tab {
-        padding: 8px 14px;
-        font-size: 0.8rem;
-    }
-
     .calculate-phone {
         width: 180px;
     }
 
     .calculate-features {
+        gap: 20px;
+    }
+
+    /* Database */
+    .database-stats {
+        padding: 24px 16px;
+    }
+
+    .db-stat-number {
+        font-size: 2rem;
+        letter-spacing: -1px;
+    }
+
+    .db-stat-plus {
+        font-size: 1.2rem;
+    }
+
+    .db-stat-label {
+        font-size: 0.85rem;
+    }
+
+    .database-phone {
+        width: 180px;
+    }
+
+    .database-features {
         gap: 20px;
     }
 
