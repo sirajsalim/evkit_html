@@ -6,6 +6,16 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 WattKit is a marketing website for an iOS EV (Electric Vehicle) cost calculator app launching March 2026. The site is a static HTML/CSS/JavaScript website designed with premium aesthetics, accessibility, and mobile-first responsiveness.
 
+**App Screens (3 main screens):**
+- **Vehicles** - View vehicle details, full charge range (rated WLTP, current WLTP, winter estimates), battery info, efficiency. Also shows journey costs (off-peak, standard, public) for a given distance.
+- **Compare** - Side-by-side comparison of two EVs with PDF export
+- **Settings** - App configuration
+
+**Charging Rate Types** (renamed from home/work/public):
+- **Off-Peak** - e.g. overnight tariff (replaces "Home")
+- **Standard** - e.g. daytime home rate (replaces "Work")
+- **Public** - public charging network rate
+
 **Key Details:**
 - Pure HTML/CSS/JS (no build process, dependencies: GSAP/ScrollTrigger via CDN, html2canvas)
 - Hosted as static site (GitHub Pages compatible)
@@ -19,20 +29,28 @@ WattKit is a marketing website for an iOS EV (Electric Vehicle) cost calculator 
 wattkit_html/
 ├── index.html              # Main landing page with all sections
 ├── privacy.html            # Privacy policy page
-├── terms.html             # Terms of service page
-├── style.css              # Single stylesheet for all pages (v=39+ cache busting)
+├── terms.html              # Terms of service page
+├── style.css               # Single stylesheet for all pages (v=57+ cache busting)
 ├── screenshot-generator.html  # Tool to generate placeholder screenshots
-├── CNAME                  # Domain configuration for GitHub Pages
+├── CNAME                   # Domain configuration for GitHub Pages
 └── assets/
-    ├── README.md          # Screenshot specifications and guidelines
-    ├── hero-vehicle.png   # Hero section screenshot (Tesla Model Y)
-    ├── calculate-manual.png    # Calculate section - manual mode
-    ├── calculate-vehicle.png   # Calculate section - selected vehicle mode
-    ├── compare.png        # Compare section screenshot
-    ├── ev-comparison-sample.pdf  # Sample PDF export for Compare section
-    ├── wattkit_1_dark.png   # Battery Intelligence screenshots (dark + light)
+    ├── README.md                     # Screenshot specifications and guidelines
+    ├── ev-journey-cost-calculator.png # Hero section - Vehicles screen (journey costs)
+    ├── ev-full-charge-range.png       # Know Before You Go - full charge range screen
+    ├── database-vehicles.png          # EV Database - vehicle selector / make picker
+    ├── ev-comparison-tool.png         # Head to Head - compare screen
+    ├── ev-comparison-sample.pdf       # Sample PDF export for Compare section
+    ├── widget-large.png               # Large widget (Tesla Model Y, costs + battery)
+    ├── widget-medium.png              # Medium widget (IONIQ 5, winter costs)
+    ├── widget-small-1.png             # Small widget (Tesla Model Y, off-peak cost)
+    ├── widget-small-2.png             # Small widget (Hyundai IONIQ 5, off-peak cost)
+    ├── watch-1.png                    # Watch face complication
+    ├── watch-2.png                    # Watch app - vehicle battery info (NMC)
+    ├── watch-3.png                    # Watch app - vehicle battery info (NCA)
+    ├── watch-4.png                    # Watch app - vehicle selector
+    ├── wattkit_1_dark.png             # Battery Intelligence screenshots (dark + light)
     ├── wattkit_1_light.png
-    └── ...                # Additional carousel screenshots
+    └── ...                            # Additional carousel screenshots
 ```
 
 ## Design System
@@ -115,34 +133,40 @@ wattkit_html/
 - `notify` → "Just notify me when the app goes live"
 - `both` → "Both - beta test AND notify at launch"
 
-### 3. Calculate Section (Know Before You Go)
+### 3. Know Before You Go Section (Full Charge Range)
 
-**Purpose**: Shows journey cost calculator with mode switching between manual input and selected vehicle.
+**Purpose**: Shows the vehicle detail screen from the app — full charge range (rated WLTP, current WLTP, real-world with override), winter range estimates (mild/typical/severe), and battery info. No manual calculation mode — the app uses the selected vehicle from the EV database.
 
-**HTML Pattern**:
-```html
-<div class="calculate-tabs">
-    <button class="calculate-tab active" data-mode="manual">Manual Calc</button>
-    <button class="calculate-tab" data-mode="vehicle">Selected Vehicle</button>
-</div>
-<div class="device-iphone calculate-phone">
-    <img src="assets/calculate-manual.png"
-         data-manual="assets/calculate-manual.png"
-         data-vehicle="assets/calculate-vehicle.png"
-         class="screen-screenshot calculate-screenshot">
-</div>
-```
-
-**JavaScript**: Click handler switches `img.src` based on `data-mode` attribute and updates active tab styling.
+**Screenshot**: `assets/ev-full-charge-range.png`
 
 **CSS Classes**:
-- `.calculate-tabs` - Flex container for tab buttons (centered)
-- `.calculate-tab` - Tab button with border styling
-- `.calculate-tab.active` - Mint border and subtle glow
 - `.calculate-showcase` - Main container (flex, centers phone + features)
+- `.calculate-phone` - iPhone mockup sizing for this section
 - `.calculate-features` - Feature list beside/below phone
 
-### 4. Winter Mode Section (Real Costs)
+### 4. EV Database Section (Chances Are, Your EV Is Already Here)
+
+**Purpose**: Highlights the built-in EV database with stats and explains manual entry fallback.
+
+**Stats**: 50+ Makes · 200+ Models · 600+ Electric Vehicles (continuously growing)
+
+**Key points communicated**:
+- Real manufacturer specs loaded automatically — no manual entry needed
+- Search by make, model, year or trim
+- If vehicle not listed: manual entry available ("Other / Enter manually")
+- Users can override manufacturer efficiency with their real-world mi/kWh for more accurate costs
+
+**Screenshot**: `assets/database-vehicles.png` (shows vehicle selector / make picker with "Other / Enter manually" option)
+
+**CSS Classes**:
+- `.section-database` - Section with `--primary-dark` background
+- `.database-stats` - Horizontal stat bar (card-dark background, mint border)
+- `.db-stat` / `.db-stat-number` / `.db-stat-label` / `.db-stat-divider` - Stat components
+- `.database-content` - Flex row: phone left, features right
+- `.database-phone` - iPhone mockup sizing
+- `.database-features` - Feature list
+
+### 5. Winter Mode Section (Real Costs)
 
 **Purpose**: Interactive CSS-only recreation of the app's winter mode controls with "exploded UI" animation effect.
 
@@ -178,7 +202,7 @@ wattkit_html/
 
 **Efficiency Table**: Shows real-world efficiency data with/without heat pump across severity levels.
 
-### 5. Compare Section (Head to Head)
+### 6. Compare Section (Head to Head)
 
 **Purpose**: Shows vehicle comparison feature with PDF export capability.
 
@@ -198,7 +222,7 @@ wattkit_html/
 
 **PDF Badge**: Positioned overlay that links to sample PDF export. Styled with mint border, hover glow effect.
 
-### 6. CSS Section Organization
+### 7. CSS Section Organization
 
 The `style.css` file is organized into clearly marked sections:
 1. **Reset & Base Styles** - CSS variables, resets, body defaults
@@ -208,16 +232,17 @@ The `style.css` file is organized into clearly marked sections:
 5. **Navigation Header** - Sticky nav with logo and links
 6. **Trust Bar** - Floating trust badges with staggered animation
 7. **Hero Section** - Two-column layout with iPhone mockup
-8. **Calculate Section** - Mode tabs, phone mockup, feature list
-9. **Winter Mode Section** - Interactive controls, efficiency table
-10. **Compare Section** - PDF badge overlay, phone mockup
-11. **Battery Intelligence Section** - Tab switching, degradation/health screenshots
-12. **Watch Section** - Apple Watch mockup placeholder
-13. **CTA Section** - Final call-to-action
-14. **Footer** - Site footer
-15. **Modal Styles** - Registration form modal
-16. **Animations** - `@keyframes` definitions (float, shimmer)
-17. **Responsive Design** - Media queries for 968px, 768px, 640px, 480px breakpoints
+8. **Calculate Section** - Phone mockup, feature list (no tabs)
+9. **EV Database Section** - Stats bar, phone mockup, feature list
+10. **Winter Mode Section** - Interactive controls, efficiency table
+11. **Compare Section** - PDF badge overlay, phone mockup
+12. **Battery Intelligence Section** - Tab switching, degradation/health screenshots
+13. **Watch Section** - Apple Watch mockup
+14. **CTA Section** - Final call-to-action
+15. **Footer** - Site footer
+16. **Modal Styles** - Registration form modal
+17. **Animations** - `@keyframes` definitions (float, shimmer)
+18. **Responsive Design** - Media queries for 968px, 768px, 640px, 480px breakpoints
 
 ## Critical Implementation Details
 
@@ -249,19 +274,20 @@ The site uses CSS-only device mockups for iPhones and Apple Watch:
 - `.iphone-screen` - Screen area containing screenshot
 - `.screen-screenshot` - Full-width screenshot image
 
-**Variants**: `.hero-phone`, `.calculate-phone`, `.compare-phone`, `.battery-phone` for section-specific sizing.
+**Variants**: `.hero-phone`, `.calculate-phone`, `.database-phone`, `.compare-phone`, `.battery-phone` for section-specific sizing.
 
 ### Alternating Section Backgrounds
 Pattern learned from flipunit.app analysis. Sections alternate between `--primary-dark` (#0a0a0a) and `--elevated-dark` (#141414):
 
 1. **Hero** - `--primary-dark`
-2. **Calculate** (Know Before You Go) - `--elevated-dark`
-3. **Winter Mode** (Real Costs) - `--primary-dark`
-4. **Compare** (Head to Head) - `--elevated-dark`
-5. **Battery Intelligence** - `--primary-dark`
-6. **Watch** - `--elevated-dark`
-7. **CTA** - `--primary-dark`
-8. **Footer** - `--elevated-dark`
+2. **Know Before You Go** (Calculate) - `--elevated-dark`
+3. **EV Database** - `--primary-dark`
+4. **Winter Mode** (Real Costs) - `--elevated-dark`
+5. **Compare** (Head to Head) - `--primary-dark`
+6. **Battery Intelligence** - `--elevated-dark`
+7. **Watch** - `--primary-dark`
+8. **CTA** - `--elevated-dark`
+9. **Footer** - `#000000`
 
 This creates subtle visual separation between sections (only 10-unit hex difference).
 
@@ -280,7 +306,7 @@ Navigation arrows remain visible on mobile (initially were hidden). CSS previous
 - Gradient applied to `<span class="highlight">` within primary line
 
 ### Cache Busting
-All pages load `style.css?v=39` (or higher) - increment version parameter when updating styles to bust browser/CDN cache.
+All pages load `style.css?v=57` (or higher) - increment version parameter when updating styles to bust browser/CDN cache.
 
 ### GSAP ScrollTrigger Animations
 The site uses GSAP with ScrollTrigger plugin for scroll-based animations:
@@ -389,14 +415,15 @@ Both pages emphasize:
 ## Testing Checklist
 
 When making changes, verify:
-1. **Hero**: iPhone mockup displays correctly with real screenshot
-2. **Calculate Section**: Mode tabs switch between Manual Calc / Selected Vehicle screenshots
-3. **Winter Mode**: Toggle switches and segmented controls are interactive, efficiency % updates
-4. **Compare Section**: PDF badge links to sample PDF, phone mockup displays correctly
-5. **Battery Intelligence**: Tab switching works for degradation/health screenshots
-6. **GSAP Animations**: Scroll-triggered animations fire correctly (exploded UI effect, slide-ins)
-7. **Modal**: Opens, closes (X, Escape, outside click), focus trap works
-8. **Form**: Validates preference selection, generates correct mailto link
-9. **Responsive**: Test at 968px, 768px, 640px, and 480px breakpoints
-10. **Accessibility**: Tab navigation works, focus states visible, skip link appears on focus
-11. **Mobile Alignment**: All sections centered properly on mobile devices
+1. **Hero**: iPhone mockup displays Vehicles/journey cost screen correctly
+2. **Know Before You Go**: Full charge range screenshot displays correctly; no tabs
+3. **EV Database**: Stats bar (50+/200+/600+) renders correctly; database-vehicles.png loads; feature list aligned
+4. **Winter Mode**: Toggle switches and segmented controls are interactive, efficiency % updates
+5. **Compare Section**: PDF badge links to sample PDF, phone mockup displays correctly
+6. **Battery Intelligence**: Tab switching works for degradation/health screenshots
+7. **GSAP Animations**: Scroll-triggered animations fire correctly (exploded UI effect, slide-ins, DB stat stagger)
+8. **Modal**: Opens, closes (X, Escape, outside click), focus trap works
+9. **Form**: Validates preference selection, generates correct mailto link
+10. **Responsive**: Test at 968px, 768px, 640px, and 480px breakpoints
+11. **Accessibility**: Tab navigation works, focus states visible, skip link appears on focus
+12. **Mobile Alignment**: All sections centered properly on mobile devices
