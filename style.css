@@ -414,6 +414,12 @@ header {
     margin-bottom: 32px;
 }
 
+.tagline-free {
+    color: #F5C842;
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
 .cta-button {
     display: inline-block;
     background: #62D2A2;
